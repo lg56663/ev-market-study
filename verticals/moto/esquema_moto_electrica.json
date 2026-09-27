@@ -1,0 +1,41 @@
+{
+  "vehiculo": "moto_electrica",
+  "total_anuncios_validos": 0,
+  "anuncios": [
+    {
+      "id_anuncio": "moto_elec_001",
+      "titulo": "",
+      "precio_usd": null,
+      "precio_cup": null,
+      "moneda_original": "USD",
+      "marca": "",
+      "modelo": null,
+      "tipo_vehiculo": "moto_electrica",
+      "motor_w": null,
+      "voltaje_v": null,
+      "amperaje_ah": null,
+      "tipo_bateria": null,
+      "autonomia_km": null,
+      "velocidad_max_kmh": null,
+      "tiempo_carga_horas": null,
+      "peso_kg": null,
+      "tipo_moto": "scooter",
+      "licencia_requerida": null,
+      "numero_ruedas": 2,
+      "tipo_frenos": null,
+      "suspension": null,
+      "accesorios": [],
+      "estado": null,
+      "kilometraje": null,
+      "papeles": null,
+      "color": null,
+      "ubicacion": "",
+      "municipio": null,
+      "vendedor": null,
+      "fecha_publicacion": null,
+      "fecha_recoleccion": "",
+      "descripcion": "",
+      "url_anuncio": ""
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+# ENTORNOS Y DEPENDENCIAS
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# SECRETOS
+.env
+.env.*
+!.env.example
+*.secret
+*.secrets
+
+# DATOS DE SCRAPING
+data/
+output/
+exports/
+downloads/
+cache_html/
+cache_detalle/
+.cache/
+.cache_pool.json
+.scraper_run.log
+*.log
+descartados_*.json
+resultados_*.json
+*.jsonl
+*.csv
+*.parquet
+*.sqlite
+*.db
+*.html
+
+# EXCEPCIONES
+!config/*.json
+!verticals/*/sources.json
+!verticals/*/schema.json
+!verticals/*/esquema_*.json
+!verticals/*/opencode.json
+!sources/*.json
+!tests/fixtures/*.json
+!*.example.json
+!opencode.json
+
+# SISTEMA
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Cachés con punto (bicimoto)
+.cache_html/
+.cache_detalle/
+
+# Datos generados por scrapers
+*_electricas.json
+*_electricos.json
+*_electricos.jsonl
+
+# Reportes y logs de scraping
+reporte_scraping*.txt
+reporte_*.txt
+descartes.scr/
+
+# Outputs dentro de carpetas de scraping
+verticals/*/SCRAPING/*.json
+verticals/*/SCRAPING/*.txt
+verticals/*/scraping/*.json
+verticals/*/scraping/*.txt
