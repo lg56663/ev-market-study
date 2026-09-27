@@ -4,14 +4,25 @@ Estudio de mercado de movilidad eléctrica ligera: motos, bicimotos y scooters e
 
 ## Estructura
 
-- `verticals/moto/` — Scraper de motos eléctricas
-- `verticals/bicimoto/` — Scraper de bicimotos eléctricas
-- `verticals/scooter/` — Scraper de scooters eléctricos
+- `verticals/{moto,bicimoto,scooter}/scraping/` — scraper, esquema y brief de cada vertical
+- `verticals/{moto,bicimoto,scooter}/analisis/` — clustering y métricas
 - `core/` — Código compartido
 - `config/` — Configuración global
 - `sources/` — Catálogo de fuentes
 - `data/` — Datos generados (ignorado por Git)
 - `analysis/` — Notebooks e informes
+- `docs/` — Bitácora de cambios
+
+## Entorno
+
+Un único venv en la raíz, accedido como `venv/` (symlink a `/home/leandro/scraping/venv`):
+
+```bash
+venv/bin/python3 verticals/moto/analisis/analisis_clustering.py --k 3
+```
+
+Dependencias en `requirements.txt`. Los scrapers resuelven sus rutas con
+`BASE_DIR = Path(__file__).resolve().parent`, así que corren desde cualquier directorio.
 
 ## Datos
 

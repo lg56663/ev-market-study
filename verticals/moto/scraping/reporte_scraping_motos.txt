@@ -1,0 +1,64 @@
+REPORTE DE SCRAPING - MOTOS ELÉCTRICAS (Revolico)
+====================================================
+Fecha: 2026-09-26T22:06:23Z
+URLs consultadas: 11 de 11
+
+ESTA EJECUCIÓN:
+  Peticiones nuevas a revolico.com: 0
+  HTML servidos desde caché: 114
+  Páginas de listado procesadas: 50
+  Páginas de detalle obtenidas: 61
+  Límite por sesión: 150 peticiones
+
+ACUMULADO (todas las ejecuciones, según el contenido de la caché):
+  Páginas de listado en cache_html/: 50
+  Páginas de detalle en cache_detalle/: 66
+  Peticiones acumuladas: 116
+  Delay entre peticiones: 3.0s
+
+Anuncios únicos revisados: 1223
+VÁLIDOS obtenidos: 30 (objetivo 30)
+DESCARTADOS: 1193
+
+Páginas por URL de búsqueda:
+   2  https://www.revolico.com/search?q=moto+electrica
+   6  https://www.revolico.com/search?q=moto+electrica+cuba
+   3  https://www.revolico.com/search?q=motico+electrica
+   8  https://www.revolico.com/search?q=moto+electrica+3000w
+   4  https://www.revolico.com/search?q=moto+electrica+2000w
+   4  https://www.revolico.com/search?q=moto+electrica+1000w
+  10  https://www.revolico.com/search?q=moto+electrica+72v
+   3  https://www.revolico.com/search?q=moto+electrica+60v
+   2  https://www.revolico.com/search?q=moto+electrica+5000w
+   4  https://www.revolico.com/search?q=moto+electrica+4000w
+   4  https://www.revolico.com/search?q=motico+3000w
+
+DESCARTADOS POR MOTIVO:
+   552  campos obligatorios incompletos: motor_w, tipo_bateria, autonomia_km
+   265  exclusión: no cumple criterio de inclusión (no es moto eléctrica)
+    91  exclusión por tipo de vehículo (scooter/bicimoto/patinete/ruedas)
+    63  campos obligatorios incompletos: marca, motor_w, tipo_bateria, autonomia_km
+    43  campos obligatorios incompletos: tipo_bateria, autonomia_km
+    35  campos obligatorios incompletos: tipo_bateria
+    28  campos obligatorios incompletos: motor_w, tipo_bateria, autonomia_km, precio_usd
+    26  campos obligatorios incompletos: motor_w, autonomia_km
+    23  exclusión: motor menor a 1000W (probable bicimoto)
+    19  campos obligatorios incompletos: motor_w, tipo_bateria
+    14  campos obligatorios incompletos: autonomia_km
+    12  campos obligatorios incompletos: marca, tipo_bateria, autonomia_km
+     6  campos obligatorios incompletos: marca, motor_w, tipo_bateria, autonomia_km, precio_usd
+     4  campos obligatorios incompletos: motor_w
+     3  campos obligatorios incompletos: marca, motor_w, autonomia_km
+     3  campos obligatorios incompletos: marca, motor_w, tipo_bateria
+     2  exclusión por motor de combustión
+     1  campos obligatorios incompletos: precio_usd
+     1  campos obligatorios incompletos: marca
+     1  campos obligatorios incompletos: tipo_bateria, autonomia_km, precio_usd
+     1  campos obligatorios incompletos: motor_w, autonomia_km, precio_usd
+
+CAMPOS OBLIGATORIOS QUE MÁS FALLAN:
+   762  tipo_bateria
+   749  autonomia_km
+   705  motor_w
+    88  marca
+    37  precio_usd

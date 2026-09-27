@@ -1,0 +1,82 @@
+REPORTE DE SCRAPING - Revolico.com (bicicletas electricas / bicimotos)
+========================================================================
+Fecha de ejecucion   : 2026-09-26 14:43:29 UTC
+Duracion            : 3 s
+User-Agent          : MiProyectoInvestigacion/1.0 (estudiante; contacto@ejemplo.com)
+Objetivo            : 30 anuncios validos
+Obtenidos           : 30
+Faltaron            : 0
+
+RESTRICCIONES ETICAS (AGENTS.md)
+  Peticiones (red)      : 0 de 60 maximo
+  Lecturas de cache     : 36 (0 peticiones)
+  Delay entre petic.    : 3 s (minimo exigido 3 s)
+  robots.txt            : respetado (User-agent * / Allow: / ; /checkout, /account, /auth, /favorites bloqueados)
+  Paginas de detalle    : 0 (todo extraido del listado)
+  Herramientas          : httpx + BeautifulSoup(lxml). Sin Firecrawl/MCP/Playwright
+
+RECOLECTA
+  URLs de busqueda     : 6 (max 10 paginas cada una)
+  Paginas recorridas   : 36
+  Candidatos unicos    : 3075 (dedup por id de anuncio)
+  Anuncios validos     : 30
+
+DESCARTES POR MOTIVO
+   1955  faltan campos obligatorios: marca, tipo_bateria, autonomia_km
+    747  faltan campos obligatorios: tipo_bateria, autonomia_km
+     99  faltan campos obligatorios: marca, tipo_bateria, autonomia_km, precio_usd
+     59  exclusion: triciclo
+     37  faltan campos obligatorios: tipo_bateria, autonomia_km, precio_usd
+     35  faltan campos obligatorios: marca, tipo_bateria
+     22  faltan campos obligatorios: marca, autonomia_km
+     20  faltan campos obligatorios: tipo_bateria
+     17  faltan campos obligatorios: autonomia_km
+     14  exclusion: accesorios/recuestos
+      9  exclusion: moto
+      8  faltan campos obligatorios: marca
+      5  faltan campos obligatorios: marca, precio_usd
+      3  faltan campos obligatorios: marca, tipo_bateria, precio_usd
+      3  faltan campos obligatorios: precio_usd
+      2  exclusion: moto de combustib. / no es e-bike
+      2  faltan campos obligatorios: tipo_bateria, precio_usd
+      2  exclusion: patineta/scooter
+      1  exclusion: 3 ruedas
+   3040  TOTAL descartados
+
+ANALISIS DE LOS 30 ANUNCIOS VALIDOS
+  Ubicacion  : {'La Habana': 26, 'Villa Clara': 4}
+  Marca      : {'Ava': 5, 'Vedca': 5, 'Maf Engle': 4, 'Jmd': 4, 'Dttzh': 3, 'Challenger': 2, 'Combat': 1, 'Laituning': 1, 'Halcon': 1, 'Bucatti': 1, 'Oris': 1, 'Torvan': 1, 'Midha': 1}
+  Bateria    : {'litio': 24, 'gel': 6}
+  Tipo veh.  : {'bicimoto': 23, 'bicicleta_electrica': 7}
+  Precio USD : min 650 | mediana 1200 | max 1950
+  Precio medio: 1206 USD
+  Motor W    : 21/30 con motor declarado; 9 en null (campo OPCIONAL)
+               rango 500-3000 W
+  Autonomia  : min 50 | max 130 km
+
+CRITERIOS DE VALIDEZ APLICADOS (5 obligatorios)
+  1. marca        -> no vacia
+  2. tipo_bateria -> litio | gel | plomo-acido
+  3. autonomia_km -> numerico
+  4. precio_usd   -> numerico (solo anuncios en USD)
+  5. ubicacion    -> provincia cubana, resuelta via provinceId del listado
+  motor_w        -> OPCIONAL, null si no aparece
+
+NOTAS METODOLOGICAS
+  - El listado de Revolico es Next.js + Apollo. Cada pagina incluye
+    __NEXT_DATA__ con __APOLLO_STATE__, que trae los stubs AdType
+    (id, title, price, currency, permalink, provinceId, municipalityId)
+    y los catalogos ProvinceType/MunicipalityType. Por eso ubicacion y
+    municipio son exactos y NO se entro a ninguna ficha de detalle.
+  - LIMITACION: el listado NO expone campo de descripcion. El unico
+    texto por anuncio es 'title'; en Cuba los vendedores escriben la
+    ficha completa ahi. Todo el regex se aplica sobre el titulo y
+    descripcion == titulo en el JSON.
+  - Deduplicado: por id de anuncio (unico real). AGENTS.md pide dedup
+    por titulo, pero en Revolico casi todos los anuncios de bicimoto
+    se titulan identico ('Bicimoto'), y un dedup por titulo colapsa
+    3075 anuncios a 1576 y hace imposible llegar
+    a 30 validos. Se reporta el titulo mas repetido:
+      'bicicleta eléctrica' x333
+  - Sin tipo de cambio inventado: los anuncios en CUP se descartan del
+    conteo de validos porque no hay forma honesta de convertirlos.

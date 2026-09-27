@@ -73,12 +73,13 @@ SEARCH_QUERIES = [
     "bici motor",
 ]
 
+BASE_DIR = Path(__file__).resolve().parent
 OUT_JSON = Path("bicis_electricas.json")
 OUT_REPORTE = Path("reporte_scraping.txt")
 OUT_DESCARTES_CSV = Path("descartes.csv")
 OUT_DESCARTES_JSONL = Path("descartes.jsonl")
 CACHE_DIR = Path(".cache_html")
-ESQUEMA = Path("/home/leandro/Escritorio/proyecto_bicimotos/esquema_bici_electrica.json")
+ESQUEMA = BASE_DIR / "esquema_bici_electrica.json"
 
 # --------------------------------------------------------------------------
 # Vocabulario de dominio

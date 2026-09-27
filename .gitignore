@@ -1,74 +1,79 @@
-# ENTORNOS Y DEPENDENCIAS
-.venv/
-venv/
-env/
-__pycache__/
-*.py[cod]
-*.egg-info/
-dist/
-build/
-
-# SECRETOS
-.env
-.env.*
-!.env.example
-*.secret
-*.secrets
-
-# DATOS DE SCRAPING
-data/
-output/
-exports/
-downloads/
-cache_html/
-cache_detalle/
-.cache/
-.cache_pool.json
-.scraper_run.log
-*.log
-descartados_*.json
-resultados_*.json
-*.jsonl
-*.csv
-*.parquet
-*.sqlite
-*.db
-*.html
-
-# EXCEPCIONES
-!config/*.json
-!verticals/*/sources.json
-!verticals/*/schema.json
-!verticals/*/esquema_*.json
-!verticals/*/opencode.json
-!sources/*.json
-!tests/fixtures/*.json
-!*.example.json
-!opencode.json
-
+# ====================
 # SISTEMA
+# ====================
 .DS_Store
 Thumbs.db
 .idea/
 .vscode/
 *.swp
 
-# Cachés con punto (bicimoto)
-.cache_html/
-.cache_detalle/
+# ====================
+# ENTORNOS VIRTUALES
+# ====================
+venv/
+.venv/
+env/
+**/venv/
 
-# Datos generados por scrapers
-*_electricas.json
-*_electricos.json
-*_electricos.jsonl
+# ====================
+# CACHÉS DE PYTHON
+# ====================
+__pycache__/
+*.py[cod]
+*$py.class
 
-# Reportes y logs de scraping
-reporte_scraping*.txt
-reporte_*.txt
-descartes.scr/
+# ====================
+# CACHÉS DE SCRAPING
+# ====================
+cache_html/
+cache_detalle/
+**/cache_*/
+**/.cache_*/
 
-# Outputs dentro de carpetas de scraping
-verticals/*/SCRAPING/*.json
-verticals/*/SCRAPING/*.txt
-verticals/*/scraping/*.json
-verticals/*/scraping/*.txt
+# ====================
+# BACKUPS
+# ====================
+*_BACKUP/
+*_backup/
+*.bak
+
+# ====================
+# BASES DE DATOS
+# ====================
+*.sqlite
+*.db
+
+# ====================
+# LOGS DE ERRORES (no los reportes)
+# ====================
+errores.log
+*.err
+
+# ====================
+# NOTA: los JSON crudos SÍ se versionan
+# ====================
+# NO se excluyen:
+# - motos_electricas.json, bicis_electricas.json, scooters_electricos.json
+# - descartados_*.json
+# - esquema_*.json
+# - AGENTS_*.md, scraper_*.py, analisis_*.py
+# - k3_*, k4_*, k5_*, k7_* (outputs de clustering)
+# - resumen_clustering.txt
+# - clusters_*.png
+# - docs/bitacora.md
+/venv
+**/venv
+
+# Cachés y logs de scrapers
+.cache_pool.json
+.scraper_run.log
+*.scraper_run.log
+**/.cache_pool.json
+**/.scraper_run.log
+
+# Cachés y logs de scrapers
+.cache_pool.json
+.scraper_run.log
+*.scraper_run.log
+**/.cache_pool.json
+**/.scraper_run.log

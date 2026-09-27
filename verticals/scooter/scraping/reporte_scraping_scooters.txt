@@ -1,0 +1,92 @@
+REPORTE DE SCRAPING - SCOOTERS Y PATINETES ELÉCTRICOS (Revolico)
+========================================================
+Fecha: 2026-09-26T23:41:02Z
+URLs consultadas: 11 de 11
+
+ESTA EJECUCIÓN:
+  Peticiones nuevas a revolico.com: 0
+  HTML servidos desde caché: 67
+  Páginas de listado procesadas: 27
+  Páginas de detalle obtenidas: 40
+  Límite por sesión: 150 peticiones
+
+ACUMULADO (todas las ejecuciones, según el contenido de la caché):
+  Páginas de listado en cache_html/: 27
+  Páginas de detalle en cache_detalle/: 42
+  Peticiones acumuladas: 69
+  Delay entre peticiones: 3.0s
+
+Anuncios únicos revisados: 448
+VÁLIDOS obtenidos: 30 (objetivo 30)
+DESCARTADOS: 418
+Candidatos que pasaron los filtros de título: 251
+  de ellos, visitados en detalle: 40
+  de ellos, NO visitados (visito_detalle=false): 211
+
+TIPO BATERÍA EN LOS VÁLIDOS (extraído / inferido / null):
+    15  gel
+     7  litio
+     5  litio (inferido)
+     3  null
+
+PLEGABLE EN LOS VÁLIDOS:
+     3  true
+    27  false
+
+TIPO DE VEHÍCULO EN LOS VÁLIDOS:
+    29  patinete_electrico
+     1  scooter_electrico
+
+Páginas por URL de búsqueda:
+   3  https://www.revolico.com/search?q=scooter+electrico
+   3  https://www.revolico.com/search?q=patinete+electrico
+   5  https://www.revolico.com/search?q=patineta+electrica
+   2  https://www.revolico.com/search?q=scooter+electrico+cuba
+   2  https://www.revolico.com/search?q=patinete+electrico+cuba
+   2  https://www.revolico.com/search?q=patineta+electrica+cuba
+   2  https://www.revolico.com/search?q=patinete+electrico+plegable
+   3  https://www.revolico.com/search?q=scooter+electrico+plegable
+   1  https://www.revolico.com/search?q=patinete+electrico+350w
+   2  https://www.revolico.com/search?q=patinete+electrico+500w
+   2  https://www.revolico.com/search?q=scooter+electrico+500w
+
+DESCARTADOS POR MOTIVO:
+   183  exclusión: no cumple criterio de inclusión (no es scooter/patinete)
+   126  campos obligatorios incompletos: motor_w, autonomia_km
+    32  campos obligatorios incompletos: marca, motor_w, autonomia_km
+    24  campos obligatorios incompletos: autonomia_km
+    16  exclusión por tipo de vehículo (moto/bicimoto/bicicleta/triciclo/infantil)
+    15  campos obligatorios incompletos: marca, autonomia_km
+     6  campos obligatorios incompletos: autonomia_km, precio_usd
+     5  campos obligatorios incompletos: motor_w, autonomia_km, precio_usd
+     5  campos obligatorios incompletos: marca, motor_w, autonomia_km, precio_usd
+     3  campos obligatorios incompletos: marca
+     1  duplicado: mismo vendedor ('Venta habana'), misma marca ('MIDHA') y mismo precio que un anuncio ya seleccionado
+     1  duplicado: mismo vendedor ('Samuel Gomez'), misma marca ('Roinside') y mismo precio que un anuncio ya seleccionado
+     1  campos obligatorios incompletos: precio_usd
+
+CAMPOS OBLIGATORIOS QUE MÁS FALLAN:
+   213  autonomia_km
+   168  motor_w
+    55  marca
+    17  precio_usd
+
+OBSERVACIONES:
+  - El filtro de inclusión exige 'scooter/patinete/patineta' + 'eléctrico/a' (o 'e-scooter'). 77 anuncios cuyo título sí dice scooter/patinete pero sin la palabra 'eléctrico' quedaron fuera en la fase de título, sin visitar su detalle.
+  - Los 30 válidos se concentran en: La Habana (30)
+  - Ningún válido quedó por debajo del mínimo de 200W (motores presentes: 350W, 500W, 650W, 750W, 800W, 1200W).
+  - Sin duplicados por título normalizado; se detectaron y descartaron 2 republicaciones del mismo vendedor con la misma marca y el mismo precio.
+
+PRIMERAS 5 LÍNEAS DE scooters_electricos.json:
+{
+  "vehiculo": "scooter_patinete_electrico",
+  "total_anuncios_validos": 30,
+  "anuncios": [
+    {
+
+PRIMERAS 5 LÍNEAS DE descartados_scooters.json:
+{
+  "total_revisados": 448,
+  "total_descartados": 418,
+  "total_validos": 30,
+  "descartados": [

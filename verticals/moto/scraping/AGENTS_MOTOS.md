@@ -10,7 +10,7 @@ los anuncios que pasan los filtros iniciales, para extraer la descripción
 completa. El listado solo trae título, precio, provincia y municipio.  
    
 ## Entorno Python  
-- Usar el intérprete del venv: /home/leandro/scraping/venv/bin/python3  
+- Usar el intérprete del venv: /home/leandro/ev-market-study/venv/bin/python3  
 - Librerías disponibles: httpx, beautifulsoup4, lxml, pandas  
 - NO usar Firecrawl ni MCP. Usar httpx directamente.  
    
