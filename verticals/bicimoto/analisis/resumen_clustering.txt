@@ -1,0 +1,145 @@
+==============================================================================
+RESUMEN DE CLUSTERING K-MEANS — BICIMOTOS / BICICLETAS ELÉCTRICAS
+==============================================================================
+Fecha de análisis       : 2026-09-27T20:58:38
+Archivo origen          : /home/leandro/ev-market-study/verticals/bicimoto/scraping/bicis_electricas.json
+Vehículo                : bicicleta_electrica_bicimoto
+
+DATOS Y COMPLETITUD
+  Anuncios totales en el JSON        : 30
+  Con precio_usd Y autonomia_km      : 30/30
+  ...de esos, con motor_w también    : 21/30
+  ...sin motor_w (conservados)       : 9/30
+  Descartados por nulls              : 0
+  Features usadas                   : precio_usd, autonomia_km
+  Campos solo descriptivos          : motor_w
+  Normalización                      : StandardScaler (media 0, desv. 1)
+
+  NOTA SOBRE motor_w: en el scraping de bicimotos el motor es OPCIONAL, así que
+  queda null en 9 de 30 anuncios. Clusterizar también con motor_w habría
+  descartado el 30% del catálogo; por eso se excluye del modelo y se reporta
+  después como promedio por cluster.
+
+ELECCIÓN DE K
+  Regla: ningún cluster > 50% (>15 de 30), ningún cluster < 4, y de los que cumplen el mayor silhouette.
+
+   k  |  tamaños por cluster                |  max | min | silhouette | cumple
+  --- + ------------------------------------ + ----- + ---- + ---------- + -------
+  3   | [5, 11, 14]                          |    14 |    5 |     0.4974 | SÍ
+  4   | [5, 7, 8, 10]                        |    10 |    5 |     0.5044 | SÍ
+  5   | [3, 5, 5, 7, 10]                     |    10 |    3 |     0.5599 | NO
+
+  k ELEGIDO : 4  (silhouette=0.5044)
+  Descartados por la regla: k=5 (sil=0.5599)
+
+   k  |    inercia      |   silhouette   (diagnóstico k=2..8)
+  --- + --------------- + ---------------
+  2   |         19.3436 |          0.5586
+  3   |         12.3732 |          0.4974
+  4   |          8.0456 |          0.5044
+  5   |          4.9263 |          0.5599
+  6   |          3.3983 |          0.5792
+  7   |          2.5279 |          0.5506
+  8   |          1.6883 |          0.6034
+
+TABLAS COMPARATIVAS k=3 / k=4 / k=5
+(los clusters de cada k se ordenan por precio medio ascendente antes de asignar
+ los nombres, para que 'Económica urbana' sea siempre el más barato)
+==============================================================================
+
+### k=3  (silhouette=0.4974, cumple regla=True) ###
+  cluster                  n  precio prom     min     max  auton prom   min   max  motor prom         marca
+  ---------------------------------------------------------------------------------------------------------
+  Económica urbana        14       913.57     650    1200        60.4    50    70         671     Maf Engle
+  Bicimoto de trabajo     11      1367.27    1100    1950        87.3    70   100         967         Vedca
+  Alta gama                5      1668.00    1570    1800       124.0   120   130        3000           Jmd
+
+    - Económica urbana: 14 anuncios | precio 650-1200 USD (prom 914) | autonomía 50-70 km (prom 60) | motor prom 671 W (7/14 con dato) | marca Maf Engle | batería litio | ubicación La Habana
+    - Bicimoto de trabajo: 11 anuncios | precio 1100-1950 USD (prom 1367) | autonomía 70-100 km (prom 87) | motor prom 967 W (9/11 con dato) | marca Vedca | batería litio | ubicación La Habana
+    - Alta gama: 5 anuncios | precio 1570-1800 USD (prom 1668) | autonomía 120-130 km (prom 124) | motor prom 3000 W (5/5 con dato) | marca Jmd | batería litio | ubicación La Habana
+
+### k=4  (silhouette=0.5044, cumple regla=True) ###
+  cluster                  n  precio prom     min     max  auton prom   min   max  motor prom         marca
+  ---------------------------------------------------------------------------------------------------------
+  Económica urbana        10       817.00     650    1000        60.5    50    70         500           Ava
+  Bicimoto de trabajo      7      1178.57    1100    1240        65.7    60    80         700     Maf Engle
+  Alta gama                8      1426.25    1100    1950        92.5    80   100        1100         Vedca
+  Premium                  5      1668.00    1570    1800       124.0   120   130        3000           Jmd
+
+    - Económica urbana: 10 anuncios | precio 650-1000 USD (prom 817) | autonomía 50-70 km (prom 60) | motor prom 500 W (3/10 con dato) | marca Ava | batería gel | ubicación La Habana
+    - Bicimoto de trabajo: 7 anuncios | precio 1100-1240 USD (prom 1179) | autonomía 60-80 km (prom 66) | motor prom 700 W (6/7 con dato) | marca Maf Engle | batería litio | ubicación La Habana
+    - Alta gama: 8 anuncios | precio 1100-1950 USD (prom 1426) | autonomía 80-100 km (prom 92) | motor prom 1100 W (7/8 con dato) | marca Vedca | batería litio | ubicación La Habana
+    - Premium: 5 anuncios | precio 1570-1800 USD (prom 1668) | autonomía 120-130 km (prom 124) | motor prom 3000 W (5/5 con dato) | marca Jmd | batería litio | ubicación La Habana
+
+### k=5  (silhouette=0.5599, cumple regla=False) ###
+  cluster                  n  precio prom     min     max  auton prom   min   max  motor prom         marca
+  ---------------------------------------------------------------------------------------------------------
+  Económica urbana        10       817.00     650    1000        60.5    50    70         500           Ava
+  Bicimoto de trabajo      3      1166.67    1100    1250       100.0   100   100        1500         Dttzh
+  Alta gama                7      1178.57    1100    1240        65.7    60    80         700     Maf Engle
+  Premium                  5      1582.00    1460    1950        88.0    80    90         800         Vedca
+  Premium extendida        5      1668.00    1570    1800       124.0   120   130        3000           Jmd
+
+    - Económica urbana: 10 anuncios | precio 650-1000 USD (prom 817) | autonomía 50-70 km (prom 60) | motor prom 500 W (3/10 con dato) | marca Ava | batería gel | ubicación La Habana
+    - Bicimoto de trabajo: 3 anuncios | precio 1100-1250 USD (prom 1167) | autonomía 100-100 km (prom 100) | motor prom 1500 W (3/3 con dato) | marca Dttzh | batería litio | ubicación La Habana
+    - Alta gama: 7 anuncios | precio 1100-1240 USD (prom 1179) | autonomía 60-80 km (prom 66) | motor prom 700 W (6/7 con dato) | marca Maf Engle | batería litio | ubicación La Habana
+    - Premium: 5 anuncios | precio 1460-1950 USD (prom 1582) | autonomía 80-90 km (prom 88) | motor prom 800 W (4/5 con dato) | marca Vedca | batería litio | ubicación La Habana
+    - Premium extendida: 5 anuncios | precio 1570-1800 USD (prom 1668) | autonomía 120-130 km (prom 124) | motor prom 3000 W (5/5 con dato) | marca Jmd | batería litio | ubicación La Habana
+
+DESCRIPCIÓN DE CADA CLUSTER (k=4)
+==============================================================================
+
+CLUSTER 0 — Económica urbana
+  Anuncios            : 10
+  Precio (USD)        : prom 817.00 | min 650 | max 1000
+  Autonomía (km)      : prom 60.5 | min 50 | max 70
+  Motor (W, descript.): prom 500.0 | min 500 | max 500 (3/10 con dato, 7 sin dato)
+  Marca más común     : Ava
+  Tipo de batería     : gel
+  Ubicación más común : La Habana
+  Descripción         : 10 anuncios en el rango 650-1000 USD (prom. 817) con 50-70 km de autonomía (prom. 60). Motor (descriptivo, 3/10 con dato) prom. 500.0 W. Es el segmento más económico por precio; marca dominante Ava y batería gel.
+
+CLUSTER 1 — Bicimoto de trabajo
+  Anuncios            : 7
+  Precio (USD)        : prom 1178.57 | min 1100 | max 1240
+  Autonomía (km)      : prom 65.7 | min 60 | max 80
+  Motor (W, descript.): prom 700.0 | min 500 | max 800 (6/7 con dato, 1 sin dato)
+  Marca más común     : Maf Engle
+  Tipo de batería     : litio
+  Ubicación más común : La Habana
+  Descripción         : 7 anuncios en el rango 1100-1240 USD (prom. 1179) con 60-80 km de autonomía (prom. 66). Motor (descriptivo, 6/7 con dato) prom. 700.0 W. Es el segmento intermedio por precio; marca dominante Maf Engle y batería litio.
+
+CLUSTER 2 — Alta gama
+  Anuncios            : 8
+  Precio (USD)        : prom 1426.25 | min 1100 | max 1950
+  Autonomía (km)      : prom 92.5 | min 80 | max 100
+  Motor (W, descript.): prom 1100.0 | min 800 | max 1500 (7/8 con dato, 1 sin dato)
+  Marca más común     : Vedca
+  Tipo de batería     : litio
+  Ubicación más común : La Habana
+  Descripción         : 8 anuncios en el rango 1100-1950 USD (prom. 1426) con 80-100 km de autonomía (prom. 92). Motor (descriptivo, 7/8 con dato) prom. 1100.0 W. Es el segmento intermedio por precio; marca dominante Vedca y batería litio.
+
+CLUSTER 3 — Premium
+  Anuncios            : 5
+  Precio (USD)        : prom 1668.00 | min 1570 | max 1800
+  Autonomía (km)      : prom 124.0 | min 120 | max 130
+  Motor (W, descript.): prom 3000.0 | min 3000 | max 3000 (5/5 con dato, 0 sin dato)
+  Marca más común     : Jmd
+  Tipo de batería     : litio
+  Ubicación más común : La Habana
+  Descripción         : 5 anuncios en el rango 1570-1800 USD (prom. 1668) con 120-130 km de autonomía (prom. 124). Motor (descriptivo, 5/5 con dato) prom. 3000.0 W. Es el segmento más premium por precio; marca dominante Jmd y batería litio.
+
+CONCLUSIONES
+==============================================================================
+  Correlación Pearson precio~autonomia_km (n=30)        : +0.7521
+  Correlación Pearson precio~motor_w      (n=21)      : +0.7050
+  Correlación Pearson motor_w~autonomia_km(n=21)      : +0.9060
+
+  - Precio y autonomía se correlacionan 0.75: el precio sube con la
+    autonomía, que es la dimensión que mejor separa los segmentos del catálogo.
+  - El rango de precio es 650-1950 USD y el de autonomía 50-130 km; el clustering describe el catálogo,
+    no predice el precio de forma exacta (hay solapamiento entre segmentos).
+  - Limitaciones: n=30 anuncios; ubicacion solo tiene 2 valores distintos y tipo_bateria 2, así que
+    esos campos no discriminan entre clusters. Además 9/30 anuncios no tienen
+    motor, por lo que su motor_promedio_w se calcula sobre una submuestra.
+    Conviene re-ejecutar con más anuncios antes de decisiones de precio o compra.
