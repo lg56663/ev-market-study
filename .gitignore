@@ -70,10 +70,3 @@ errores.log
 *.scraper_run.log
 **/.cache_pool.json
 **/.scraper_run.log
-
-# Cachés y logs de scrapers
-.cache_pool.json
-.scraper_run.log
-*.scraper_run.log
-**/.cache_pool.json
-**/.scraper_run.log

@@ -23,12 +23,18 @@ ORIGEN_MTIME = datetime.fromtimestamp(ORIGEN_STAT.st_mtime).isoformat()
 ap = argparse.ArgumentParser()
 ap.add_argument("--k", type=int, default=None,
                 help="fuerza el numero de clusters (por defecto: argmax de silhouette)")
+ap.add_argument("--sin-prefijo", action="store_true",
+                help="fuerza k por --k pero graba los archivos SIN el prefijo kN_")
 ARGS = ap.parse_args()
-PREFIJO = f"k{ARGS.k}_" if ARGS.k else ""
+PREFIJO = "" if (ARGS.sin_prefijo or not ARGS.k) else f"k{ARGS.k}_"
 
 FEATURES = ["precio_usd", "motor_w", "autonomia_km"]
 DESCRIPTIVAS = ["marca", "tipo_bateria", "ubicacion", "plegable"]
 NOMBRES_K3 = ["Económica urbana", "Moto de trabajo", "Alta gama"]
+NOMBRES_K4 = ["Económica urbana", "Moto de trabajo", "Alta gama", "Premium"]
+NOMBRES_K5 = ["Económica urbana", "Moto de trabajo", "Alta gama", "Premium",
+              "Premium extendida"]
+NOMBRES_POR_K = {3: NOMBRES_K3, 4: NOMBRES_K4, 5: NOMBRES_K5}
 PALETA = ["#2e8b57", "#e07b00", "#7b2d8b", "#1f6feb", "#c1121f", "#008b8b", "#6b7280"]
 SEP = "=" * 78
 
@@ -183,14 +189,14 @@ print()
 print(SEP)
 print("PASO 6 — NOMBRES DE CLUSTERS")
 print(SEP)
-if k_elegido == 3:
-    NOMBRES = NOMBRES_K3
+if k_elegido in NOMBRES_POR_K:
+    NOMBRES = NOMBRES_POR_K[k_elegido]
     print(f"  k={k_elegido}: se usan los nombres exactos requeridos.")
 else:
     NOMBRES = [f"Segmento {i}" for i in range(k_elegido)]
-    print(f"  *** AVISO: k={k_elegido} NO es 3 -> nombres genéricos. ***")
-    print(f"  *** Revisá la línea NOMBRES en {os.path.basename(__file__)} para   ***")
-    print(f"  *** ajustarlos; con --k 3 se activan los nombres reales.          ***")
+    print(f"  *** AVISO: k={k_elegido} NO tiene nombres definidos -> genéricos. ***")
+    print(f"  *** Revisá NOMBRES_POR_K en {os.path.basename(__file__)} para   ***")
+    print(f"  *** ajustarlos; k={sorted(NOMBRES_POR_K)} tienen nombres reales.  ***")
 for i, n in enumerate(NOMBRES):
     print(f"    Cluster {i}: \"{n}\"")
 
@@ -270,6 +276,8 @@ for i in range(k_elegido):
 corr_pm = float(np.corrcoef(df["precio_usd"], df["motor_w"])[0, 1])
 corr_pa = float(np.corrcoef(df["precio_usd"], df["autonomia_km"])[0, 1])
 corr_ma = float(np.corrcoef(df["motor_w"], df["autonomia_km"])[0, 1])
+SIL_FINAL = float(silhouette_score(X_norm, df["cluster"]))
+print(f"  silhouette del clustering final (k={k_elegido}): {SIL_FINAL:.4f}")
 
 # ---------- 8. VISUALIZACIONES ----------
 print()
@@ -369,6 +377,7 @@ salida = {
     "total_anuncios_validos": data.get("total_anuncios_validos", len(anuncios)),
     "total_anuncios_clusterizados": int(len(df)),
     "k_elegido": k_elegido,
+    "silhouette": round(SIL_FINAL, 4),
     "fecha_analisis": fecha,
     "features_usadas": FEATURES,
     "normalizacion": "StandardScaler",
@@ -397,6 +406,7 @@ A("  Normalización                 : StandardScaler (media 0, desv. 1)")
 A("")
 A("ELECCIÓN DE K")
 A(f"  k elegido                     : {k_elegido}")
+A(f"  silhouette del clustering      : {SIL_FINAL:.4f}")
 A("")
 A("   k  |    inercia      |   silhouette")
 A("  --- + --------------- + ---------------")

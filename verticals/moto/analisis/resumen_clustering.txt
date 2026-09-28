@@ -1,0 +1,116 @@
+==============================================================================
+RESUMEN DE CLUSTERING K-MEANS — MOTOS ELÉCTRICAS
+==============================================================================
+Fecha de análisis       : 2026-09-27T19:35:43
+Archivo origen          : /home/leandro/ev-market-study/verticals/moto/scraping/motos_electricas.json
+Vehículo                : moto_electrica
+
+DATOS
+  Anuncios totales en el JSON   : 30
+  Anuncios clusterizados (M)    : 30
+  Descartados por nulls         : 0
+  Campos usados para clusterizar: precio_usd, motor_w, autonomia_km
+  Normalización                 : StandardScaler (media 0, desv. 1)
+
+ELECCIÓN DE K
+  k elegido                     : 4
+  silhouette del clustering      : 0.5197
+
+   k  |    inercia      |   silhouette
+  --- + --------------- + ---------------
+  2   |         54.3122 |          0.4495
+  3   |         39.4176 |          0.4588
+  4   |         26.3370 |          0.5197
+  5   |         15.1599 |          0.5387
+  6   |          8.3782 |          0.5995
+  7   |          6.5045 |          0.6331
+  8   |          4.7761 |          0.6128
+
+  Justificación:
+  - Regla aplicada: máximo silhouette_score. El máximo está en k=7 (0.6331).
+  - Segundo mejor: k=8 (0.6128); gap=0.0202.
+  - El codo geométrico de la inercia cae en k=5; la inercia baja de forma
+    monótona, así que no hay un codo marcado que contradiga al silhouette.
+  - Advertencia: con n=30 el silhouette premia la sobre-segmentación
+    (k=7 deja clusters de 1-2 anuncios) y el anuncio de 4200 USD queda solo en
+    su propio cluster. Para reporting de negocio, k=2 o k=3 son más accionables.
+  - NOTA: k fue forzado con --k 4; el argmax de silhouette es k=7.
+
+CENTROIDES EN ESCALA ORIGINAL (scaler.inverse_transform)
+
+  cluster | nombre             | precio_usd |  motor_w | autonomia_km
+  ------- + ------------------- + ----------- + -------- + ------------
+  0       | Económica urbana    |     1683.33 |  1666.67 |        90.00
+  1       | Moto de trabajo     |     2531.67 |  1166.67 |       126.67
+  2       | Alta gama           |     2728.12 |  2937.50 |       112.50
+  3       | Premium             |     3080.00 |  3200.00 |       146.00
+
+DESCRIPCIÓN DE CADA CLUSTER
+==============================================================================
+
+CLUSTER 0 — Económica urbana
+  Anuncios            : 3
+  Precio (USD)        : prom 1683.33 | min 1600 | max 1800
+  Motor (W)           : prom 1666.7 | min 1000 | max 2000
+  Autonomía (km)      : prom 90.0 | min 70 | max 100
+  Marca más común     : JMD
+  Tipo de batería     : litio
+  Ubicación más común : La Habana
+  Plegable más común  : None
+  Descripción         : 3 anuncios en el rango 1600-1800 USD (prom. 1683), con 1000-2000 W (prom. 1667) y 70-100 km de autonomía (prom. 90). Es el segmento más económico por precio; marca dominante JMD y batería litio.
+
+CLUSTER 1 — Moto de trabajo
+  Anuncios            : 6
+  Precio (USD)        : prom 2531.67 | min 2430 | max 2680
+  Motor (W)           : prom 1166.7 | min 1000 | max 1500
+  Autonomía (km)      : prom 126.7 | min 120 | max 140
+  Marca más común     : VEDCA
+  Tipo de batería     : litio
+  Ubicación más común : La Habana
+  Plegable más común  : None
+  Descripción         : 6 anuncios en el rango 2430-2680 USD (prom. 2532), con 1000-1500 W (prom. 1167) y 120-140 km de autonomía (prom. 127). Es el segmento intermedio por precio; marca dominante VEDCA y batería litio.
+
+CLUSTER 2 — Alta gama
+  Anuncios            : 16
+  Precio (USD)        : prom 2728.12 | min 2470 | max 2900
+  Motor (W)           : prom 2937.5 | min 2000 | max 3000
+  Autonomía (km)      : prom 112.5 | min 80 | max 120
+  Marca más común     : TOPMAQ
+  Tipo de batería     : litio
+  Ubicación más común : La Habana
+  Plegable más común  : None
+  Descripción         : 16 anuncios en el rango 2470-2900 USD (prom. 2728), con 2000-3000 W (prom. 2938) y 80-120 km de autonomía (prom. 112). Es el segmento intermedio por precio; marca dominante TOPMAQ y batería litio.
+
+CLUSTER 3 — Premium
+  Anuncios            : 5
+  Precio (USD)        : prom 3080.00 | min 2550 | max 4200
+  Motor (W)           : prom 3200.0 | min 3000 | max 4000
+  Autonomía (km)      : prom 146.0 | min 120 | max 160
+  Marca más común     : HALCON
+  Tipo de batería     : litio
+  Ubicación más común : La Habana
+  Plegable más común  : None
+  Descripción         : 5 anuncios en el rango 2550-4200 USD (prom. 3080), con 3000-4000 W (prom. 3200) y 120-160 km de autonomía (prom. 146). Es el segmento más premium por precio; marca dominante HALCON y batería litio.
+
+CONCLUSIONES PRELIMINARES
+==============================================================================
+  Correlación Pearson precio~motor_w       : +0.5601
+  Correlación Pearson precio~autonomia_km  : +0.3540
+  Correlación Pearson motor_w~autonomia_km : +0.0594
+
+  - El precio correlates moderada con el motor (+0.56) y débil con la autonomía (+0.35):
+    en este mercado la potencia del motor pesa más que la autonomía como driver del precio.
+  - Motor y autonomía apenas se correlacionan (+0.06): son dimensiones
+    independientes y el cluster se define por su combinación (p. ej. mucha
+    autonomía con poco motor, o al revés).
+  - El rango de precio observado es 1600-4200 USD y hay solapamiento entre segmentos, por lo que el
+    clustering describe el catálogo pero no predice el precio de forma exacta.
+  - Limitaciones: n=30 anuncios, todas las ubicaciones son "La Habana" (sin variación
+    geográfica) y el 90% de los anuncios usan batería de litio, así que esos campos
+    no discriminan entre clusters. Conviene re-ejecutar con más anuncios antes de
+    tomar decisiones de precio o de compra.
+
+  NOTA SOBRE DATOS: el campo 'plegable' NO existe en motos_electricas.json (0
+  ocurrencias; tampoco figura en el esquema ni en el scraper). Por eso
+  'plegable_mas_comun' queda en null en todos los clusters. Si hace falta, hay que
+  agregarlo al esquema del scraper y volver a recolectar los anuncios.
