@@ -1,0 +1,239 @@
+==============================================================================
+RESUMEN DE CLUSTERING K-MEANS — SCOOTERS / PATINETES ELÉCTRICOS
+==============================================================================
+Fecha de análisis       : 2026-09-27T22:02:46
+Archivo origen          : /home/leandro/ev-market-study/verticals/scooter/scraping/scooters_electricos.json
+Vehículo                : scooter_patinete_electrico
+
+DATOS Y COMPLETITUD
+  Anuncios totales en el JSON        : 30
+  Con precio_usd Y autonomia_km      : 30/30
+  ...de esos, con motor_w también    : 30/30
+  ...sin motor_w (conservados)       : 0/30
+  Descartados por nulls              : 0
+  Features usadas                   : precio_usd, autonomia_km
+  Campos solo descriptivos          : motor_w
+  Normalización                      : StandardScaler (media 0, desv. 1)
+
+  NOTA SOBRE motor_w: a diferencia de bicimotos (donde era opcional y salía
+  null en 9/30 anuncios), aquí motor_w está completo en los 30. Aun así se
+  EXCLUYE del modelo a propósito para que las tres verticales usen las mismas
+  features y sus segmentos sean comparables. Se reporta como promedio por
+  cluster en la sección de descripción.
+
+  AVISOS DE CALIDAD DE DATOS
+  - 11 anuncios comparten el par (precio_usd, autonomia_km) con
+    otro anuncio. Con un rango de precio de solo 340-930 USD y de autonomía de
+    25-60 km, hay muchas combinaciones repetidas, lo que hace que
+    K-Means parta por grupos de puntos idénticos y no por gamas de producto.
+  - ubicacion tiene 1 solo valor distinto ("La Habana"), por lo que no discrimina
+    nada entre clusters. tipo_bateria tiene 2 valores y 3 nulos.
+  - tipo_bateria fue INFERIDO en 5/30 anuncios: en esos clusters el
+    tipo de batería reportado es una estimación del scraper, no un dato del texto.
+
+ELECCIÓN DE K
+  Regla: ningún cluster > 60% (>18 de 30), ningún cluster < 4, de los que cumplen el mayor silhouette,
+  y dos clusters con precio medio a menos de 10% se reportan
+  fusionados como un solo segmento.
+
+   k  |  tamaños por cluster                |  max | min | silhouette | cumple | segmentos
+  --- + ------------------------------------ + ----- + ---- + ---------- + ------- + ---------
+  2   | [6, 24]                              |    24 |    6 |     0.5892 | NO      |         2
+  3   | [5, 8, 17]                           |    17 |    5 |     0.5993 | SÍ      |         2
+  4   | [5, 6, 8, 11]                        |    11 |    5 |     0.6270 | SÍ      |         2
+
+  k=2 NO cumple: un cluster con 24 anuncios = 80% > 60% (silhouette=0.5892)
+  k=[4] REDUNDANTE(S): tras la fusión por precio reportan
+    exactamente los mismos segmentos que k=3, así que el
+    cluster extra no separa nada nuevo.
+
+  k NO redundantes : [3]
+  k ELEGIDO       : 3  (silhouette=0.5993)
+  -> 3 clusters crudos -> 2 segmentos reportables tras la fusión por precio
+
+   k  |    inercia      |   silhouette   (diagnóstico k=2..8)
+  --- + --------------- + ---------------
+  2   |         23.8806 |          0.5892
+  3   |          9.7550 |          0.5993
+  4   |          6.3428 |          0.6270
+  5   |          3.9242 |          0.6209
+  6   |          2.8823 |          0.6315
+  7   |          1.9912 |          0.6383
+  8   |          1.1090 |          0.6176
+
+TABLAS COMPARATIVAS k=2 / k=3 / k=4
+(los clusters de cada k se ordenan por precio medio ascendente antes de asignar
+ los nombres; 'seg' es el segmento al que cae cada cluster tras la fusión por
+ precio, y los clusters que comparten seg son un solo segmento)
+==============================================================================
+
+### k=2  (silhouette=0.5892, cumple regla=False, segmentos tras fusionar=2) ###
+  cluster                      seg   n  precio prom    min    max  auton prom   min   max  motor prom        marca  bateria
+  -------------------------------------------------------------------------------------------------------------------------
+  Patinete básico                0   6       438.33    340    670        35.0    25    48         492     Roinside    litio
+  Patinete estándar-alto         1  24       790.00    700    930        51.7    40    60         577          JMD      gel
+
+    - Patinete básico: 6 anuncios | precio 340-670 USD (prom 438) | autonomía 25-48 km (prom 35) | motor prom 492 W (6/6 con dato) | marca Roinside | batería litio | ubicación La Habana
+    - Patinete estándar-alto: 24 anuncios | precio 700-930 USD (prom 790) | autonomía 40-60 km (prom 52) | motor prom 577 W (24/24 con dato) | marca JMD | batería gel | ubicación La Habana
+
+### k=3  (silhouette=0.5993, cumple regla=True, segmentos tras fusionar=2) ###
+  cluster                      seg   n  precio prom    min    max  auton prom   min   max  motor prom        marca  bateria
+  -------------------------------------------------------------------------------------------------------------------------
+  Patinete básico                0   5       392.00    340    500        36.0    25    48         460     Roinside    litio
+  Patinete con asiento           1   8       746.25    670    800        38.8    30    40         519          JMD      gel
+  Patinete de largo alcance      1  17       803.53    700    930        56.5    50    60         609         ORIS    litio
+
+    - Patinete básico: 5 anuncios | precio 340-500 USD (prom 392) | autonomía 25-48 km (prom 36) | motor prom 460 W (5/5 con dato) | marca Roinside | batería litio | ubicación La Habana
+    - Patinete con asiento: 8 anuncios | precio 670-800 USD (prom 746) | autonomía 30-40 km (prom 39) | motor prom 519 W (8/8 con dato) | marca JMD | batería gel | ubicación La Habana
+    - Patinete de largo alcance: 17 anuncios | precio 700-930 USD (prom 804) | autonomía 50-60 km (prom 56) | motor prom 609 W (17/17 con dato) | marca ORIS | batería litio | ubicación La Habana
+
+### k=4  (silhouette=0.6270, cumple regla=True, segmentos tras fusionar=2) ###
+  cluster                      seg   n  precio prom    min    max  auton prom   min   max  motor prom        marca  bateria
+  -------------------------------------------------------------------------------------------------------------------------
+  Patinete básico                0   5       392.00    340    500        36.0    25    48         460     Roinside    litio
+  Patinete con asiento           1   8       746.25    670    800        38.8    30    40         519          JMD      gel
+  Patinete alcance medio         1   6       801.67    760    830        50.0    50    50         525         ORIS      gel
+  Patinete de largo alcance      1  11       804.55    700    930        60.0    60    60         655          MAF    litio
+
+    - Patinete básico: 5 anuncios | precio 340-500 USD (prom 392) | autonomía 25-48 km (prom 36) | motor prom 460 W (5/5 con dato) | marca Roinside | batería litio | ubicación La Habana
+    - Patinete con asiento: 8 anuncios | precio 670-800 USD (prom 746) | autonomía 30-40 km (prom 39) | motor prom 519 W (8/8 con dato) | marca JMD | batería gel | ubicación La Habana
+    - Patinete alcance medio: 6 anuncios | precio 760-830 USD (prom 802) | autonomía 50-50 km (prom 50) | motor prom 525 W (6/6 con dato) | marca ORIS | batería gel | ubicación La Habana
+    - Patinete de largo alcance: 11 anuncios | precio 700-930 USD (prom 805) | autonomía 60-60 km (prom 60) | motor prom 655 W (11/11 con dato) | marca MAF | batería litio | ubicación La Habana
+
+SEGMENTOS REPORTABLES (k=3 con la fusión por precio aplicada)
+==============================================================================
+
+SEGMENTO 0 — Patinete básico
+  Anuncios            : 5 (17% del catálogo, de 30)
+  Clusters fusionados : [0] (1 cluster)
+  Precio (USD)        : prom 392.00 | min 340 | max 500
+  Autonomía (km)      : prom 36.0 | min 25 | max 48
+  Marca más común     : Roinside
+  Descripción         : 5 anuncios (17% del catálogo) entre 340-500 USD (prom. 392) con 25-48 km de autonomía (prom. 36).
+
+SEGMENTO 1 — Patinete con asiento + Patinete de largo alcance (fusionado)
+  Anuncios            : 25 (83% del catálogo, de 30)
+  Clusters fusionados : [1, 2] (2 clusters)
+  Precio (USD)        : prom 785.20 | min 670 | max 930
+  Autonomía (km)      : prom 50.8 | min 30 | max 60
+  Marca más común     : JMD
+  Descripción         : 25 anuncios (83% del catálogo) entre 670-930 USD (prom. 785) con 30-60 km de autonomía (prom. 51). Nace de 2 clusters con precio medio casi igual (746, 804 USD), así que es UN solo segmento de precio, no 2 gamas.
+
+DESCRIPCIÓN DE CADA CLUSTER (k=3)
+==============================================================================
+
+SPLITS DEGENERADOS POR k (rango de precio solapado + promedios a menos del 10%
+ de diferencia + autonomía sin un solo valor en común)
+  k=2: 0 par(es) degenerado(s)
+  k=3: 1 par(es) degenerado(s)  <-- ELEGIDO
+    C1 "Patinete con asiento" (n=8, 746 USD, 30-40 km)  vs  C2 "Patinete de largo alcance" (n=17, 804 USD, 50-60 km)
+      precios 57 USD de diferencia = 7.1% < 10%, rangos solapados, autonomía sin valores en común
+  k=4: 3 par(es) degenerado(s)
+    C1 "Patinete con asiento" (n=8, 746 USD, 30-40 km)  vs  C2 "Patinete alcance medio" (n=6, 802 USD, 50-50 km)
+      precios 55 USD de diferencia = 6.9% < 10%, rangos solapados, autonomía sin valores en común
+    C1 "Patinete con asiento" (n=8, 746 USD, 30-40 km)  vs  C3 "Patinete de largo alcance" (n=11, 805 USD, 60-60 km)
+      precios 58 USD de diferencia = 7.2% < 10%, rangos solapados, autonomía sin valores en común
+    C2 "Patinete alcance medio" (n=6, 802 USD, 50-50 km)  vs  C3 "Patinete de largo alcance" (n=11, 805 USD, 60-60 km)
+      precios 3 USD de diferencia = 0.4% < 10%, rangos solapados, autonomía sin valores en común
+
+  LECTURA: un par así no son dos gamas de producto, es un escalón de precio
+  partido por autonomía. Por eso la regla de fusión los junta en un solo
+  segmento, y por eso un k con muchos de estos pares no aporta información: su
+  silhouette sube porque el bloque denso se parte en trozos, no porque
+  aparezcan límites de precio nuevos.
+
+CLUSTER 0 — Patinete básico
+  Anuncios            : 5
+  Segmento            : 0 "Patinete básico"
+  Precio (USD)        : prom 392.00 | min 340 | max 500
+  Autonomía (km)      : prom 36.0 | min 25 | max 48
+  Motor (W, descript.): prom 460.0 | min 350 | max 750 (5/5 con dato, 0 sin dato)
+  Marca más común     : Roinside
+  Tipo de batería     : litio (3 sin dato en el cluster)
+  Ubicación más común : La Habana
+  Plegable más común  : True
+  Descripción         : 5 anuncios en el rango 340-500 USD (prom. 392) con 25-48 km de autonomía (prom. 36). Motor (descriptivo, 5/5 con dato) prom. 460.0 W. Es el segmento más económico por precio; marca dominante Roinside y batería litio.
+
+CLUSTER 1 — Patinete con asiento
+  Anuncios            : 8
+  Segmento            : 1 "Patinete con asiento + Patinete de largo alcance (fusionado)"
+  Precio (USD)        : prom 746.25 | min 670 | max 800
+  Autonomía (km)      : prom 38.8 | min 30 | max 40
+  Motor (W, descript.): prom 518.8 | min 500 | max 650 (8/8 con dato, 0 sin dato)
+  Marca más común     : JMD
+  Tipo de batería     : gel (0 sin dato en el cluster)
+  Ubicación más común : La Habana
+  Plegable más común  : False
+  Descripción         : 8 anuncios en el rango 670-800 USD (prom. 746) con 30-40 km de autonomía (prom. 39). Motor (descriptivo, 8/8 con dato) prom. 518.8 W. Es el segmento intermedio por precio; marca dominante JMD y batería gel.
+
+CLUSTER 2 — Patinete de largo alcance
+  Anuncios            : 17
+  Segmento            : 1 "Patinete con asiento + Patinete de largo alcance (fusionado)"
+  Precio (USD)        : prom 803.53 | min 700 | max 930
+  Autonomía (km)      : prom 56.5 | min 50 | max 60
+  Motor (W, descript.): prom 608.8 | min 500 | max 1200 (17/17 con dato, 0 sin dato)
+  Marca más común     : ORIS
+  Tipo de batería     : litio (0 sin dato en el cluster)
+  Ubicación más común : La Habana
+  Plegable más común  : False
+  Descripción         : 17 anuncios en el rango 700-930 USD (prom. 804) con 50-60 km de autonomía (prom. 56). Motor (descriptivo, 17/17 con dato) prom. 608.8 W. Es el segmento más premium por precio; marca dominante ORIS y batería litio.
+
+CONCLUSIONES
+==============================================================================
+  Correlación Pearson precio~autonomia_km (n=30)        : +0.6544
+  Correlación Pearson precio~motor_w      (n=30)      : +0.2888
+  Correlación Pearson motor_w~autonomia_km(n=30)      : +0.4044
+
+  - Precio y autonomía se correlacionan 0.65 y el motor con el precio
+    0.29: las dos features disponibles se mueven casi juntas, así que
+    el clustering de scooters separa mucho menos que el de bicimotos (allí la
+    correlación precio~autonomía fue 0.75 con un rango de 650-1950 USD).
+  - El mercado de scooters es estrecho: 340-930 USD y 25-60 km. Casi todo el catálogo
+    se concentra en patinetes de 500 W entre 750 y 850 USD, y el premium real
+    (los de 1200 W) tiene solo 2 anuncios.
+
+  SOBRE LA ELECCIÓN DE k
+  - k=2 se cae por la regla de tamaño: reparte 24/30 anuncios en un cluster (80%), muy por encima del 60% permitido.
+  - k=3 cumple la regla de tamaño (17/30 = 57% en el cluster más grande, 5 en el más chico) y da 2 segmentos tras la fusión.
+  - k=4 tiene el silhouette más alto de los tres (0.6270 vs 0.5993 de k=3), PERO sus 2 segmentos tras la fusión son exactamente los
+    mismos que los de k=3: el cluster que sobra parte el bloque de 670-930 USD
+    por autonomía y no por precio, así que la fusión lo vuelve a pegar. Por eso
+    el silhouette de k=4 no es una razón para elegirlo: premia partir un bloque
+    denso en más trozos, no descubrir un escalón de precio nuevo.
+  - k=3 es el k más chico que (a) no concentra más del 60% en un cluster,
+    (b) no deja clusters de menos de 4 anuncios y (c) no reporta los mismos
+    segmentos que un k mayor. Su límite honesto: el cluster grande queda al
+    borde (17/30 = 57%), así que un solo anuncio
+    que se mueva de cluster lo haría incumplir el 60%.
+
+  ADVERTENCIA: la regla de fusión y el tope del 60% se contradicen aquí.
+  Los 2 clusters fusionados del segmento "Patinete con asiento + Patinete de largo alcance (fusionado)" son
+  25/30 anuncios = 83%, muy por encima del
+  60%. Es decir: el tope del 60% se cumple sobre el corte crudo
+  de K-Means, pero el mercado NO tiene tres grupos de tamaño parecido. Tiene
+  2 escalones de precio de verdad (2 segmentos) y el segundo es enorme porque
+  concentra casi todo el catálogo. Quien quiera leerlo sin contradicciones debe
+  aceptar 2 segmentos reales (5 y 25 anuncios) o ampliar el scraping hasta
+  tener un tercer escalón con más anuncios.
+
+  - Limitaciones: n=30 anuncios, pero con muy pocas combinaciones distintas de
+    precio/autonomía (23 pares únicos), lo que hace que K-Means
+    parta por grupos de puntos idénticos. Con solo ubicacion y bateria como
+    variables categóricas, la segmentación de scooters es bastante más débil que
+    la de bicimotos; conviene ampliar el scraping antes de tomar decisiones de
+    precio o compra.
+
+==============================================================================
+NOTA METODOLÓGICA SOBRE LOS NOMBRES
+==============================================================================
+  Los nombres son interpretativos, basados en conocimiento del mercado
+  cubano. El clustering agrupa por precio y autonomía. Con n=30, los
+  datos sugieren 2 segmentos reales de precio (340-500 y 670-930 USD).
+  El tercer cluster se separa del segundo principalmente por autonomía
+  (39 vs 56 km), no por precio.
+
+  ADVERTENCIA: el campo scraped no registra si el patinete trae asiento, así
+  que "Patinete con asiento" es una etiqueta de mercado, NO un dato del
+  anuncio. Ningún anuncio del cluster 1 (Patinete con asiento) menciona asiento,
+  silla ni banco en su título ni en su descripción: 0/8. Antes de usar ese
+  nombre en una decisión de compra hay que verificarlo anuncio por anuncio.
