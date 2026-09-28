@@ -1,7 +1,7 @@
 ==============================================================================
 RESUMEN DE CLUSTERING K-MEANS — MOTOS ELÉCTRICAS
 ==============================================================================
-Fecha de análisis       : 2026-09-27T19:35:43
+Fecha de análisis       : 2026-09-28T18:13:31
 Archivo origen          : /home/leandro/ev-market-study/verticals/moto/scraping/motos_electricas.json
 Vehículo                : moto_electrica
 

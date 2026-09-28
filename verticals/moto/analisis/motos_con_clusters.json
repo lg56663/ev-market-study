@@ -4,7 +4,7 @@
   "total_anuncios_clusterizados": 30,
   "k_elegido": 4,
   "silhouette": 0.5197,
-  "fecha_analisis": "2026-09-27T19:35:43",
+  "fecha_analisis": "2026-09-28T18:13:31",
   "features_usadas": [
     "precio_usd",
     "motor_w",

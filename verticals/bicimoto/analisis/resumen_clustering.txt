@@ -1,7 +1,7 @@
 ==============================================================================
 RESUMEN DE CLUSTERING K-MEANS — BICIMOTOS / BICICLETAS ELÉCTRICAS
 ==============================================================================
-Fecha de análisis       : 2026-09-27T20:58:38
+Fecha de análisis       : 2026-09-28T18:22:41
 Archivo origen          : /home/leandro/ev-market-study/verticals/bicimoto/scraping/bicis_electricas.json
 Vehículo                : bicicleta_electrica_bicimoto
 

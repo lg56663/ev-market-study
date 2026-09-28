@@ -1,7 +1,7 @@
 ==============================================================================
 RESUMEN DE CLUSTERING K-MEANS — SCOOTERS / PATINETES ELÉCTRICOS
 ==============================================================================
-Fecha de análisis       : 2026-09-27T22:02:46
+Fecha de análisis       : 2026-09-28T18:37:16
 Archivo origen          : /home/leandro/ev-market-study/verticals/scooter/scraping/scooters_electricos.json
 Vehículo                : scooter_patinete_electrico
 

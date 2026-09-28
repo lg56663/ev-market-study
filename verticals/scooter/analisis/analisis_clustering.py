@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans
-from sklearn.metrics import silhouette_score
+from sklearn.metrics import silhouette_samples, silhouette_score
 from sklearn.preprocessing import StandardScaler
 
 PY = "/home/leandro/ev-market-study/venv/bin/python3"
@@ -573,94 +573,114 @@ print(SEP)
 print("PASO 9 — VISUALIZACIONES")
 print(SEP)
 
+etiquetas = df["cluster"].to_numpy(int)
+print(f"  features graficadas: {FEATURES} -> eje X = precio_usd, eje Y = autonomia_km")
+print("  (motor_w NO se grafica: en este vertical es solo descriptivo y no entra al")
+print("   modelo). Todo en ESCALA ORIGINAL: los puntos salen de df y los centroides de")
+print("   df_centros, que ya está alineado con df['cluster'] (orden por precio medio).")
+print("  correspondencia cluster -> segmento reportable:")
+for cid in range(k_elegido):
+    sub_c = df[df["cluster"] == cid]
+    seg_c = int(sub_c["segmento"].iloc[0])
+    print(f"    C{cid} \"{NOMBRES[cid]}\" (n={len(sub_c)}) -> S{seg_c} {NOMBRES_SEG[seg_c]}")
+
 fig, ax = plt.subplots(figsize=(12, 8))
+puntos = ax.scatter(df["precio_usd"], df["autonomia_km"], c=etiquetas, cmap="viridis",
+                    s=120, alpha=0.8, edgecolors="black", linewidths=0.6)
+ax.scatter(df_centros["precio_usd"], df_centros["autonomia_km"],
+           c="red", marker="X", s=430, edgecolors="black", linewidths=2.0, zorder=5,
+           label="Centroides")
 for i in range(k_elegido):
-    sub = df[df["cluster"] == i]
-    col = PALETA[i % len(PALETA)]
-    ax.scatter(sub["precio_usd"], sub["autonomia_km"], s=120, alpha=0.78, color=col,
-               edgecolors="black", linewidths=0.6,
-               label=f"C{i} {NOMBRES[i]} (n={len(sub)}) → "
-                     f"S{sub['segmento'].iloc[0]} {NOMBRES_SEG[int(sub['segmento'].iloc[0])]}")
-    cx, cy = df_centros.iloc[i]["precio_usd"], df_centros.iloc[i]["autonomia_km"]
-    ax.scatter(cx, cy, marker="X", s=430, color=col, edgecolors="black",
-               linewidths=2.0, zorder=5)
-    ax.annotate(f"C{i}", (cx, cy), textcoords="offset points", xytext=(13, 9),
-                fontweight="bold", fontsize=12)
-ax.set_xlabel("precio_usd (USD)", fontsize=12)
-ax.set_ylabel("autonomia_km (km)", fontsize=12)
-ax.set_title(f"Scooters / patinete eléctrico — K-Means (k={k_elegido}) "
-             "precio vs autonomía\n"
-             "features: precio_usd y autonomia_km | X = centroide", fontsize=13,
+    ax.annotate(f"C{i}", (df_centros.iloc[i]["precio_usd"],
+                          df_centros.iloc[i]["autonomia_km"]),
+                textcoords="offset points", xytext=(13, 9), fontweight="bold", fontsize=12)
+ax.set_xlabel("Precio (USD)", fontsize=12)
+ax.set_ylabel("Autonomía (km)", fontsize=12)
+ax.set_title(f"Scooters / patinete eléctrico — dispersión por cluster (k={k_elegido}):\n"
+             "precio vs autonomía | X roja = centroide del cluster", fontsize=13,
              fontweight="bold")
-ax.legend(loc="best", fontsize=9, framealpha=0.92)
+ax.xaxis.set_major_formatter(matplotlib.ticker.StrMethodFormatter("${x:,.0f}"))
+ax.legend(loc="best", fontsize=10, framealpha=0.92)
 ax.grid(alpha=0.3, linestyle="--")
+cbar = fig.colorbar(puntos, ax=ax)
+cbar.set_label("Cluster", fontsize=11)
 fig.tight_layout()
 fig.savefig(PREFIJO + "clusters_dispersion.png", dpi=150)
 plt.close(fig)
 print(f"  guardado: {PREFIJO}clusters_dispersion.png")
 
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 7))
-for ax, col, titulo, ylab, fmt in [
-        (ax1, "precio_usd", "Precio (USD)", "precio_usd (USD)", "${x:,.0f}"),
-        (ax2, "autonomia_km", "Autonomía (km)", "autonomia_km (km)", "{x:,.0f}")]:
-    datos = [df.loc[df["cluster"] == i, col].to_numpy() for i in range(k_elegido)]
-    bp = ax.boxplot(
-        datos, tick_labels=[f"C{i}\n(n={len(d)})" for i, d in enumerate(datos)],
-        patch_artist=True, widths=0.55, showmeans=True,
-        meanprops=dict(marker="D", markerfacecolor="white", markeredgecolor="black",
-                       markersize=9),
-        medianprops=dict(color="black", linewidth=2))
-    for patch, i in zip(bp["boxes"], range(k_elegido)):
-        patch.set_facecolor(PALETA[i % len(PALETA)])
-        patch.set_alpha(0.7)
-    for flier in bp["fliers"]:
-        flier.set(marker="o", markersize=6, alpha=0.6)
-    ax.set_ylabel(ylab, fontsize=12)
-    ax.set_title(titulo, fontsize=12, fontweight="bold")
-    ax.yaxis.set_major_formatter(matplotlib.ticker.StrMethodFormatter(fmt))
-    ax.grid(axis="y", alpha=0.3, linestyle="--")
-fig.suptitle(f"Distribución de las features por cluster (k={k_elegido}) — "
-             "rombo blanco = media", fontsize=13, fontweight="bold")
+precios_medio = df.groupby("cluster")["precio_usd"].mean()
+print(f"\n  precios promedio por cluster (df.groupby('cluster')['precio_usd'].mean()): "
+      f"{[round(float(v), 2) for v in precios_medio]}")
+fig, ax = plt.subplots(figsize=(11, 7))
+barras = ax.bar([NOMBRES[cid] for cid in precios_medio.index], precios_medio.to_numpy(),
+                color=[PALETA[cid % len(PALETA)] for cid in precios_medio.index],
+                edgecolor="black", linewidth=0.8, width=0.6)
+for barra, valor in zip(barras, precios_medio.to_numpy()):
+    ax.text(barra.get_x() + barra.get_width() / 2, barra.get_height(), f"${valor:,.0f}",
+            ha="center", va="bottom", fontsize=11, fontweight="bold")
+ax.set_xlabel("Cluster", fontsize=12)
+ax.set_ylabel("Precio promedio (USD)", fontsize=12)
+ax.set_title(f"Precio promedio por cluster (k={k_elegido})", fontsize=13, fontweight="bold")
+ax.yaxis.set_major_formatter(matplotlib.ticker.StrMethodFormatter("${x:,.0f}"))
+ax.set_ylim(0, float(precios_medio.max()) * 1.15)
+ax.grid(axis="y", alpha=0.3, linestyle="--")
 fig.tight_layout()
-fig.savefig(PREFIJO + "clusters_boxplot.png", dpi=150)
+fig.savefig(PREFIJO + "clusters_precio_medio.png", dpi=150)
 plt.close(fig)
-print(f"  guardado: {PREFIJO}clusters_boxplot.png")
+print(f"  guardado: {PREFIJO}clusters_precio_medio.png")
 
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5.5))
-ax1.plot(tabla_k["k"], tabla_k["inercia"], "o-", color="#c1121f", linewidth=2, markersize=7)
-ax1.axvline(k_elegido, color="#1f6feb", linestyle="--", linewidth=1.7,
-            label=f"k elegido = {k_elegido}")
-ax1.axvline(k_codo, color="#888888", linestyle=":", linewidth=1.7,
-            label=f"codo ≈ k={k_codo}")
-ax1.set_xlabel("k (número de clusters)", fontsize=11)
-ax1.set_ylabel("Inercia", fontsize=11)
-ax1.set_title("Inercia vs k", fontsize=12, fontweight="bold")
-ax1.set_xticks(tabla_k["k"])
-ax1.grid(alpha=0.3, linestyle="--")
-ax1.legend()
+tamanos = df["cluster"].value_counts().sort_index()
+print(f"  tamaño por cluster (df['cluster'].value_counts().sort_index()): "
+      f"{[int(v) for v in tamanos]}  (suma={int(tamanos.sum())}, filas={len(df)})")
+fig, ax = plt.subplots(figsize=(11, 7))
+barras = ax.bar([NOMBRES[cid] for cid in tamanos.index], tamanos.to_numpy(),
+                color=[PALETA[cid % len(PALETA)] for cid in tamanos.index],
+                edgecolor="black", linewidth=0.8, width=0.6)
+for barra, valor in zip(barras, tamanos.to_numpy()):
+    ax.text(barra.get_x() + barra.get_width() / 2, barra.get_height(), f"{int(valor)}",
+            ha="center", va="bottom", fontsize=12, fontweight="bold")
+ax.set_xlabel("Cluster", fontsize=12)
+ax.set_ylabel("Cantidad de anuncios", fontsize=12)
+ax.set_title(f"Tamaño de cada cluster (k={k_elegido})", fontsize=13, fontweight="bold")
+ax.set_ylim(0, float(tamanos.max()) * 1.15)
+ax.grid(axis="y", alpha=0.3, linestyle="--")
+fig.tight_layout()
+fig.savefig(PREFIJO + "clusters_tamanos.png", dpi=150)
+plt.close(fig)
+print(f"  guardado: {PREFIJO}clusters_tamanos.png")
 
-ax2.plot(tabla_k["k"], tabla_k["silhouette"], "s-", color="#2e8b57", linewidth=2,
-         markersize=7)
-for k in K_CANDIDATOS:
-    ax2.scatter([k], [resultados[k]["silhouette"]], s=150,
-                facecolors="#2e8b57" if resultados[k]["cumple"] else "white",
-                edgecolors="black", linewidths=1.8, zorder=5)
-    ax2.annotate(f"k={k}{'✓' if resultados[k]['cumple'] else '✗'}",
-                 (k, resultados[k]["silhouette"]), textcoords="offset points",
-                 xytext=(0, 11), ha="center", fontsize=9, fontweight="bold")
-ax2.axvline(k_elegido, color="#1f6feb", linestyle="--", linewidth=1.7,
-            label=f"k elegido = {k_elegido}")
-ax2.set_xlabel("k (número de clusters)", fontsize=11)
-ax2.set_ylabel("Silhouette score", fontsize=11)
-ax2.set_title(f"Silhouette vs k (candidatos {"/".join(str(k) for k in K_CANDIDATOS)}; "
-              "relleno = cumple la regla)", fontsize=12, fontweight="bold")
-ax2.set_xticks(tabla_k["k"])
-ax2.grid(alpha=0.3, linestyle="--")
-ax2.legend()
+sil_muestras = silhouette_samples(X_norm, etiquetas)
+sil_media = float(sil_muestras.mean())
+print(f"  silhouette por anuncio (sklearn, sobre X_norm): min={sil_muestras.min():.4f}  "
+      f"max={sil_muestras.max():.4f}  media={sil_media:.4f}")
+fig, ax = plt.subplots(figsize=(12, 7))
+rng = np.random.default_rng(42)
+for cid in tamanos.index:
+    valores = sil_muestras[etiquetas == cid]
+    ax.scatter(valores, cid + rng.uniform(-0.18, 0.18, size=len(valores)), s=70, alpha=0.7,
+               color=PALETA[cid % len(PALETA)], edgecolors="black", linewidths=0.4)
+    ax.plot([valores.mean(), valores.mean()], [cid - 0.32, cid + 0.32],
+            color="black", linewidth=3, zorder=5)
+    ax.text(valores.mean(), cid + 0.38, f"media {valores.mean():.3f}", ha="center", fontsize=9)
+ax.axvline(sil_media, color="red", linestyle="--", linewidth=2,
+           label=f"Silhouette medio = {sil_media:.4f}")
+ax.set_yticks(list(tamanos.index))
+ax.set_yticklabels([f"C{cid} (n={int(tamanos[cid])})" for cid in tamanos.index])
+ax.set_xlabel("Silhouette por anuncio", fontsize=12)
+ax.set_ylabel("Cluster", fontsize=12)
+ax.set_title(f"Silhouette por cluster (k={k_elegido})\n"
+             f"media global = {sil_media:.4f} — línea negra = media del cluster",
+             fontsize=13, fontweight="bold")
+ax.set_ylim(-0.6, float(tamanos.index.max()) - 0.3)
+ax.legend(loc="best", fontsize=10, framealpha=0.92)
+ax.grid(axis="x", alpha=0.3, linestyle="--")
 fig.tight_layout()
 fig.savefig(PREFIJO + "clusters_metricas.png", dpi=150)
 plt.close(fig)
 print(f"  guardado: {PREFIJO}clusters_metricas.png")
+print(f"  recheck: media de silhouette_samples = {sil_media:.6f} vs SIL_FINAL = "
+      f"{SIL_FINAL:.6f} -> {'OK' if abs(sil_media - SIL_FINAL) < 1e-9 else 'FALLA'}")
 
 # ---------- 10. ARCHIVOS DE SALIDA ----------
 print()
@@ -1078,8 +1098,8 @@ for info in segmentos_info:
           f"auton prom {info['autonomia_promedio_km']:.0f} km")
 print("  Archivos generados:")
 for f_ in [SALIDA_JSON, PREFIJO + "resumen_clustering.txt",
-           PREFIJO + "clusters_dispersion.png", PREFIJO + "clusters_boxplot.png",
-           PREFIJO + "clusters_metricas.png"]:
+           PREFIJO + "clusters_dispersion.png", PREFIJO + "clusters_precio_medio.png",
+           PREFIJO + "clusters_tamanos.png", PREFIJO + "clusters_metricas.png"]:
     print(f"    - {f_}  ({os.path.getsize(f_):,} bytes)")
 print(f"  Original sin tocar    : {ORIGEN}")
 print(SEP)

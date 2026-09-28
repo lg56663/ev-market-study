@@ -5,7 +5,7 @@
   "k_elegido": 3,
   "n_segmentos": 2,
   "silhouette": 0.5993,
-  "fecha_analisis": "2026-09-27T22:02:46",
+  "fecha_analisis": "2026-09-28T18:37:16",
   "features_usadas": [
     "precio_usd",
     "autonomia_km"
