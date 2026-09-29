@@ -1,0 +1,212 @@
+REPORTE DE SCRAPING - MOTOS DE COMBUSTIÓN (Revolico)
+============================================================
+Inicio: 2026-09-29T04:00:56Z
+Fin:    2026-09-29T04:00:56Z
+
+AVISO METODOLÓGICO (leer antes de usar el dataset)
+------------------------------------------------------------
+  El listado de Revolico NO expone la fecha de publicación. Los stubs AdType
+  del listado solo traen 'updatedOnToOrder'. Se buscó en el HTML completo:
+  0 ocurrencias de 'Publicado', 'hace', '<time>', 'createdOn'; la API GraphQL
+  responde 403 (Cloudflare). Obtener la fecha real exigiría entrar a las
+  páginas de detalle, que está prohibido en este vertical.
+  => 'fecha_publicacion' = valor real de 'updatedOnToOrder' (fecha de ordenación
+     / actualización del anuncio) y cada registro declara 'fecha_fuente'.
+     El filtro '>= 2026-01-01' se aplica sobre ese campo.
+
+  Tampoco hay descripción en el listado: 'descripcion' es null en todos los
+  anuncios, y marca, cilindrada, tanque, rendimiento y autonomía se extrajeron
+  únicamente del título.
+
+CONFIGURACIÓN DE RED
+------------------------------------------------------------
+  User-Agent      : MiProyectoInvestigacion/1.0
+  Delay           : 3.0s entre peticiones
+  Timeout         : 30.0s
+  Reintentos      : 2 por URL (espera 5.0s)
+  Peticiones nuevas: 0   (tope 60)
+  Servidas de caché: 6
+  Páginas procesadas: 6
+  Páginas de detalle visitadas: 0 (prohibido por regla del vertical)
+
+RESULTADO
+------------------------------------------------------------
+  VÁLIDOS   : 30 (objetivo 30)
+  DESCARTADOS: 314
+  Duplicados (título normalizado o id repetido): 205
+
+QUERIES CONSULTADAS (en orden; las de respaldo solo si faltaron validos)
+------------------------------------------------------------
+  - inicial: moto gasolina
+  - inicial: moto combustion
+
+PÁGINAS POR QUERY
+------------------------------------------------------------
+   100 anuncios  moto gasolina (p1)
+   100 anuncios  moto gasolina (p2)
+   100 anuncios  moto gasolina (p3)
+   100 anuncios  moto combustion (p1)
+   100 anuncios  moto combustion (p2)
+   100 anuncios  moto combustion (p3)
+
+DESCARTADOS POR MOTIVO
+------------------------------------------------------------
+    123  sin_cilindrada
+     78  sin_marca
+     31  duplicado_mismo_modelo
+     23  no_es_moto
+     16  sin_precio
+     13  es_electrica
+      9  otro_vehiculo
+      6  precio_placeholder
+      5  cilindrada_fuera_de_tabla
+      4  precio_no_cuba_importador
+      2  duplicado_manual
+      2  no_es_moto_triciclo
+      1  descartado_por_usuario
+      1  moto_usada_no_nueva
+
+LISTA NEGRA DE URLs (3 anuncios -> 'duplicado_manual')
+------------------------------------------------------------
+  Motivo: el dedup por titulo normalizado no los detecta porque el
+  vendedor re-publica la misma moto cambiando el titulo. Se descartan
+  siempre, antes de cualquier filtro y antes del dedup.
+  - DESCARTADA: https://www.revolico.com/item/moto-de-gasolina-huawin-150cc-precio-2380-usd-57393899
+    DUPLICA DE: https://www.revolico.com/item/moto-de-gasolina-huawin-150cc-57397340
+  - DESCARTADA: https://www.revolico.com/item/moto-de-gasolina-wys-monster-nueva-0km-150cc-4-tiempos-caja-5ta-hace-40km-x-litro-directo-a-chapa-tiene-56859822
+    DUPLICA DE: https://www.revolico.com/item/moto-de-gasolina-wys-monster-nueva-0km-150cc-4-tiempos-caja-5ta-hace-40km-x-litro-directo-a-chapa-tiene-gara-56645013
+  - DESCARTADA: https://www.revolico.com/item/moto-a-combustion-halcon-modelo-dakar-150-cc-uso-menos-de-800-km-2000usd-57092556
+    DUPLICA DE: None
+
+DEDUP
+------------------------------------------------------------
+  1. por id y por titulo normalizado (vistos_id / vistos_titulo)
+  2. lista negra de URLs -> 'duplicado_manual' (+ 'duplicado_de')
+  3. mismo modelo: marca + cilindrada + MISMO modelo
+     -> 'duplicado_mismo_modelo'. El precio NO decide: si dos anuncios
+        de la misma marca y cc describen la misma moto, son la misma
+        moto aunque uno este a 1000 y el otro a 1200 USD (el mismo
+        vendedor la re-publica con otro precio). Se conserva el titulo
+        mas largo.
+        Un titulo que no aporta modelo no se considera DISTINTO: no hay
+        con que contradecir, asi que 'Taeko 125cc' y 'Taeko 125cc'
+        colapsan. En cambio 'MISHOZUKI SCT' y 'MISHOZUKI BUHO' son
+        modelos distintos y se conservan los dos.
+  4. precio: marca + cilindrada + modelos compatibles pero DISTINTOS
+     - dentro de +-3%  -> 'duplicado_generico' (se conserva el titulo mas largo)
+     - entre 3% y 5%  -> 'posible_duplicado_reemplazado'
+     - fuera de 5%  -> se conservan: son
+        motos distintas de la misma marca y cilindrada.
+     - modelo: palabras del titulo sin marca/cc/conectores, comparado
+       con igualdad, contencion o similitud >= 0.85 (tolerar typos del vendedor)
+  Válidos marcados posible_duplicado: 0
+
+UNIFICACIÓN DE MARCA: FAMILIA TK200T UNISON 200cc
+------------------------------------------------------------
+  La MISMA moto aparecia 4 veces con 4 marcas distintas, porque cada
+  vendedor la escribio como le dio. La heuristica leia el primer token
+  capitalizado y por eso saco cuatro marcas que en realidad son una:
+    'MARCA AGUILA UNISON'                  -> 'Aguila'
+    'TK UNISON 200cc'                      -> 'Unison'
+    'MARCA TK200T UNISON'                  -> 'Tkt'
+    'TK200cc'                              -> 'Tkcc'
+  Con cuatro marcas distintas, el dedup por marca+cc+modelo NUNCA podia
+  juntarlas y el set tenia la misma moto a 2600, 2650, 2700 y 2800 USD.
+  Se unifican a la marca 'TK' (funcion es_familia_tk_unison,
+  aplicada dentro de canonicalizar_marca) cuando la cc es 200 y el
+  titulo dice TK200 / TK 200 / TK200T / TK20 / TK200cc o la palabra
+  UNISON. Con la marca unificada, la regla 3 de arriba las colapsa.
+  Se exige cc == 200 para no aplicar el patron a otra cilindrada.
+  Válidos TK: 1 (2600 USD, 200cc, modelo UNISON)
+  Descartados como 'duplicado_mismo_modelo': 6
+       2800 USD  MOTO AUTOMÁTICA TK UNISON 200cc
+       2650 USD  Moto Combustión TK 200cc
+       2850 USD  Moto de combustión TK 200cc
+       2700 USD  MOTO DE COMBUSTIÓN AUTOMÁTICA DE 200CC MARCA AGUILA UNISON
+       2650 USD  Moto de Combustión TK200cc
+       2600 USD  Moto de combustión TK 200 cc
+
+PERFIL DE LOS VÁLIDOS
+------------------------------------------------------------
+  Precio USD      : min 1200 | max 4200 | media 2388.67 (n=30)
+  Cilindrada cc   : [125, 150, 200, 250]
+  Fechas          : min 2026-08-05 | max 2026-09-28
+  Todos >= 2026-01-01   : True
+  Cap. tanque     : anuncio=2 | tabla_cc=0
+  Rendimiento real: 4/30 (el resto null: NO se infiere)
+  Autonomía real  : 4/30
+  Origen de marca : lista=4 | heuristica_titulo=25
+
+TOP 5 MARCAS
+------------------------------------------------------------
+     3  Mishozuki
+     3  Treck
+     2  Topmaq
+     2  Katzu
+     2  Suzuki
+
+AVISOS DE CALIDAD (revisar antes de comparar con las eléctricas)
+------------------------------------------------------------
+  Marcas de la lista cerrada   : 4
+  Marcas por heuristica titulo : 25
+    valores: Ava, Furia, Halcón, Huawin, Italy, Itálica, Jincheng, Katzu, Mishozuki, Mizusuki, Mountain, Restrepa, Seiko, Souka, Taeko, Tank, Topmaq, Treck, Wys
+    -> la heuristica lee la marca del titulo; revisar si alguna no es marca real.
+  Umbral de precio   : >= 100 USD (debajo se descarta como 'precio_placeholder')
+    precios placeholder descartados: 6
+    -> 1 USD 'Moto Panther de gasolina 150cc' (marca=Panther, cc=150)
+    -> 1 USD 'Moto de combustion y gasolina' (marca=None, cc=None)
+    -> 10 USD 'Conmutadores (moto combustión)' (marca=Conmutadores, cc=None)
+    -> 25 USD 'AALARMAS DE MOTO COMBUSTION 58890782' (marca=Aalarmas, cc=None)
+    -> 1 USD 'Moto de combustión FURIA 250cc' (marca=Furia, cc=250)
+    -> 1 USD 'Moto, motor, combustión, derecho a chapa' (marca=None, cc=None)
+    -> un precio asi NO es real: el vendedor dejo un valor de relleno.
+  Sin descripcion (todas)      : 30/30  (el listado no la trae y no se visita el detalle)
+
+CAPACIDAD DE TANQUE
+------------------------------------------------------------
+  anuncio            : 2
+  modelo_verificado  : 22  (ficha tecnica; el scraper NO lo extrae del anuncio)
+  tabla_cc_fallback  : 6
+  AVISO DE COHERENCIA: 8 con tanque fuera del rango
+  tipico de su cilindrada. NO se modifican: son valores de ficha
+  tecnica (fuente 'modelo_verificado'), no medidas del anuncio. Se
+  listan para que el cruce de precio/L se lea con esa salvedad:
+     Furia       250cc -> 17.0 L (tipico 9.0-16.0) [modelo_verificado] 'MOTO DEPORTIVA DE COMBUSTIÓN FURIA PRO. '
+     Wys         150cc -> 13.0 L (tipico 5.0-9.0) [modelo_verificado] 'Moto de gasolina WYS Monster  ✅Nueva 0km'
+     Seiko       150cc -> 9.6 L (tipico 5.0-9.0) [modelo_verificado] 'Moto de gasolina 150 cc marca Seiko'
+     Huawin      150cc -> 10.0 L (tipico 5.0-9.0) [modelo_verificado] 'HUAWIN 150CC Moto de gasolina P0524-AV01'
+     Taeko       125cc -> 10.3 L (tipico 4.0-8.0) [modelo_verificado] 'Se vende moto de gasolina Taeko 125cc'
+     Souka       125cc -> 9.3 L (tipico 4.0-8.0) [modelo_verificado] 'MOTO DE COMBUSTIÓN AUTOMÁTICA DE 125CC, '
+     Katzu       200cc -> 16.5 L (tipico 6.0-15.0) [anuncio] '*MOTO KATZU CHEETAH 200*  ⚙️ Especificac'
+     Treck       125cc -> 12.0 L (tipico 4.0-8.0) [modelo_verificado] 'Moto de Combustión moto de combustible 1'
+
+TRICICLOS / MAS DE 2 RUEDAS
+------------------------------------------------------------
+ _keywords_: 3 ruedas, atv, cuatriciclo, cuatrimoto, side by side, tatriciclo, tres ruedas, triciclo, trimoto, utv
+  descartados con 'no_es_moto_triciclo': 2
+    -> 4800.0 USD 'Triciclo lifan moto de gasolina de poquito uso b'
+    -> 1233.0 USD 'COMPRO MOTOS, BICIMOTO, TRICICLO, BICICLETA Y MO'
+
+MODELOS MARCADOS COMO DUDOSOS: 1
+------------------------------------------------------------
+  - Katzu '*MOTO KATZU CHEETAH 200*  ⚙️ Especificaciones: • M' -> katzu_cheetah_posible_triciclo
+
+  KATZU CHEETAH: VEREDICTO = MOTO DE 2 RUEDAS, no triciclo.
+  Se reporto como triciclo, asi que se leyeron 3 fichas de detalle
+  (HTML en /tmp, fuera del repo) antes de decidir:
+    - Las 3 las categoriza Revolico en 'Vehiculos > Motos de
+      Combustion', no en la categoria de triciclos.
+    - Las 3 dicen: 'Motor: 200 cc, Gasolina, 4 tiempos, 5
+      Velocidades, Tanque de 16,5 Litros'. Una anade 'Velocidad
+      Maxima de 95 KM/H'.
+    - Ni '3 ruedas', ni 'trimoto', ni 'UTV' en ninguna.
+    - 'triciclo' sale UNA vez y no describe al vehiculo: esta en el
+      pie de venta del anunciante ('TENEMOS MAS DE 60 MODELOS de
+      BICICLETAS ELECTRICAS, BICIMOTOS, MOTOS ELECTRICAS, MOTOS DE
+      COMBUSTION, PATINETAS y TRICICLOS...'), o sea publicidad de su
+      inventario, repetida en todos sus anuncios.
+    - Precio 2150-2580 USD: banda de las 200cc del set.
+  CONCLUSION: se conservan (no se descarta por sospecha). El anuncio
+  queda con 'modelo_dudoso = katzu_cheetah_posible_triciclo' para que
+  la duda siga visible. Se descartaria solo si la ficha de la MARCA lo
+  confirma; el texto del anuncio no alcanza para affirmarlo.

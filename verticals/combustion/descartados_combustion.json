@@ -1,0 +1,23 @@
+{
+  "vehiculo": "moto_combustion",
+  "fecha_scraping": "2026-09-28",
+  "total_descartados": 0,
+  "descartes": [
+    {
+      "titulo": "Moto 150cc sin precio",
+      "precio_usd": null,
+      "marca": "Honda",
+      "cilindrada_cc": 150,
+      "tipo_motor": null,
+      "autonomia_km": null,
+      "rendimiento_km_l": null,
+      "capacidad_tanque_l": 7.0,
+      "fuente_capacidad_tanque": "tabla_cc",
+      "ubicacion": "La Habana",
+      "fecha_publicacion": "2026-03-15",
+      "url": "https://www.revolico.com/...",
+      "descripcion": "...",
+      "motivo": "sin_precio"
+    }
+  ]
+}
