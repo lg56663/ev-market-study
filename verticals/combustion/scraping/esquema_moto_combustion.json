@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MotoCombustion",
+  "type": "object",
+  "required": [
+    "titulo",
+    "precio_usd",
+    "marca",
+    "cilindrada_cc",
+    "ubicacion",
+    "fecha_publicacion",
+    "url"
+  ],
+  "properties": {
+    "titulo": {
+      "type": "string",
+      "description": "Titulo del anuncio tal como aparece en Revolico."
+    },
+    "precio_usd": {
+      "type": "number",
+      "minimum": 100,
+      "description": "Precio en USD. Minimo 100 para descartar placeholders."
+    },
+    "marca": {
+      "type": "string",
+      "description": "Marca de la moto. Canonicalizada (sin typos)."
+    },
+    "marca_fuente": {
+      "type": ["string", "null"],
+      "enum": ["lista", "heuristica_titulo", "familia_tk_unison", null],
+      "description": "Origen de la marca."
+    },
+    "cilindrada_cc": {
+      "type": "integer",
+      "minimum": 50,
+      "maximum": 1000,
+      "description": "Cilindrada en cc."
+    },
+    "tipo_motor": {
+      "type": ["string", "null"],
+      "enum": ["2T", "4T", null],
+      "description": "Tipo de motor."
+    },
+    "autonomia_km": {
+      "type": ["integer", "null"],
+      "description": "Autonomia en km si el anuncio la reporta."
+    },
+    "rendimiento_km_l": {
+      "type": ["number", "null"],
+      "description": "Rendimiento en km/L solo si el anuncio lo reporta."
+    },
+    "capacidad_tanque_l": {
+      "type": ["number", "null"],
+      "description": "Capacidad del tanque en litros."
+    },
+    "fuente_capacidad_tanque": {
+      "type": ["string", "null"],
+      "enum": ["anuncio", "modelo_verificado", "tabla_cc_fallback", null],
+      "description": "Origen del valor de capacidad_tanque_l."
+    },
+    "ubicacion": {
+      "type": "string",
+      "description": "Provincia o municipio."
+    },
+    "fecha_publicacion": {
+      "type": "string",
+      "pattern": "^2026-\\d{2}-\\d{2}$",
+      "description": "Fecha en formato YYYY-MM-DD. Solo 2026."
+    },
+    "fecha_fuente": {
+      "type": ["string", "null"],
+      "description": "Origen de la fecha de publicacion. Valor tipico: updatedOnToOrder."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL del anuncio en Revolico."
+    },
+    "descripcion": {
+      "type": ["string", "null"],
+      "description": "Texto completo del anuncio."
+    },
+    "posible_duplicado": {
+      "type": ["boolean", "null"],
+      "description": "True si el dedup lo marco como posible duplicado."
+    },
+    "duplicado_de": {
+      "type": ["string", "null"],
+      "description": "URL del anuncio del que es duplicado."
+    },
+    "modelo_dudoso": {
+      "type": ["string", "null"],
+      "description": "Nota sobre modelo dudoso (ej. katzu_cheetah)."
+    }
+  }
+}
