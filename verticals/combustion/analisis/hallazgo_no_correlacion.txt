@@ -1,0 +1,36 @@
+HALLAZGO: LA CILINDRADA NO CORRELACIONA CON EL PRECIO EN MOTOS DE COMBUSTIÓN
+
+Datos
+- Muestra: 30 anuncios válidos de motos de combustión.
+- Variables: precio_usd, cilindrada_cc.
+- Correlación de Pearson: +0.36 (débil).
+- Coeficiente de determinación (R²): 0.13.
+
+Interpretación
+La cilindrada explica aproximadamente el 13% de la variación del precio.
+El 87% restante depende de otros factores no capturados en la variable
+cilindrada (marca, modelo, tipo de moto, u otros).
+
+Evidencia
+- Precio medio 125cc: 2167 USD.
+- Precio medio 250cc: 2560 USD.
+- Diferencia: +18% por duplicar la cilindrada.
+- Caso extremo: Suzuki Burgman 125cc a 4200 USD, más cara que cualquier
+  250cc de la muestra (FURIA 2680, Lifan 2500, KATZU Snapdragon 2500).
+
+Comparación con motos eléctricas
+- Motos eléctricas: correlación precio-motor_w = +0.86 (fuerte).
+- Motos combustión: correlación precio-cilindrada_cc = +0.36 (débil).
+- El mercado eléctrico ordena el precio por potencia.
+- El mercado de combustión no ordena el precio por cilindrada.
+
+Implicación
+El mercado cubano de motos de combustión no sigue una lógica técnica de
+precios. El comprador no paga proporcionalmente a la cilindrada. Otros
+factores (marca, tipo de moto, modelo específico) probablemente explican
+mejor el precio, pero no están cuantificados en este análisis.
+
+Limitación
+Muestra de 30 anuncios. Análisis exploratorio, no confirmatorio pues es una muestra minima
+ademas se debe tener en cuenta mas fuentes. 
+

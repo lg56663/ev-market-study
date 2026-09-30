@@ -1,0 +1,138 @@
+==============================================================================
+RESUMEN DE CLUSTERING K-MEANS - MOTOS DE COMBUSTION
+==============================================================================
+Fecha de analisis       : 2026-09-29
+Archivo origen          : /home/leandro/ev-market-study/verticals/combustion/scraping/motos_combustion.json
+Vehiculo                : moto_combustion
+
+DATOS
+  Anuncios totales en el JSON   : 30
+  Anuncios clusterizados (M)    : 30
+  Descartados por nulls         : 0
+  Features usadas               : precio_usd, cilindrada_cc
+  Normalizacion                 : StandardScaler (media 0, desv. 1)
+  Excluidas (solo descriptivas) : capacidad_tanque_l (no aporta señal de precio),
+                                  autonomia_km y rendimiento_km_l (null en 26/30)
+
+ELECCION DE K
+  k evaluados                   : 2, 3, 4  (solo hasta k=4)
+  k elegido                     : 4
+  Clusters finales (tras fusion) : 3
+  silhouette del clustering      : 0.5568
+
+   k  |    inercia      |  sil (kmeans)  | sil (tras fusion)
+  --- + --------------- + --------------- + -----------------
+  2   |         28.0271 |          0.5263 |            0.5263
+  3   |         15.4631 |          0.5805 |            0.5805
+  4   |         11.6932 |          0.5643 |            0.5568
+
+  Tamanos de cluster por k (tras clausula de fusion <10%):
+    k=2 -> 2 cluster(s): [16, 14]   [>50%: FALLA]   [>=4: OK]
+    k=3 -> 3 cluster(s): [16, 11, 3]   [>50%: FALLA]   [>=4: FALLA]
+    k=4 -> 3 cluster(s): [15, 12, 3]   [>50%: OK]   [>=4: FALLA]
+
+  Fusion aplicada:
+    k=2: ninguna (ningun par de precios promedio a menos de 10%)
+    k=3: ninguna (ningun par de precios promedio a menos de 10%)
+    k=4: C1 + C2 fusionados, gap=0.61% (2544.44 vs 2560.00 USD), n 9+3=12
+
+  Justificacion:
+  - Con N=30, el limite de 50% equivale a 15 anuncios por cluster y el minimo
+    de tamano a 4 anuncios. LAS DOS REGLAS NO SON SATISFACIBLES A LA VEZ:
+    ningun k en 2..4 cumple ambas.
+    k=2 -> [16, 14]: el cluster grande se pasa de 50% por 1 anuncio.
+    k=3 -> [16, 11, 3]: falla 50% y ademas deja un cluster de 3.
+    k=4 -> [15, 12, 3]: cumple 50% (maximo = 15 = exactamente 50%),
+    pero la fusion C1+C2 (gap 0.61%) deja un cluster de 3 anuncios.
+  - Decision aplicada: se elige k=4 con la clausula de fusion, que es el
+    unico candidato que respeta el tope del 50%, y se RELAJA el minimo de 4
+    anuncios. Queda un unico cluster por debajo (3 anuncios), aprobado explicitamente.
+  - El cluster de 3 anuncios es el segmento premium real del catalogo:
+    los 3 anuncios de 3500-4200 USD (Italica 200cc 3600, Mishozuki 200cc 3500,
+    Suzuki 125cc 4200). No son outliers a descartar: son el tope de la oferta.
+  - Consecuencia para el silhouette: 0.5568 es el valor del clustering final
+    recalculado sobre las etiquetas post-fusion, no el maximo crudo de la tabla.
+
+TABLA DE CLUSTERS FINALES
+  id | nombre            |  n | precio prom | cc prom | tanque prom | marca dominante
+  --- + ----------------- + --- + ------------ + ------- + ----------- + ----------------
+  0   | Económica 150cc   |  15 |      1985.33 |   141.7 |        8.23 | Mishozuki       
+  1   | Media gama 200cc  |  12 |      2548.33 |   208.3 |       10.07 | Topmaq          
+  2   | Premium 200cc     |   3 |      3766.67 |   175.0 |        8.23 | Itálica         
+
+DESCRIPCION DE CADA CLUSTER
+==============================================================================
+
+CLUSTER 0 - Económica 150cc
+  Anuncios            : 15
+  Precio (USD)        : prom 1985.33 | min 1200 | max 2400
+  Cilindrada (cc)     : prom 141.7 | min 125 | max 150 | modal 150
+  Tanque (L)          : prom 8.23 | min 5.0 | max 13.0
+  Marca mas comun     : Mishozuki (2 de 15, 13 marcas distintas)
+  Tipo de motor       : 4T
+  Ubicacion mas comun : La Habana / Centro Habana
+  Descripcion         : 15 anuncios en el rango 1200-2400 USD (prom. 1985), con 125-150 cc (prom. 142, modal 150 cc) y tanque de 5.0-13.0 L (prom. 8.2 L). Es el segmento mas economico por precio; marca dominante Mishozuki (2 de 15 anuncios). Ubicacion mas comun: La Habana / Centro Habana.
+
+CLUSTER 1 - Media gama 200cc
+  Anuncios            : 12
+  Precio (USD)        : prom 2548.33 | min 2200 | max 2800
+  Cilindrada (cc)     : prom 208.3 | min 150 | max 250 | modal 200
+  Tanque (L)          : prom 10.07 | min 6.0 | max 17.0
+  Marca mas comun     : Topmaq (2 de 12, 10 marcas distintas)
+  Tipo de motor       : 4T
+  Ubicacion mas comun : La Habana / Diez de Octubre
+  Descripcion         : 12 anuncios en el rango 2200-2800 USD (prom. 2548), con 150-250 cc (prom. 208, modal 200 cc) y tanque de 6.0-17.0 L (prom. 10.1 L). Es el segmento intermedio por precio; marca dominante Topmaq (2 de 12 anuncios). Ubicacion mas comun: La Habana / Diez de Octubre.
+
+CLUSTER 2 - Premium 200cc
+  Anuncios            : 3
+  Precio (USD)        : prom 3766.67 | min 3500 | max 4200
+  Cilindrada (cc)     : prom 175.0 | min 125 | max 200 | modal 200
+  Tanque (L)          : prom 8.23 | min 5.5 | max 13.2
+  Marca mas comun     : Itálica (1 de 3, 3 marcas distintas)
+  Tipo de motor       : 4T
+  Ubicacion mas comun : La Habana / Diez de Octubre
+  Descripcion         : 3 anuncios en el rango 3500-4200 USD (prom. 3767), con 125-200 cc (prom. 175, modal 200 cc) y tanque de 5.5-13.2 L (prom. 8.2 L). Es el segmento mas premium por precio; sin marca dominante (3 marcas distintas, 1 anuncio cada una). Ubicacion mas comun: La Habana / Diez de Octubre.
+
+CORRELACIONES
+==============================================================================
+  Correlacion Pearson precio ~ cilindrada_cc      : +0.3625
+  Correlacion Pearson precio ~ capacidad_tanque_l: -0.0552  (solo informativa)
+  Correlacion Pearson cilindrada_cc ~ tanque_l   : +0.4177  (solo informativa)
+
+  - precio~cilindrada = +0.36: correlacion DEBIL.
+    El solapamiento es real, no un efecto del algoritmo: hay 5 de 11 anuncios de
+    150 cc mas caros que el anuncio de 200 cc mas barato (1800-2800 USD en 150 cc
+    contra 2200-3600 USD en 200 cc). O sea, la cilindrada NO ordena el precio.
+  - precio~tanque = -0.06: practicamente nula. Es informativa porque
+    capacidad_tanque_l NO es una feature del modelo: el tanque no aporta señal
+    propia para explicar el precio.
+  - cc~tanque = +0.42: el tanque se mueve con la cilindrada, no con el
+    precio. Por eso queda solo como descriptor y no como tercera feature.
+  - La marca NO discrimina los clusters: hay 23 marcas
+    distintas en 30 anuncios y estan repartidas entre los tres clusters (13, 10, 3 marcas en C0, C1, C2),
+    con un maximo de 2 anuncios de la misma marca dentro de un cluster. Ningun
+    cluster se puede atribuir a una marca.
+
+LIMITACIONES DEL CLUSTERING
+==============================================================================
+  1. n=30 anuncios y 2 features. Es una muestra pequena: el silhouette de
+     0.5568 describe estos 30 puntos, no la poblacion del mercado.
+  2. Las dos reglas de tamano son incompatibles con estos datos (ver arriba).
+     Se relajo el minimo de 4 anuncios: el cluster premium se queda con 3, con lo
+     que su silueta media es la mas alta pero la mas inestable (n=3).
+  3. Solo 4 de 30 anuncios reportan autonomia y rendimiento, y por eso no se
+     pudieron usar como features. No se puede comparar costo por km frente a las
+     motos electricas con este dataset.
+  4. capacidad_tanque_l: la premisa de que venia inferida por tabla de cc en 29/30
+     NO se cumple en este JSON. El origen real es {'modelo_verificado': 22, 'tabla_cc_fallback': 6, 'anuncio': 2},
+     o sea solo 6/30 por 'tabla_cc_fallback', 22/30 por 'modelo_verificado' y 2/30
+     leidas del 'anuncio'. Sigue sin usarse como feature (no la pide el enunciado y
+     su correlacion con el precio es -0.06, nula), pero el motivo correcto
+     es que no aporta señal, no que sea una simple copia de la cc.
+  5. 'descripcion' es null en los 30 anuncios (el scraper no entra a paginas de
+     detalle). Todo el texto disponible es el titulo, asi que las variables
+     derivadas son debiles y el modelo se apoya solo en precio y cc.
+  6. Las ubicaciones son casi todas de La Habana: el campo no discrimina entre
+     clusters y no se puede concluir nada geografico.
+  7. Sin normalizacion por antiguedad ni estado del anuncio, el precio mezcla
+     motorcycles nuevas y de segunda mano dentro de un mismo rango.

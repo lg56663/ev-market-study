@@ -1,0 +1,147 @@
+==============================================================================
+ANALISIS DE DESCARTES - MOTOS DE COMBUSTION (solo con cc y precio)
+==============================================================================
+Fecha de analisis       : 2026-09-29T20:50:58
+Origen descartes        : /home/leandro/ev-market-study/verticals/combustion/scraping/descartados_combustion.json
+Origen validos          : /home/leandro/ev-market-study/verticals/combustion/scraping/motos_combustion.json
+Vehiculo                : moto_combustion
+
+FILTRO PREVIO
+  Criterio: cilindrada_cc not null Y precio_usd not null.
+  Total descartes en el JSON   : 314
+  Tras el filtro (cc + precio) : 82
+  Porcentaje que representa    : 26.1%
+  Excluidos (sin cc o sin precio): 232
+  Nota: los descartes con motivo 'sin_cilindrada' o 'sin_precio' caen en la
+  exclusion previa y NO entran a ningun calculo de este archivo.
+  Nota: 2 de los 82 filtrados tienen motivo 'precio_placeholder' con precio=1 USD
+  (placeholder del vendedor). Cuentan en los totales y en las distribuciones,
+  pero se marcan por separado en las tablas de precio para no distorsionar medias.
+
+1. DISTRIBUCION DE MOTIVOS (sobre el set filtrado)
+   ------------------------------------------------------------------------
+   motivo                              n       %
+   ------------------------------------------------------------------------
+   duplicado_mismo_modelo             31   37.8%
+   sin_marca                          29   35.4%
+   otro_vehiculo                       7    8.5%
+   cilindrada_fuera_de_tabla           5    6.1%
+   duplicado_manual                    2    2.4%
+   precio_placeholder                  2    2.4%
+   no_es_moto                          2    2.4%
+   precio_no_cuba_importador           2    2.4%
+   descartado_por_usuario              1    1.2%
+   moto_usada_no_nueva                 1    1.2%
+   ------------------------------------------------------------------------
+   TOTAL                              82  100.0%
+
+2. PRECIOS POR MOTIVO (motivos con >= 5 anuncios filtrados)
+   ------------------------------------------------------------------------
+   motivo                             n  precio medio    mediana     min     max
+   ------------------------------------------------------------------------
+   duplicado_mismo_modelo            31       2417.42    2400.00    1000    4200
+   sin_marca                         29       2131.31    2100.00     350    3260
+   otro_vehiculo                      7       2302.86    2300.00    1990    2750
+   cilindrada_fuera_de_tabla          5       1920.00    1700.00     900    3000
+
+3. PRECIOS POR CILINDRADA - DESCARTES vs VALIDOS
+   ------------------------------------------------------------------------
+   Tablas por cilindrada_cc, con n | precio medio | mediana | min | max.
+   'media s/ph' = media quitando los precio_placeholder de 1 USD (si existen).
+
+   DESCARTES (filtrados):
+   descarte     50 cc | n=  1 | media    350.00 | mediana   350.00 | min     350 | max     350
+   descarte    125 cc | n= 13 | media   2216.92 | mediana  2000.00 | min    1000 | max    4200
+   descarte    150 cc | n= 27 | media   2040.63 | mediana  2100.00 | min       1 | max    3000  | media s/ph 2119.08
+   descarte    175 cc | n=  5 | media   1660.00 | mediana  1700.00 | min     900 | max    2750
+   descarte    180 cc | n=  3 | media   2633.33 | mediana  3000.00 | min    1900 | max    3000
+   descarte    200 cc | n= 23 | media   2339.87 | mediana  2500.00 | min     807 | max    3260
+   descarte    250 cc | n= 10 | media   2308.10 | mediana  2500.00 | min       1 | max    2980  | media s/ph 2564.44
+
+   VALIDOS:
+   valido      125 cc | n=  6 | media   2166.67 | mediana  2000.00 | min    1200 | max    4200
+   valido      150 cc | n= 11 | media   2161.82 | mediana  2150.00 | min    1800 | max    2800
+   valido      200 cc | n= 10 | media   2720.00 | mediana  2600.00 | min    2200 | max    3600
+   valido      250 cc | n=  3 | media   2560.00 | mediana  2500.00 | min    2500 | max    2680
+
+   Comparacion mismo cc (media descartes vs media validos):
+       cc  n_desc n_val   media desc   media val       diff         lectura
+   ------------------------------------------------------------------------
+      125     13     6      2216.92     2166.67      50.26   DESCARTES +2%
+      150     26    11      2119.08     2161.82     -42.74   DESCARTES -2%   (excluye 1 USD placeholder)
+      200     23    10      2339.87     2720.00    -380.13  DESCARTES -14%
+      250      9     3      2564.44     2560.00       4.44   DESCARTES +0%   (excluye 1 USD placeholder)
+   ------------------------------------------------------------------------
+   (se excluyen los 2 anuncios 'precio_placeholder' de 1 USD de esta comparacion;
+    quedan contados en el filtro y en la tabla completa de descartes de arriba)
+   Cc sin par en validos (50, 175, 180) no tienen lectura de comparacion.
+
+4. TOP 10 MODELOS MAS DUPLICADOS (agrupados por marca + cc + modelo_token)
+   'modelo' se deriva del titulo con la logica del scraper; 'sin modelo' quiere
+   decir que el titulo no aporta tokens distintivos mas alla de marca y cc.
+   Variacion % = (max-min)/min*100.  (@) = grupo generico, NO un modelo real:
+   juntan anuncios distintos (varios vendedores) sin marca o sin nombre de
+   modelo en el titulo, no republicaciones de una misma moto.
+   ------------------------------------------------------------------------
+     # marca              ccmodelo                         n     rango min-max    var % ubic
+   ------------------------------------------------------------------------
+     1 (sin_marca)       200(sin modelo)                   7         1650-2600    57.6%    4@
+     2 TK                200unison                         6         2600-2850     9.6%    6 
+     3 (sin_marca)       150(sin modelo)                   4         1780-2449    37.6%    3@
+     4 Mishozuki         150scooter                        4         2100-2300     9.5%    4 
+     5 Jincheng          125(sin modelo)                   3         2000-2000     0.0%    3@
+     6 (sin_marca)       200yoazaky                        2         2200-2200     0.0%    1@
+     7 Huawin            150(sin modelo)                   2         2380-2380     0.0%    2@
+     8 Mishozuki         150buho transformer               2         2500-2500     0.0%    1 
+     9 Halcón            125(sin modelo)                   2         1900-2000     5.3%    2@
+    10 Scooter           150huawin                         1         2380-2380     0.0%    1 
+
+5. COMPARACION USADAS VS NUEVAS (motivo 'moto_usada_no_nueva')
+   ------------------------------------------------------------------------
+   Descartados con motivo 'moto_usada_no_nueva' y cc+precio: 1
+   Pares encontrados (misma marca+cc+modelo en validos): 0
+
+   Descarte  : cc=180  marca=(sin marca)  modelo=caminados regla  precio=1900.0 USD
+   Titulo    : Moto de combustión 180cc. Con $4500 km caminados. Chapa y papeles en regla
+   Match en validos: NINGUNO -> no hay par que comparar.
+
+   RESULTADO: no hay ningun par usada/nueva comparable. El unico descarte
+   'moto_usada_no_nueva' es una 180cc sin marca (180 cc ni siquiera esta en la
+   tabla de cilindradas del scraper) y en validos no existe esa combinacion.
+   Con n=1 no se puede estimar el descuento por uso de este catalogo.     
+
+7. MARCAS EXCLUSIVAS DE DESCARTES (en filtrados, ausentes en validos)
+   ------------------------------------------------------------------------
+   Marcas en descartes filtrados      : 21
+   Marcas en validos                  : 23
+   Marcas EXCLUSIVAS de descartes     : 6
+
+   marca            n  precio medio     min     max
+   ------------------------------------------------------------------------
+   Clásica          2        950.00     900    1000
+   Dakar            1        708.00     708     708
+   Panther          2       1500.50       1    3000
+   Scooter          1       2380.00    2380    2380
+   Torvan           1       3000.00    3000    3000
+   Unsioncc         1       1700.00    1700    1700
+
+   Precio medio de las marcas exclusivas de descartes: 1706.42 USD
+
+8. FECHAS
+   ------------------------------------------------------------------------
+   Minimo          : 2026-08-04
+   Maximo          : 2026-09-29
+   Con fecha       : 82/82
+   mes           n       %
+   ------------------------------------------------------------------------
+   2026-08      21   25.6%
+   2026-09      61   74.4%
+
+VERIFICACION
+==============================================================================
+  descartados_combustion.json md5 antes  : 155f22a4f23dda61c30f891c690bc0b6
+  descartados_combustion.json md5 despues: 155f22a4f23dda61c30f891c690bc0b6
+  motos_combustion.json md5 antes        : 3d34f6d3d97a16e72482dcd64eb9c568
+  motos_combustion.json md5 despues      : 3d34f6d3d97a16e72482dcd64eb9c568
+  descartes intocado  : SI
+  validos intocado    : SI
