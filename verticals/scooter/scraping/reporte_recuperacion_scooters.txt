@@ -1,0 +1,107 @@
+RECUPERACION DE AUTONOMIA DESDE EL DETALLE - SCOOTERS (Revolico)
+======================================================================
+Fecha: 2026-10-01T01:38:37Z
+
+CONFIGURACION:
+  User-Agent: MiProyectoInvestigacion/1.0
+  Delay entre peticiones: 3.0s
+  Timeout: 30.0s
+  Reintentos por URL: 2 (espera 5.0s)
+  Cache: cache_detalle_scooters_recuperacion/
+  Limite por sesion: 300 peticiones
+
+RED:
+  Peticiones nuevas: 247
+  HTML desde cache: 6
+
+RESULTADOS:
+  Descartes sin_autonomia procesados: 253
+  Recuperaron autonomia de la descripcion: 159
+  Sin autonomia en la descripcion: 86
+  Sin descripcion / sin peticion: 8
+  De los recuperados, pasan todos los filtros: 148
+
+RECUPERADOS POR ESTADO:
+    148  pasa_todos_los_filtros
+     11  sin_precio
+
+AUTONOMIA DE LOS RECUPERADOS:
+  min=20  max=120
+
+======================================================================
+CIERRE DEL MERGE
+======================================================================
+
+POR QUE QUEDAN 139 Y NO 60
+-----------------------
+El objetivo inicial era 60 scooters. La recuperacion de autonomia
+desde paginas de detalle trajo 148 validos. Tras limpieza quedaron
+139 unicos. Se conservan todos porque son datos reales
+verificados y truncar a 60 seria descartar evidencia valida sin
+criterio.
+
+El recorte de la muestra, si se quiere, se hace en el analisis;
+aqui no se tiran anuncios.
+
+COMO SE LLEGO AL CONJUNTO FINAL:
+  139 anuncios validos (unicos por marca+motor+autonomia+precio)
+  2 excluidos por revision manual
+  66 descartados por la recuperacion
+  52 duplicados por modelo, con 'duplicado_de'
+
+DESCARTADOS POR LA RECUPERACION (motivos):
+     38  sin_ubicacion
+     11  sin_precio
+     11  es_moto_de_combustion
+      3  precio_no_util
+      3  sin_marca
+
+CORRECCIONES DE DATO APLICADAS AL INTEGRAR:
+  Los anuncios problemas listados abajo se descartaron o
+  corrigieron, no se dejaron pasar al conjunto final:
+     11  motos de combustion coladas como scooter.
+         Se titulan 'scooter' o 'patineta' pero son de gasolina
+         (cilindrada en cc, '4 tiempos'). Su autonomia es por litro
+         ('35 km x litro' = consumo), no rango electrico.
+      3  precios basura: 1 USD, 50 USD, 100 USD.
+         Son precio de relleno o senuelo, no el precio de un scooter.
+         No se corrigen, se descartan. Algunos titulos son ademas
+         lotes de varios vehiculos ('Scooters y ventiladores'),
+         donde el precio es de todo el lote: el filtro de precio los
+         cubre antes que el de lote.
+       1  marca 'Range' en un Kukirin G2 ('Battery Range 55KM'):
+         el extractor agarra la primera palabra en mayusculas, que
+         era una palabra de la descripcion. 'Range' se metio en
+         MARCAS_INVALIDAS.
+
+EXCLUIDOS POR REVISION MANUAL:
+  - es_moto_electrica: Moto Electrica 3000w// Scooter X-RYDER 48v-35 ahm// Autonomía 80-120km
+  - titulo_invalido: Scooter haciendo 25km
+
+DISTRIBUCION FINAL:
+  precio_usd: min=280.0  max=3250.0
+
+  top 10 marcas:
+     13  JMD
+     11  MAF
+     10  CAROMA
+     10  MIDHA
+      7  ORIS
+      6  G1
+      6  CHALLENGER
+      6  LAITUNING
+      5  GT12
+      4  GANGA
+
+  top 10 municipios:
+     45  Centro Habana
+     30  Playa
+     16  Plaza
+     14  Diez de Octubre
+      8  Marianao
+      6  Habana Vieja
+      4  Boyeros
+      4  La Lisa
+      4  Arroyo Naranjo
+      3  San Miguel del Padrón
+

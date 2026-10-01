@@ -1,0 +1,107 @@
+REPORTE DE SCRAPING - MOTOS ELECTRICAS, AMPLIACION 30 -> 90 (Revolico)
+====================================================================
+Fecha de scraping: 2026-09-30
+Ejecucion: 2026-09-30T22:44:10Z
+
+CONFIGURACION:
+  User-Agent: MiProyectoInvestigacion/1.0
+  Delay entre peticiones: 3.0s
+  Timeout: 30.0s
+  Reintentos por URL: 2 (espera 5.0s)
+  Cache: cache_html_ampliacion/ (separada de cache_html/)
+  Paginas de detalle visitadas: 0
+  Limite por sesion: 260 peticiones
+
+RED:
+  Peticiones nuevas a revolico.com: 0
+  HTML servidos desde cache: 147
+  Paginas de listado procesadas: 147
+  URLs de listado registradas: 147
+
+QUERIES:
+  12 pag.  moto electrica litio
+   2 pag.  moto electrica barata
+   5 pag.  moto electrica nueva
+   8 pag.  moto electrica 5000w
+  10 pag.  moto electrica 4000w
+   3 pag.  moto electrica 1500w
+   3 pag.  moto electrica 800w
+   2 pag.  moto electrica importada
+   2 pag.  moto electrica china
+   3 pag.  moto electrica sin chapa
+   1 pag.  moto electrica con chapa
+  10 pag.  moto electrica La Habana
+   2 pag.  moto electrica Centro Habana
+   3 pag.  moto electrica Playa
+   2 pag.  moto electrica Marianao
+   4 pag.  moto electrica Cerro
+   2 pag.  moto electrica Habana Vieja
+   2 pag.  moto electrica Diez de Octubre
+   2 pag.  moto electrica Arroyo Naranjo
+   2 pag.  moto electrica Boyeros
+  12 pag.  moto electrica 72v
+   3 pag.  moto electrica 60v
+   1 pag.  moto electrica 2000w
+   4 pag.  moto electrica 1000w
+   1 pag.  moto electrica 3000w
+   2 pag.  moto electrica 6000w
+   3 pag.  moto electrica autonomia
+   4 pag.  moto electrica bateria
+   3 pag.  motico electrica
+   3 pag.  moto electrica yoazaky
+   4 pag.  moto electrica bucatti
+   7 pag.  moto electrica topmaq
+   3 pag.  moto electrica izuki
+   2 pag.  moto electrica shikra
+   3 pag.  moto electrica halcon
+  12 pag.  moto electrica votol
+
+RESULTADOS:
+  Anuncios unicos revisados: 2020
+  VÁLIDOS nuevos (objetivo 60): 60
+  DESCARTADOS: 1410
+
+DESCARTADOS POR MOTIVO:
+   1062  sin_motor_w
+    101  sin_autonomia
+     74  fuera_de_la_habana
+     73  es_bicimoto
+     32  es_scooter
+     30  url_duplicada
+     12  sin_marca
+     12  es_triciclo
+      7  motor_w_bajo
+      6  sin_precio
+      1  es_combustion
+
+CAMPOS OBLIGATORIOS (5): marca, motor_w, autonomia_km, precio_usd, ubicacion
+tipo_bateria es OPCIONAL: se guarda null cuando el titulo no lo indica
+  Válidos con tipo_bateria null: 56
+
+RANGOS DE LOS VÁLIDOS:
+  precio_usd: min=160.00  max=3150.00  n=60
+  motor_w: min=1000  max=4500  n=60
+
+MARCAS MÁS FRECUENTES:
+     15  TOPMAQ
+      7  IZUKI
+      6  BUCATTI
+      4  PANDA
+      3  FLY
+      3  VEDCA
+      3  GS
+      3  KVITOVA
+      2  HALCÓN
+      2  CHALLENGER
+      1  MOUNTAIN
+      1  AVA
+      1  HALCON
+      1  YOAZAKY
+      1  SHIKRA
+      1  VORTAX
+      1  Yoazaki
+      1  MAF
+      1  YOAZAKI
+      1  Galaxy
+      1  vedga
+      1  MAOX

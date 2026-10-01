@@ -1,0 +1,92 @@
+==============================================================================
+AMPLIACIÓN DE MOTOS DE COMBUSTIÓN (Revolico)
+==============================================================================
+Fecha: 2026-10-01T03:50:06Z
+
+CONFIGURACIÓN:
+  User-Agent      : MiProyectoInvestigacion/1.0
+  Delay           : 3.0s entre peticiones
+  Timeout         : 30.0s
+  Reintentos      : 2 por URL (espera 5.0s)
+  Cache           : cache_html_combustion_ampliacion/
+  Objetivo        : 62 validos nuevos
+  Peticiones      : max 200, 4 paginas por query
+  Precio minimo   : 100 USD
+
+RED:
+  Peticiones nuevas      : 0
+  Páginas desde cache     : 0
+  Páginas parseadas       : 0
+
+RESULTADOS:
+  Válidos totales        : 62
+  (heredados de la corrida previa: 62)
+  Descartes             : 1266
+  Duplicados por titulo  : 0
+  Excluidos url_duplicada: 224 (ya estaban en el original o en el merge)
+
+DESCARTADOS POR MOTIVO:
+      315  sin_cilindrada
+      240  sin_marca
+      224  url_duplicada
+      123  duplicado_mismo_modelo
+      108  es_accesorio
+       58  sin_precio
+       55  es_electrica
+       47  precio_placeholder
+       42  es_scooter
+       16  fuera_de_la_habana
+       14  cilindrada_fuera_de_tabla
+        8  es_moto_usada
+        6  es_triciclo
+        5  precio_no_cuba
+        2  moto_usada_no_nueva
+        1  precio_outlier_sospechoso
+        1  es_lote_de_varios
+        1  modelo_dudoso_triciclo
+
+RANGOS DE LOS VÁLIDOS:
+  precio_usd        : 1000.0 - 4200.0
+  cilindrada_cc     : 125 - 250
+  autonomia_km      : 40 - 520
+  rendimiento_km_l  : 40.0 - 45.0
+  capacidad_tanque_l: 5.5 - 17.0
+
+CILINDRADAS:
+       27  150 cc
+       15  200 cc
+       14  125 cc
+        6  250 cc
+
+MARCAS MÁS FRECUENTES:
+        4  Ava
+        3  Tank
+        3  Mountain
+        3  Suzuki
+        3  Wys
+        2  Halcón
+        2  Yamaki
+        2  Mishozuki
+        2  Treck
+        2  Furia
+        2  Shineray
+        2  Jin
+        2  Lexzuki
+        2  Lifan
+        2  Krathos
+
+UBICACIONES:
+  Todos de La Habana: si
+  Todos de 2026      : si
+       24  La Habana / Centro Habana
+       18  La Habana / Playa
+        5  La Habana / Diez de Octubre
+        3  La Habana / Plaza
+        3  La Habana / Cerro
+        3  La Habana / Habana Vieja
+        2  La Habana / La Lisa
+        2  La Habana / Arroyo Naranjo
+        1  La Habana / Regla
+        1  La Habana / Cotorro
+
+PÁGINAS POR QUERY:

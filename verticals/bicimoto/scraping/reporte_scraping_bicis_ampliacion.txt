@@ -1,0 +1,77 @@
+REPORTE DE SCRAPING - BICIMOTOS ELECTRICAS, AMPLIACION 30 -> 90 (Revolico)
+======================================================================
+Fecha de scraping: 2026-09-30
+Ejecucion: 2026-10-01T00:26:13Z
+
+CONFIGURACION:
+  User-Agent: MiProyectoInvestigacion/1.0
+  Delay entre peticiones: 3.0s
+  Timeout: 30.0s
+  Reintentos por URL: 2 (espera 5.0s)
+  Cache: cache_html_bicis_ampliacion/
+  Paginas de detalle visitadas: 0
+  Limite por sesion: 260 peticiones
+
+RED:
+  Peticiones nuevas a revolico.com: 0
+  HTML servidos desde cache: 63
+  Paginas de listado procesadas: 63
+  URLs de listado registradas: 63
+
+QUERIES:
+   4 pag.  bicimoto electrica litio
+   2 pag.  bicimoto electrica barata
+   3 pag.  bicimoto electrica nueva
+   3 pag.  bicimoto electrica 500w
+   2 pag.  bicimoto electrica 750w
+   3 pag.  bicimoto electrica 1000w
+   3 pag.  bicimoto electrica 1500w
+   2 pag.  bicimoto plegable
+   6 pag.  bicimoto sin chapa
+   1 pag.  bicimoto con chapa
+   2 pag.  bicicleta electrica
+   3 pag.  e-bike cuba
+   2 pag.  bicimoto Centro Habana
+  12 pag.  bicimoto Playa
+   2 pag.  bicimoto Marianao
+   5 pag.  bicimoto Cerro
+   2 pag.  bicimoto Habana Vieja
+   2 pag.  bicimoto Diez de Octubre
+   2 pag.  bicimoto Arroyo Naranjo
+   2 pag.  bicimoto Boyeros
+
+RESULTADOS:
+  Anuncios unicos revisados: 1463
+  VÁLIDOS nuevos (objetivo 64): 64
+  DESCARTADOS: 1048
+
+CAMPOS OBLIGATORIOS (4): marca, autonomia_km, precio_usd, ubicacion
+  Válidos con motor_w null: 23
+
+DESCARTADOS POR MOTIVO:
+    597  sin_marca
+    357  sin_autonomia
+     54  fuera_de_la_habana
+     19  es_triciclo
+     15  url_duplicada
+      5  es_combustion
+      1  sin_precio
+
+RANGOS DE LOS VÁLIDOS:
+  precio_usd: min=700.00  max=2080.00  n=64
+  motor_w: min=500  max=3000  n=41
+
+MARCAS MÁS FRECUENTES:
+     14  Jmd
+      9  Vedca
+      8  Yoazaky
+      6  Halcon
+      5  Ava
+      5  Challenger
+      5  Topmaq
+      4  Combat
+      2  Maf
+      2  Bucatti
+      2  Laituning
+      1  Midha
+      1  Maf Engle

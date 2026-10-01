@@ -1,0 +1,98 @@
+REPORTE DE SCRAPING - SCOOTERS ELECTRICOS, AMPLIACION 30 -> 60 (Revolico)
+======================================================================
+Fecha de scraping: 2026-09-30
+Ejecucion: 2026-10-01T01:24:47Z
+
+CONFIGURACION:
+  User-Agent: MiProyectoInvestigacion/1.0
+  Delay entre peticiones: 3.0s
+  Timeout: 30.0s
+  Reintentos por URL: 2 (espera 5.0s)
+  Cache: cache_html_scooters_ampliacion/
+  Paginas de detalle visitadas: 0
+  Limite por sesion: 260 peticiones
+
+RED:
+  Peticiones nuevas a revolico.com: 22
+  HTML servidos desde cache: 100
+  Paginas de listado procesadas: 122
+  URLs de listado registradas: 122
+
+QUERIES:
+   4 pag.  scooter electrico
+   5 pag.  patineta electrica
+   3 pag.  patinete electrico
+   3 pag.  scooter plegable
+   2 pag.  patineta plegable
+   2 pag.  scooter electrico cuba
+   2 pag.  patineta electrica cuba
+   3 pag.  scooter 500w
+   4 pag.  patineta 500w
+   3 pag.  scooter 1000w
+   3 pag.  scooter litio
+   3 pag.  patineta litio
+   2 pag.  scooter Centro Habana
+   5 pag.  scooter Playa
+   2 pag.  scooter Marianao
+   3 pag.  scooter Cerro
+   1 pag.  scooter Habana Vieja
+   2 pag.  scooter Diez de Octubre
+   2 pag.  scooter Arroyo Naranjo
+   1 pag.  scooter Boyeros
+   1 pag.  scooter 350w
+   2 pag.  scooter 800w
+   3 pag.  scooter 1500w
+   5 pag.  patinete 800w
+   2 pag.  patineta 1000w
+   3 pag.  scooter 2000w
+   2 pag.  scooter en caja
+   2 pag.  patinete plegable
+   2 pag.  scooter 60 km
+   2 pag.  scooter 40 km
+   2 pag.  scooter 30 km
+   2 pag.  scooter 50 km
+   3 pag.  patinete 60 km
+   2 pag.  patineta 40 km
+   1 pag.  scooter 48v 20ah
+   1 pag.  scooter 48v 15ah
+   2 pag.  patineta 48v 20ah
+   3 pag.  scooter 36v
+   1 pag.  scooter autonomia
+   1 pag.  scooter 500w 20ah
+   3 pag.  scooter Vedado
+   7 pag.  scooter Miramar
+   1 pag.  scooter Guanabacoa
+   2 pag.  scooter Regla
+   1 pag.  scooter San Miguel
+   2 pag.  patineta Vedado
+   2 pag.  patineta Miramar
+   1 pag.  scooter 750w
+   3 pag.  scooter 1200w
+
+RESULTADOS:
+  Anuncios unicos revisados: 1175
+  VÁLIDOS nuevos (objetivo 30): 2
+  DESCARTADOS: 586
+
+CAMPOS OBLIGATORIOS (4): marca, autonomia_km, precio_usd, ubicacion
+  Válidos con motor_w null: 1
+  Válidos con tipo_bateria null: 2
+  Válidos con plegable null: 2
+
+DESCARTADOS POR MOTIVO:
+    253  sin_autonomia
+    119  sin_marca
+     71  es_bicimoto
+     58  url_duplicada
+     33  es_combustion
+     26  es_triciclo
+     24  fuera_de_la_habana
+      2  sin_precio
+
+RANGOS DE LOS VÁLIDOS:
+  precio_usd: min=300.00  max=750.00  n=2
+  motor_w: min=500  max=500  n=1
+
+MARCAS MÁS FRECUENTES:
+      1  CHALLENGER
+      1  Range

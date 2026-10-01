@@ -1,0 +1,2290 @@
+{
+  "vehiculo": "scooter_electrico",
+  "fecha_scraping_original": "2026-09-26",
+  "fecha_scraping_ampliacion": "2026-09-30",
+  "total_anuncios_validos": 121,
+  "filtro_ubicacion": "La Habana",
+  "filtro_fecha": ">= 2026-01-01",
+  "fuente_original": "scooters_electricos.json",
+  "fuente_ampliacion": "scooters_electricos_ampliacion.json",
+  "anuncios_excluidos_revision_manual": [
+    {
+      "titulo": "Moto Electrica 3000w// Scooter X-RYDER 48v-35 ahm// Autonomía 80-120km",
+      "url": "https://www.revolico.com/item/moto-electrica-3000w-scooter-x-ryder-48v-35-ahm-autonomia-80-120km-57171498",
+      "motivo": "es_moto_electrica"
+    },
+    {
+      "titulo": "Scooter haciendo 25km",
+      "url": "https://www.revolico.com/item/scooter-haciendo-25km-57712634",
+      "motivo": "titulo_invalido"
+    },
+    {
+      "titulo": "Bicicletas Eléctricas y Patinete Eléctrico | Caroma, E-Bike, BeVomecon, Yeself, Trevalix",
+      "url": "https://www.revolico.com/item/bicicletas-electricas-y-patinete-electrico-caroma-e-bike-bevomecon-yeself-trevalix-57568466",
+      "precio_usd": 450.0,
+      "motivo": "titulo_de_lote_varios_productos"
+    }
+  ],
+  "descartados_duplicado_mismo_modelo": [
+    {
+      "titulo": "*PATINETA MAF 2026*  ⚙️ CARACTERÍSTICAS:   • 1200 Wats  • 48 Volt • 20 Amperes  • Autonomía de 50-60 km • ⁠Pantalla Digi",
+      "url": "https://www.revolico.com/item/patineta-maf-2026-caracteristicas-1200-wats-48-volt-20-amperes-autonomia-de-50-60-km-pantalla-digi-57296019",
+      "marca": "MAF",
+      "motor_w": 1200,
+      "autonomia_km": 60,
+      "precio_usd": 800.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-maf-caracteristicas-1200-wats-48-volt-20-amperes-autonomia-de-50-60-km-pantalla-d-57170787"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA MAF  ⚙️ CARACTERÍSTICAS:   • 1200 Wats  • 48 Volt • 20 Amperes  • Autonomía de 50-60 km 800💵",
+      "url": "https://www.revolico.com/item/patineta-electrica-maf-caracteristicas-1200-wats-48-volt-20-amperes-autonomia-de-50-60-km-800-57176360",
+      "marca": "MAF",
+      "motor_w": 1200,
+      "autonomia_km": 60,
+      "precio_usd": 800.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-maf-caracteristicas-1200-wats-48-volt-20-amperes-autonomia-de-50-60-km-pantalla-d-57170787"
+    },
+    {
+      "titulo": "🛴 PATINETA ELÉCTRICA MAF – 1200W – BATERÍA LITIO 48V/20Ah – $800 USD 🔋",
+      "url": "https://www.revolico.com/item/patineta-electrica-maf-1200w-bateria-litio-48v20ah-800-usd-57345614",
+      "marca": "MAF",
+      "motor_w": 1200,
+      "autonomia_km": 60,
+      "precio_usd": 800.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-maf-caracteristicas-1200-wats-48-volt-20-amperes-autonomia-de-50-60-km-pantalla-d-57170787"
+    },
+    {
+      "titulo": "PATINETAS ELÉCTRICAS MARCA JMD",
+      "url": "https://www.revolico.com/item/patinetas-electricas-marca-jmd-56372761",
+      "marca": "JMD",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 800.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-jmd-especificaciones-500w-48v-20ah-autonomia-de-40km-gomas-rin-10-full-luces-l-56380784"
+    },
+    {
+      "titulo": "🛴 PATINETA MIDHA – 800W – BATERÍA LITIO 48V/20Ah – 60 KM AUTONOMÍA – $850 USD (🚛 TRANSPORTE INCLUIDO) ⚡",
+      "url": "https://www.revolico.com/item/patineta-midha-800w-bateria-litio-48v20ah-60-km-autonomia-850-usd-transporte-incluido-56993607",
+      "marca": "MIDHA",
+      "motor_w": 800,
+      "autonomia_km": 60,
+      "precio_usd": 850.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-midha-caracteristicas-800w-48v-20amp-autonomia-de-60km-musica-por-bluetooth-850-56868663"
+    },
+    {
+      "titulo": "⚡ PATINETA ELÉCTRICA MIDHA 800W – BATERÍA DE LITHIUM – 60 KM DE AUTONOMÍA ⚡",
+      "url": "https://www.revolico.com/item/patineta-electrica-midha-800w-bateria-de-lithium-60-km-de-autonomia-56603197",
+      "marca": "MIDHA",
+      "motor_w": 800,
+      "autonomia_km": 60,
+      "precio_usd": 850.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-midha-caracteristicas-800w-48v-20amp-autonomia-de-60km-musica-por-bluetooth-850-56868663"
+    },
+    {
+      "titulo": "Patinetas eléctricas marca Midha Lithium . Nuevas a estrenar por usted.",
+      "url": "https://www.revolico.com/item/patinetas-electricas-marca-midha-lithium-nuevas-a-estrenar-por-usted-56817415",
+      "marca": "MIDHA",
+      "motor_w": 800,
+      "autonomia_km": 60,
+      "precio_usd": 850.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-midha-caracteristicas-800w-48v-20amp-autonomia-de-60km-musica-por-bluetooth-850-56868663"
+    },
+    {
+      "titulo": "VENTA DE PATINETA ELECTRICA MIDHA [EM]",
+      "url": "https://www.revolico.com/item/venta-de-patineta-electrica-midha-ea-56632695",
+      "marca": "MIDHA",
+      "motor_w": 800,
+      "autonomia_km": 60,
+      "precio_usd": 850.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-midha-caracteristicas-800w-48v-20amp-autonomia-de-60km-musica-por-bluetooth-850-56868663"
+    },
+    {
+      "titulo": "Oferta PATINETA ELÉCTRICA MIDHA",
+      "url": "https://www.revolico.com/item/oferta-patineta-electrica-midha-56641732",
+      "marca": "MIDHA",
+      "motor_w": 800,
+      "autonomia_km": 60,
+      "precio_usd": 850.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-midha-caracteristicas-800w-48v-20amp-autonomia-de-60km-musica-por-bluetooth-850-56868663"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA MIDHA  ⚙️ESPECIFICACIONES • 🔋 batería de LITIO • 500w - 48v - 20ah • ⁠autonomía de 60km • *venta de",
+      "url": "https://www.revolico.com/item/patineta-electrica-midha-especificaciones-bateria-de-litio-500w-48v-20ah-autonomia-de-60km-venta-de-57328390",
+      "marca": "MIDHA",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 850.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-midha-caracteristicas-500w-48v-20amp-autonomia-de-60km-musica-por-bluetooth-ba-56380700"
+    },
+    {
+      "titulo": "PATINETA MIDHA LITHIUM",
+      "url": "https://www.revolico.com/item/patineta-midha-lithium-56852363",
+      "marca": "MIDHA",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 850.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-midha-caracteristicas-500w-48v-20amp-autonomia-de-60km-musica-por-bluetooth-ba-56380700"
+    },
+    {
+      "titulo": "Patineta eléctrica G1 nuevas 380 usd",
+      "url": "https://www.revolico.com/item/patineta-electrica-g1-nuevas-380-usd-57691067",
+      "marca": "G1",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 380.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-g1-motor-500-w-bateria-36v-78ah-litio-autonomia-30-40-km-llanta-rin-85-otr-57639781"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA G1 flash",
+      "url": "https://www.revolico.com/item/patineta-electrica-g1-flash-57599409",
+      "marca": "G1",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 380.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-g1-motor-500-w-bateria-36v-78ah-litio-autonomia-30-40-km-llanta-rin-85-otr-57639781"
+    },
+    {
+      "titulo": "Patineta Electrica G1*🛴 k",
+      "url": "https://www.revolico.com/item/patineta-electrica-g1-k-57730041",
+      "marca": "G1",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 380.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-g1-motor-500-w-bateria-36v-78ah-litio-autonomia-30-40-km-llanta-rin-85-otr-57639781"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA JMD  ⚙️ESPECIFICACIONES  • 500w • ⁠48v  • ⁠20ah • ⁠Autonomía de 40km • ⁠Gomas Rin 10  • 750💵",
+      "url": "https://www.revolico.com/item/patineta-electrica-jmd-especificaciones-500w-48v-20ah-autonomia-de-40km-gomas-rin-10-750-57176461",
+      "marca": "JMD",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 750.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-jmd-especificaciones-500w-48v-20ah-autonomia-de-40km-gomas-rin-10-750usd-57305362"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA JMD🛴`  ⚙️𝐄𝐒𝐏𝐄𝐂𝐈𝐅𝐈𝐂𝐀𝐂𝐈𝐎𝐍𝐄𝐒 • 500w - 48v - 20ah • Autonomía: 40km por carga",
+      "url": "https://www.revolico.com/item/patineta-electrica-jmd-especificaciones-500w-48v-20ah-autonomia-40km-por-carga-57333019",
+      "marca": "JMD",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 750.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-jmd-especificaciones-500w-48v-20ah-autonomia-de-40km-gomas-rin-10-750usd-57305362"
+    },
+    {
+      "titulo": "Patinete eléctrica JMD 0km",
+      "url": "https://www.revolico.com/item/patinete-electrica-jmd-0km-57155548",
+      "marca": "JMD",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 750.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-jmd-especificaciones-500w-48v-20ah-autonomia-de-40km-gomas-rin-10-750usd-57305362"
+    },
+    {
+      "titulo": "🛴 PATINETA JMD – 500W – BATERÍA GEL 48V/20Ah – 40 KM AUTONOMÍA – $780 USD (🚛 TRANSPORTE INCLUIDO) ⚡",
+      "url": "https://www.revolico.com/item/patineta-jmd-500w-bateria-gel-48v20ah-40-km-autonomia-780-usd-transporte-incluido-56994497",
+      "marca": "JMD",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 780.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-jmd-especificaciones-500w-48v-20ah-autonomia-de-40km-gomas-rin-10-780-56868714"
+    },
+    {
+      "titulo": "Patineta electrica JMD moto electrica",
+      "url": "https://www.revolico.com/item/patineta-electrica-jmd-moto-electrica-57097786",
+      "marca": "JMD",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 780.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-jmd-especificaciones-500w-48v-20ah-autonomia-de-40km-gomas-rin-10-780-56868714"
+    },
+    {
+      "titulo": "`PATINETA ELÉCTRICA ORIS🛴`  ⚙️𝐄𝐒𝐏𝐄𝐂𝐈𝐅𝐈𝐂𝐀𝐂𝐈𝐎𝐍𝐄𝐒 • 500w - 48v - 20ah • Autonomía: 50km por carga •",
+      "url": "https://www.revolico.com/item/patineta-electrica-oris-especificaciones-500w-48v-20ah-autonomia-50km-por-carga-57332989",
+      "marca": "ORIS",
+      "motor_w": 500,
+      "autonomia_km": 50,
+      "precio_usd": 800.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-oris-800-500w-48v-20ah-autonomia-de-50-km-gomas-rin-10-full-luces-56582025"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA ORIS x 800 USD",
+      "url": "https://www.revolico.com/item/patineta-electrica-oris-x-800-usd-56653775",
+      "marca": "ORIS",
+      "motor_w": 500,
+      "autonomia_km": 50,
+      "precio_usd": 800.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-oris-800-500w-48v-20ah-autonomia-de-50-km-gomas-rin-10-full-luces-56582025"
+    },
+    {
+      "titulo": "🛴 ¡MOVILIDAD PRÁCTICA Y MODERNA! SCOOTER ELÉCTRICO WQ-W4 PRO (PLEGABLE) 🛴",
+      "url": "https://www.revolico.com/item/movilidad-practica-y-moderna-scooter-electrico-wq-w4-pro-plegable-55996610",
+      "marca": "WQ-W4",
+      "motor_w": 350,
+      "autonomia_km": 30,
+      "precio_usd": 340.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/scooter-electrico-wq-w4-pro-plegable-y-practico-para-ciudad-transporte-nuevo-garantia-5-videojuegoshabanacom-55961718"
+    },
+    {
+      "titulo": "🛴⚡ Scooter Eléctrico WQ-W4 Pro | Motor 350W | 30km autonomía | Plegable",
+      "url": "https://www.revolico.com/item/scooter-electrico-wq-w4-pro-motor-350w-30km-autonomia-plegable-55719443",
+      "marca": "WQ-W4",
+      "motor_w": 350,
+      "autonomia_km": 30,
+      "precio_usd": 340.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/scooter-electrico-wq-w4-pro-plegable-y-practico-para-ciudad-transporte-nuevo-garantia-5-videojuegoshabanacom-55961718"
+    },
+    {
+      "titulo": "🛴 PATINETA ELÉCTRICA LAITUNING – 500W – 48V/20Ah – 60 KM – $750 USD ⚡",
+      "url": "https://www.revolico.com/item/patineta-electrica-laituning-500w-48v20ah-60-km-750-usd-57639869",
+      "marca": "LAITUNING",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 750.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-laituning-especificaciones-motor-500w-48v-20ah-57333012"
+    },
+    {
+      "titulo": "Patineta electrica Laituning motico electrica moto",
+      "url": "https://www.revolico.com/item/patineta-electrica-laituning-motico-electrica-moto-57155791",
+      "marca": "LAITUNING",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 750.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-laituning-especificaciones-motor-500w-48v-20ah-57333012"
+    },
+    {
+      "titulo": "Patineta Eléctrica Roinside 350W – Características Generales 🛴 Motor eléctrico de 350 W de alto rendi",
+      "url": "https://www.revolico.com/item/patineta-electrica-roinside-350w-caracteristicas-generales-motor-electrico-de-350-w-de-alto-rendi-56614233",
+      "marca": "ROINSIDE",
+      "motor_w": 350,
+      "autonomia_km": 25,
+      "precio_usd": 350.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-roinside-350w-caracteristicas-generales-motor-electrico-de-350-w-de-alto-rendimiento-venta-haban-56698588"
+    },
+    {
+      "titulo": "Patineta Eléctrica Roinside 350W – Características Generales 🛴 Motor eléctrico de 350 W venta habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-roinside-350w-caracteristicas-generales-motor-electrico-de-350-w-venta-habana-56619148",
+      "marca": "ROINSIDE",
+      "motor_w": 350,
+      "autonomia_km": 25,
+      "precio_usd": 350.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-roinside-350w-caracteristicas-generales-motor-electrico-de-350-w-de-alto-rendimiento-venta-haban-56698588"
+    },
+    {
+      "titulo": "Patineta Eléctrica Roinside 350W – $ 350 USD ENVÍO INCLUIDO",
+      "url": "https://www.revolico.com/item/patineta-electrica-roinside-350w-350-usd-envio-incluido-56635324",
+      "marca": "ROINSIDE",
+      "motor_w": 350,
+      "autonomia_km": 25,
+      "precio_usd": 350.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-roinside-350w-caracteristicas-generales-motor-electrico-de-350-w-de-alto-rendimiento-venta-haban-56698588"
+    },
+    {
+      "titulo": "Patineta Eléctrica Roinside 350W – (ENVIO LIBRE DE COSTO)",
+      "url": "https://www.revolico.com/item/patineta-electrica-roinside-350w-envio-libre-de-costo-56863221",
+      "marca": "ROINSIDE",
+      "motor_w": 350,
+      "autonomia_km": 25,
+      "precio_usd": 350.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-roinside-350w-caracteristicas-generales-motor-electrico-de-350-w-de-alto-rendimiento-venta-haban-56698588"
+    },
+    {
+      "titulo": "Patineta Eléctrica Roinside 350W –",
+      "url": "https://www.revolico.com/item/patineta-electrica-roinside-350w-56730433",
+      "marca": "ROINSIDE",
+      "motor_w": 350,
+      "autonomia_km": 25,
+      "precio_usd": 350.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-roinside-350w-caracteristicas-generales-motor-electrico-de-350-w-de-alto-rendimiento-venta-haban-56698588"
+    },
+    {
+      "titulo": "PATINETA GT12",
+      "url": "https://www.revolico.com/item/patineta-gt12-56730635",
+      "marca": "GT12",
+      "motor_w": 650,
+      "autonomia_km": 50,
+      "precio_usd": 800.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-gt12rebajaaaa-patinete-gt12-motor650w-bateria48v101315175ah-caja-de-48v-autonomia-56730846"
+    },
+    {
+      "titulo": "Patinetas eléctricas CHALLENGER ELEGANT 0km",
+      "url": "https://www.revolico.com/item/patinetas-electricas-challenger-elegant-0km-57084243",
+      "marca": "CHALLENGER",
+      "motor_w": 500,
+      "autonomia_km": 50,
+      "precio_usd": 750.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patinetas-electricas-challenger-elegant-0km-motor-de-500w-bateria-de-48v20ah-autonomia-de-50km-velocidad-max-57151001"
+    },
+    {
+      "titulo": "Patinetas electricas Challenger elegant",
+      "url": "https://www.revolico.com/item/patinetas-electricas-challenger-elegant-57125124",
+      "marca": "CHALLENGER",
+      "motor_w": 500,
+      "autonomia_km": 50,
+      "precio_usd": 750.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patinetas-electricas-challenger-elegant-0km-motor-de-500w-bateria-de-48v20ah-autonomia-de-50km-velocidad-max-57151001"
+    },
+    {
+      "titulo": "🚲 WERHY Scooter Eléctrico Plegable H0 – 350W, 30 km/h, 19–26 km de autonomía",
+      "url": "https://www.revolico.com/item/werhy-scooter-electrico-plegable-h0-350w-30-kmh-1926-km-de-autonomia-55860806",
+      "marca": "H0",
+      "motor_w": 350,
+      "autonomia_km": 26,
+      "precio_usd": 340.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/werhy-scooter-electrico-plegable-h0-transporte-nuevo-garantia-5-videojuegoshabanacom-55961919"
+    },
+    {
+      "titulo": "🛴 ¡AGILIDAD Y DIVERSIÓN SOBRE RUEDAS! WERHY SCOOTER ELÉCTRICO PLEGABLE H0 🛴",
+      "url": "https://www.revolico.com/item/agilidad-y-diversion-sobre-ruedas-werhy-scooter-electrico-plegable-h0-55996642",
+      "marca": "H0",
+      "motor_w": 350,
+      "autonomia_km": 26,
+      "precio_usd": 340.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/werhy-scooter-electrico-plegable-h0-transporte-nuevo-garantia-5-videojuegoshabanacom-55961919"
+    },
+    {
+      "titulo": "📞53884600.🎇 🛴 WERHY Scooter Eléctrico Plegable H0🎇 Mensajería disponible.🚴",
+      "url": "https://www.revolico.com/item/53884600-werhy-scooter-electrico-plegable-h0-mensajeria-disponible-56151350",
+      "marca": "H0",
+      "motor_w": 350,
+      "autonomia_km": 26,
+      "precio_usd": 340.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/werhy-scooter-electrico-plegable-h0-transporte-nuevo-garantia-5-videojuegoshabanacom-55961919"
+    },
+    {
+      "titulo": "* WERHY Scooter Eléctrico Plegable H0. ROSA",
+      "url": "https://www.revolico.com/item/werhy-scooter-electrico-plegable-h0-rosa-56829154",
+      "marca": "H0",
+      "motor_w": 350,
+      "autonomia_km": 26,
+      "precio_usd": 340.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/werhy-scooter-electrico-plegable-h0-transporte-nuevo-garantia-5-videojuegoshabanacom-55961919"
+    },
+    {
+      "titulo": "🛴 WERHY Scooter Eléctrico Plegable H0",
+      "url": "https://www.revolico.com/item/werhy-scooter-electrico-plegable-h0-57729386",
+      "marca": "H0",
+      "motor_w": 350,
+      "autonomia_km": 26,
+      "precio_usd": 340.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/werhy-scooter-electrico-plegable-h0-transporte-nuevo-garantia-5-videojuegoshabanacom-55961919"
+    },
+    {
+      "titulo": "Patineta electrica plegable Sport",
+      "url": "https://www.revolico.com/item/patineta-electrica-plegable-sport-57808281",
+      "marca": "SPORT",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 500.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patinete-electrico-plegable-sport-potecia-500w-bateria-48v-10-ah-bateria-de-litio-antiexplosiva-57758101"
+    },
+    {
+      "titulo": "PATINETE ELÉCTRICO PLEGABLE SPORT",
+      "url": "https://www.revolico.com/item/patinete-electrico-plegable-sport-57807383",
+      "marca": "SPORT",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 500.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patinete-electrico-plegable-sport-potecia-500w-bateria-48v-10-ah-bateria-de-litio-antiexplosiva-57758101"
+    },
+    {
+      "titulo": "🛵PATINETA ELECTRICA JMD🤩*J",
+      "url": "https://www.revolico.com/item/patineta-electrica-jmdj-56945645",
+      "marca": "JMD",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 800.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-jmd-ver-detalle-en-la-descripcion-57145747"
+    },
+    {
+      "titulo": "PATINETA ELECTRICA JMD",
+      "url": "https://www.revolico.com/item/patineta-electrica-jmd-57794893",
+      "marca": "JMD",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 800.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-jmd-ver-detalle-en-la-descripcion-57145747"
+    },
+    {
+      "titulo": "Patineta jmd 800 usd",
+      "url": "https://www.revolico.com/item/patineta-jmd-800-usd-56735226",
+      "marca": "JMD",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 800.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-jmd-ver-detalle-en-la-descripcion-57145747"
+    },
+    {
+      "titulo": "Venta de Patineta Electrica marca CHALLENGER. 0km",
+      "url": "https://www.revolico.com/item/venta-de-patineta-electrica-marca-challenger-0km-57548438",
+      "marca": "CHALLENGER",
+      "motor_w": 500,
+      "autonomia_km": 50,
+      "precio_usd": 850.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-challenger-elegant-500w-50km-0km-850-usd-transporte-incluido-57345736"
+    },
+    {
+      "titulo": "Patineta eléctrica challenger Elegant 0km",
+      "url": "https://www.revolico.com/item/patineta-electrica-challenger-elegant-0km-57623611",
+      "marca": "CHALLENGER",
+      "motor_w": 500,
+      "autonomia_km": 50,
+      "precio_usd": 850.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-challenger-elegant-500w-50km-0km-850-usd-transporte-incluido-57345736"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA masterSONIC",
+      "url": "https://www.revolico.com/item/patineta-electrica-mastersonic-57589493",
+      "marca": "MASTERSONIC",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 750.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-mastersonic-500w60km-gel-ideal-para-la-ciudad-57619318"
+    },
+    {
+      "titulo": "Patineta Maf",
+      "url": "https://www.revolico.com/item/patineta-maf-57806319",
+      "marca": "MAF",
+      "motor_w": 350,
+      "autonomia_km": 60,
+      "precio_usd": 700.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-electrica-maf-potencia-35-57785119"
+    },
+    {
+      "titulo": "Patineta Lazer mastersonic",
+      "url": "https://www.revolico.com/item/patineta-lazer-mastersonic-57206425",
+      "marca": "LAZER",
+      "motor_w": 350,
+      "autonomia_km": 50,
+      "precio_usd": 800.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patinetas-electricas-lazer-0km-57084326"
+    },
+    {
+      "titulo": "Carriola eléctrica para adultos / scooter 'Joyhis' con asiento desmontable Color: GRIS 350W Litio 36V/5.2Ah RIN 8.5'",
+      "url": "https://www.revolico.com/item/carriola-electrica-para-adultos-scooter-joyhis-con-asiento-desmontable-color-gris-350w-litio-36v52ah-rin-85-57398468",
+      "marca": "JOYHIS",
+      "motor_w": 350,
+      "autonomia_km": 25,
+      "precio_usd": 370.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/carriola-electrica-para-adultos-scooter-joyhis-con-asiento-desmontable-color-gris-350w-litio-36v52ah-rin-85-nue-57438403"
+    },
+    {
+      "titulo": "Carriola eléctrica para adultos / scooter 'Joyhis' con asiento desmontable Color: Rosa 350W Litio 36V/5.2Ah RIN 8.5'",
+      "url": "https://www.revolico.com/item/carriola-electrica-para-adultos-scooter-joyhis-con-asiento-desmontable-color-rosa-350w-litio-36v52ah-rin-85-57398458",
+      "marca": "JOYHIS",
+      "motor_w": 350,
+      "autonomia_km": 25,
+      "precio_usd": 370.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/carriola-electrica-para-adultos-scooter-joyhis-con-asiento-desmontable-color-gris-350w-litio-36v52ah-rin-85-nue-57438403"
+    },
+    {
+      "titulo": "🛴 PATINETA JMD – 500W – BATERÍA GEL 48V/20Ah – +50 KM AUTONOMÍA – $800 USD ⚡",
+      "url": "https://www.revolico.com/item/patineta-jmd-500w-bateria-gel-48v20ah-50-km-autonomia-800-usd-56944036",
+      "marca": "JMD",
+      "motor_w": 500,
+      "autonomia_km": 50,
+      "precio_usd": 800.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-jmd-0km-500w-50-km-autonomia-800-usd-mensajeria-incluida-57346864"
+    },
+    {
+      "titulo": "🛵 PATINETA MAF 2026 - 350W/60km - LITIO - ¡PANTALLA DIGITAL!",
+      "url": "https://www.revolico.com/item/patineta-maf-2026-350w60km-litio-pantalla-digital-57723279",
+      "marca": "MAF",
+      "motor_w": 350,
+      "autonomia_km": 60,
+      "precio_usd": 750.0,
+      "motivo": "duplicado_mismo_modelo",
+      "duplicado_de": "https://www.revolico.com/item/patineta-maf-2026-350w-48v-bateria-lithium-50-60-km-pantalla-digital-y-frenos-de-banda-solo-750-usd-57703879"
+    }
+  ],
+  "descartados_recuperacion_incompleta": [
+    {
+      "titulo": "Scooters y Ventiladores Recargables",
+      "url": "https://www.revolico.com/item/scooters-y-ventiladores-recargables-56823802",
+      "motivo": "precio_no_util"
+    },
+    {
+      "titulo": "PATINETA ELECTRICA LAITUNIMG",
+      "url": "https://www.revolico.com/item/patineta-electrica-laitunimg-57232757",
+      "motivo": "sin_precio"
+    },
+    {
+      "titulo": "Patineta Eléctrica Roinside 350W – Características Generales 🛴 Motor eléctrico de 350 W de alto ,A 350 usd.",
+      "url": "https://www.revolico.com/item/patineta-electrica-roinside-350w-caracteristicas-generales-motor-electrico-de-350-w-de-alto-a-350-usd-56808362",
+      "motivo": "sin_precio"
+    },
+    {
+      "titulo": "Patineta Eléctrica Roinside 350W – Características Generales 🛴 Motor eléctrico de 350 ,A 350 usd.",
+      "url": "https://www.revolico.com/item/patineta-electrica-roinside-350w-caracteristicas-generales-motor-electrico-de-350-a-350-usd-56714659",
+      "motivo": "sin_precio"
+    },
+    {
+      "titulo": "Patineta Eléctrica Roinside 350W – Características Generales 🛴 Motor eléctrico de 350 W ,A 350 usd.a",
+      "url": "https://www.revolico.com/item/patineta-electrica-roinside-350w-caracteristicas-generales-motor-electrico-de-350-w-a-350-usda-56481746",
+      "motivo": "sin_precio"
+    },
+    {
+      "titulo": "Patineta Eléctrica VOLPAM 350W – Características Generales 🛴 Motor de 350 W de alto ,A 350 USD",
+      "url": "https://www.revolico.com/item/patineta-electrica-volpam-350w-caracteristicas-generales-motor-de-350-w-de-alto-a-350-usd-56425624",
+      "motivo": "sin_precio"
+    },
+    {
+      "titulo": "Patineta Eléctrica Roinside 350W – Características Generales 🛴 Motor eléctrico ,A 350 USD.",
+      "url": "https://www.revolico.com/item/patineta-electrica-roinside-350w-caracteristicas-generales-motor-electrico-a-350-usd-56425601",
+      "motivo": "sin_precio"
+    },
+    {
+      "titulo": "Se venden scooter o patineta electrica nuevas en caja a muy buen precio",
+      "url": "https://www.revolico.com/item/se-venden-scooter-o-patineta-electrica-nuevas-en-caja-a-muy-buen-precio-56678147",
+      "motivo": "sin_precio"
+    },
+    {
+      "titulo": "Patineta o carriola eléctrica",
+      "url": "https://www.revolico.com/item/patineta-o-carriola-electrica-57668111",
+      "motivo": "sin_marca"
+    },
+    {
+      "titulo": "Patinete Eléctrico Segway Ninebot ES4 ⚡ 30 km/h | Doble Batería",
+      "url": "https://www.revolico.com/item/patinete-electrico-segway-ninebot-es4-30-kmh-doble-bateria-57782870",
+      "motivo": "precio_no_util"
+    },
+    {
+      "titulo": "Patinete Eléctrico GT12",
+      "url": "https://www.revolico.com/item/patinete-electrico-gt12-56836774",
+      "motivo": "sin_precio"
+    },
+    {
+      "titulo": "*🛴PATINETE ELÉCTRICO PLEGABLE SPORT🛴*   ☑️ 650 W - 48 Volt - 10 Ah   ☑️ ⁠batería de litio antiexplosiva  ☑️ Hasta 40 k",
+      "url": "https://www.revolico.com/item/patinete-electrico-plegable-sport-650-w-48-volt-10-ah-bateria-de-litio-antiexplosiva-hasta-40-k-57426426",
+      "motivo": "sin_precio"
+    },
+    {
+      "titulo": "(GANGA) SCOOTER/CARRIOLA ELECTRICA NUEVA",
+      "url": "https://www.revolico.com/item/ganga-scootercarriola-electrica-nueva-57587692",
+      "motivo": "sin_marca"
+    },
+    {
+      "titulo": "Patinetas HALCÓN y Patineta Challeger  0km  ambas con Motor de 500w Batería GEL de 48v/20ah/",
+      "url": "https://www.revolico.com/item/patinetas-halcon-y-patineta-challeger-0km-ambas-con-motor-de-500w-bateria-gel-de-48v20ah-57085407",
+      "motivo": "precio_no_util"
+    },
+    {
+      "titulo": "`🛵 PATINETA CORLEONE 🛵`",
+      "url": "https://www.revolico.com/item/patineta-corleone-57795449",
+      "motivo": "sin_precio"
+    },
+    {
+      "titulo": "🛵 Scooter ( carriola electrica)",
+      "url": "https://www.revolico.com/item/scooter-carriola-electrica-57633638",
+      "motivo": "sin_marca"
+    },
+    {
+      "titulo": "PATINETAS  Eléctrica vedca 4209 D2",
+      "url": "https://www.revolico.com/item/patinetas-electrica-vedca-4209-d2-56970560",
+      "motivo": "sin_precio"
+    },
+    {
+      "titulo": "Itali scooter versión limitada",
+      "url": "https://www.revolico.com/item/itali-scooter-version-limitada-57628065",
+      "motivo": "es_moto_de_combustion"
+    },
+    {
+      "titulo": "Italika scooter combat",
+      "url": "https://www.revolico.com/item/italika-scooter-combat-56945771",
+      "motivo": "es_moto_de_combustion"
+    },
+    {
+      "titulo": "MISHOZUKI SCOOTER MOTO AUTOMÁTICA",
+      "url": "https://www.revolico.com/item/mishozuki-scooter-moto-automatica-56786284",
+      "motivo": "es_moto_de_combustion"
+    },
+    {
+      "titulo": "MOTO AUTOMÁTICA ITALY SCOOTER RX COMBAT 2026",
+      "url": "https://www.revolico.com/item/moto-automatica-italy-scooter-rx-combat-2026-57306460",
+      "motivo": "es_moto_de_combustion"
+    },
+    {
+      "titulo": "MOTO AUTOMÁTICA ITALY SCOOTER RX COMBAT   LIMITED EDITION",
+      "url": "https://www.revolico.com/item/moto-automatica-italy-scooter-rx-combat-limited-edition-57240659",
+      "motivo": "es_moto_de_combustion"
+    },
+    {
+      "titulo": "MOTO AUTOMÁTICA ITALY SCOOTER RX COMBAT 2026 ⚙️CARACTERÍSTICAS:  • 175 CC • 4 tiempos • Capacidad de 6 L • Autonomía de",
+      "url": "https://www.revolico.com/item/moto-automatica-italy-scooter-rx-combat-2026-caracteristicas-175-cc-4-tiempos-capacidad-de-6-l-autonomia-de-57146082",
+      "motivo": "es_moto_de_combustion"
+    },
+    {
+      "titulo": "MOTO AUTOMÁTICA ITALY SCOOTER RX COMBAT 2026(TRANSPORTE INCLUIDO )",
+      "url": "https://www.revolico.com/item/moto-automatica-italy-scooter-rx-combat-2026transporte-incluido-56909438",
+      "motivo": "es_moto_de_combustion"
+    },
+    {
+      "titulo": "MOTOS AUTOMÁTICA ITALY SCOOTER RX COMBAT🛵 2026",
+      "url": "https://www.revolico.com/item/motos-automatica-italy-scooter-rx-combat-2026-56900822",
+      "motivo": "es_moto_de_combustion"
+    },
+    {
+      "titulo": "MOTO AUTOMÁTICA MISHOZUKI SCOOTER con CHAPA",
+      "url": "https://www.revolico.com/item/moto-automatica-mishozuki-scooter-con-chapa-56798131",
+      "motivo": "es_moto_de_combustion"
+    },
+    {
+      "titulo": "MOTO AUTOMÁTICA MISHOZUKI SCOOTER [EM]",
+      "url": "https://www.revolico.com/item/moto-automatica-mishozuki-scooter-em-56633827",
+      "motivo": "es_moto_de_combustion"
+    },
+    {
+      "titulo": "Motos automáticas 🏍️ Italy Scooter Rx Combat 2026 . 175cc ... Nuevas 0km",
+      "url": "https://www.revolico.com/item/motos-automaticas-italy-scooter-rx-combat-2026-nuevas-0km-57027366",
+      "motivo": "es_moto_de_combustion"
+    },
+    {
+      "titulo": "🛴 PATINETA ELÉCTRICA MAF – 1200W – BATERÍA LITIO 48V/20Ah – $800 USD 🔋",
+      "url": "https://www.revolico.com/item/patineta-electrica-maf-1200w-bateria-litio-48v20ah-800-usd-57345614",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "PATINETAS ELÉCTRICAS MARCA JMD",
+      "url": "https://www.revolico.com/item/patinetas-electricas-marca-jmd-56372761",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "VENTA DE PATINETA ELECTRICA MIDHA [EM]",
+      "url": "https://www.revolico.com/item/venta-de-patineta-electrica-midha-ea-56632695",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "Oferta PATINETA ELÉCTRICA MIDHA",
+      "url": "https://www.revolico.com/item/oferta-patineta-electrica-midha-56641732",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "PATINETA MIDHA LITHIUM",
+      "url": "https://www.revolico.com/item/patineta-midha-lithium-56852363",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "Patineta eléctrica G1 nuevas 380 usd",
+      "url": "https://www.revolico.com/item/patineta-electrica-g1-nuevas-380-usd-57691067",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA G1 flash",
+      "url": "https://www.revolico.com/item/patineta-electrica-g1-flash-57599409",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "Patineta Electrica G1*🛴 k",
+      "url": "https://www.revolico.com/item/patineta-electrica-g1-k-57730041",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "Patinete eléctrica JMD 0km",
+      "url": "https://www.revolico.com/item/patinete-electrica-jmd-0km-57155548",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "Patineta electrica JMD moto electrica",
+      "url": "https://www.revolico.com/item/patineta-electrica-jmd-moto-electrica-57097786",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA ORIS x 800 USD",
+      "url": "https://www.revolico.com/item/patineta-electrica-oris-x-800-usd-56653775",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "🛴 ¡MOVILIDAD PRÁCTICA Y MODERNA! SCOOTER ELÉCTRICO WQ-W4 PRO (PLEGABLE) 🛴",
+      "url": "https://www.revolico.com/item/movilidad-practica-y-moderna-scooter-electrico-wq-w4-pro-plegable-55996610",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "Patineta Eléctrica Roinside 350W – Características Generales 🛴 Motor eléctrico de 350 W de alto rendi",
+      "url": "https://www.revolico.com/item/patineta-electrica-roinside-350w-caracteristicas-generales-motor-electrico-de-350-w-de-alto-rendi-56614233",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "Patineta Eléctrica Roinside 350W – Características Generales 🛴 Motor eléctrico de 350 W venta habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-roinside-350w-caracteristicas-generales-motor-electrico-de-350-w-venta-habana-56619148",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "Patineta Eléctrica Roinside 350W – $ 350 USD ENVÍO INCLUIDO",
+      "url": "https://www.revolico.com/item/patineta-electrica-roinside-350w-350-usd-envio-incluido-56635324",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "Patineta Eléctrica Roinside 350W – (ENVIO LIBRE DE COSTO)",
+      "url": "https://www.revolico.com/item/patineta-electrica-roinside-350w-envio-libre-de-costo-56863221",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "Patineta Eléctrica Roinside 350W –",
+      "url": "https://www.revolico.com/item/patineta-electrica-roinside-350w-56730433",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "PATINETA GT12",
+      "url": "https://www.revolico.com/item/patineta-gt12-56730635",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "Patinetas eléctricas CHALLENGER ELEGANT 0km",
+      "url": "https://www.revolico.com/item/patinetas-electricas-challenger-elegant-0km-57084243",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "🛴 ¡AGILIDAD Y DIVERSIÓN SOBRE RUEDAS! WERHY SCOOTER ELÉCTRICO PLEGABLE H0 🛴",
+      "url": "https://www.revolico.com/item/agilidad-y-diversion-sobre-ruedas-werhy-scooter-electrico-plegable-h0-55996642",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "📞53884600.🎇 🛴 WERHY Scooter Eléctrico Plegable H0🎇 Mensajería disponible.🚴",
+      "url": "https://www.revolico.com/item/53884600-werhy-scooter-electrico-plegable-h0-mensajeria-disponible-56151350",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "* WERHY Scooter Eléctrico Plegable H0. ROSA",
+      "url": "https://www.revolico.com/item/werhy-scooter-electrico-plegable-h0-rosa-56829154",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "🛴 WERHY Scooter Eléctrico Plegable H0",
+      "url": "https://www.revolico.com/item/werhy-scooter-electrico-plegable-h0-57729386",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "🛵PATINETA ELECTRICA JMD🤩*J",
+      "url": "https://www.revolico.com/item/patineta-electrica-jmdj-56945645",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "PATINETA ELECTRICA JMD",
+      "url": "https://www.revolico.com/item/patineta-electrica-jmd-57794893",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA masterSONIC",
+      "url": "https://www.revolico.com/item/patineta-electrica-mastersonic-57589493",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "Venta de Patineta Electrica marca CHALLENGER. 0km",
+      "url": "https://www.revolico.com/item/venta-de-patineta-electrica-marca-challenger-0km-57548438",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "PATINETE ELÉCTRICO PLEGABLE SPORT",
+      "url": "https://www.revolico.com/item/patinete-electrico-plegable-sport-57807383",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "Carriola eléctrica para adultos / scooter 'Joyhis' con asiento desmontable Color: GRIS 350W Litio 36V/5.2Ah RIN 8.5'",
+      "url": "https://www.revolico.com/item/carriola-electrica-para-adultos-scooter-joyhis-con-asiento-desmontable-color-gris-350w-litio-36v52ah-rin-85-57398468",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "Carriola eléctrica para adultos / scooter 'Joyhis' con asiento desmontable Color: Rosa 350W Litio 36V/5.2Ah RIN 8.5'",
+      "url": "https://www.revolico.com/item/carriola-electrica-para-adultos-scooter-joyhis-con-asiento-desmontable-color-rosa-350w-litio-36v52ah-rin-85-57398458",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "Patinetas eléctricas marca Midha Lithium . Nuevas a estrenar por usted.",
+      "url": "https://www.revolico.com/item/patinetas-electricas-marca-midha-lithium-nuevas-a-estrenar-por-usted-56817415",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "Patineta electrica Laituning motico electrica moto",
+      "url": "https://www.revolico.com/item/patineta-electrica-laituning-motico-electrica-moto-57155791",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "Patinetas electricas Challenger elegant",
+      "url": "https://www.revolico.com/item/patinetas-electricas-challenger-elegant-57125124",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "Patineta electrica plegable Sport",
+      "url": "https://www.revolico.com/item/patineta-electrica-plegable-sport-57808281",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "Patineta jmd 800 usd",
+      "url": "https://www.revolico.com/item/patineta-jmd-800-usd-56735226",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "Patineta eléctrica challenger Elegant 0km",
+      "url": "https://www.revolico.com/item/patineta-electrica-challenger-elegant-0km-57623611",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "Patineta Maf",
+      "url": "https://www.revolico.com/item/patineta-maf-57806319",
+      "motivo": "sin_ubicacion"
+    },
+    {
+      "titulo": "Patineta Lazer mastersonic",
+      "url": "https://www.revolico.com/item/patineta-lazer-mastersonic-57206425",
+      "motivo": "sin_ubicacion"
+    }
+  ],
+  "campos": [
+    "titulo",
+    "marca",
+    "motor_w",
+    "autonomia_km",
+    "precio_usd",
+    "ubicacion",
+    "url",
+    "fecha_publicacion",
+    "municipio"
+  ],
+  "anuncios": [
+    {
+      "titulo": "Carriola eléctrica para adultos / scooter 'Joyhis' con asiento desmontable Color: GRIS 350W Litio 36V/5.2Ah RIN 8.5' NUE",
+      "marca": "JOYHIS",
+      "motor_w": 350,
+      "autonomia_km": 25,
+      "precio_usd": 370.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/carriola-electrica-para-adultos-scooter-joyhis-con-asiento-desmontable-color-gris-350w-litio-36v52ah-rin-85-nue-57438403",
+      "fecha_publicacion": "2026-09-14",
+      "municipio": "Plaza"
+    },
+    {
+      "titulo": "Carriola eléctrica para adultos / scooter 'NAVIC' MOD. T3 350W (Litio 36V/7.8Ah) RIN 8.5' 30Km/Hr (hasta 30km distancia)",
+      "marca": "NAVIC",
+      "motor_w": 350,
+      "autonomia_km": 30,
+      "precio_usd": 370.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/carriola-electrica-para-adultos-scooter-navic-mod-t3-350w-litio-36v78ah-rin-85-30kmhr-hasta-30km-distancia-57398253",
+      "fecha_publicacion": "2026-09-12",
+      "municipio": "Plaza"
+    },
+    {
+      "titulo": "La Poderosa Patineta G1🛴",
+      "marca": "G1",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 330.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/la-poderosa-patineta-g1-57716424",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "MIDHA Patineta eléctrica ⚡🔋 Vic",
+      "marca": "MIDHA",
+      "motor_w": 500,
+      "autonomia_km": 70,
+      "precio_usd": 870.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/midha-patineta-electrica-vic-55866621",
+      "fecha_publicacion": "2026-09-06",
+      "municipio": "Marianao"
+    },
+    {
+      "titulo": "*MOTICO / PATINETA MIDHA LITHIUM 🛵*",
+      "marca": "MIDHA",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 840.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/motico-patineta-midha-lithium-56789113",
+      "fecha_publicacion": "2026-08-22",
+      "municipio": "Diez de Octubre"
+    },
+    {
+      "titulo": "🛴 NAVIC T3 – Scooter Eléctrico Profesional 350W",
+      "marca": "NAVIC",
+      "motor_w": 350,
+      "autonomia_km": 33,
+      "precio_usd": 370.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/navic-t3-scooter-electrico-profesional-350w-55802462",
+      "fecha_publicacion": "2026-08-04",
+      "municipio": "Plaza"
+    },
+    {
+      "titulo": "ORIS PATINETA ELÉCTRICA ⚡ Vic",
+      "marca": "ORIS",
+      "motor_w": 500,
+      "autonomia_km": 50,
+      "precio_usd": 760.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/oris-patineta-electrica-vic-56108976",
+      "fecha_publicacion": "2026-09-06",
+      "municipio": "Marianao"
+    },
+    {
+      "titulo": "PATINETA biciclera ELÉCTRICA MIDHA",
+      "marca": "MIDHA",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 860.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-biciclera-electrica-midha-56157060",
+      "fecha_publicacion": "2026-09-15",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "Patineta Caroma",
+      "marca": "CAROMA",
+      "motor_w": null,
+      "autonomia_km": 50,
+      "precio_usd": 530.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-caroma-57562938",
+      "fecha_publicacion": "2026-09-20",
+      "municipio": "Plaza"
+    },
+    {
+      "titulo": "Patineta Challenger",
+      "marca": "CHALLENGER",
+      "motor_w": null,
+      "autonomia_km": 50,
+      "precio_usd": 800.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-challenger-56656516",
+      "fecha_publicacion": "2026-08-06",
+      "municipio": "Guanabacoa"
+    },
+    {
+      "titulo": "🛴 PATINETA CHALLENGER ELEGANT – 500W – 50KM – 0KM – $850 USD (🚛 TRANSPORTE INCLUIDO) ⚡",
+      "marca": "CHALLENGER",
+      "motor_w": 500,
+      "autonomia_km": 50,
+      "precio_usd": 850.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-challenger-elegant-500w-50km-0km-850-usd-transporte-incluido-57345736",
+      "fecha_publicacion": "2026-09-10",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "🛵 PATINETA CORLEONE – 500W – 60V/20Ah – 60 KM – $820 USD ⚡",
+      "marca": "CORLEONE",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 820.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-corleone-500w-60v20ah-60-km-820-usd-57720171",
+      "fecha_publicacion": "2026-09-27",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "Patineta Eléctrica CALLENGER",
+      "marca": "CHALLENGER",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 780.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-callenger-57595502",
+      "fecha_publicacion": "2026-09-21",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "Patineta Electrica Challenger",
+      "marca": "CHALLENGER",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 780.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-challenger-57434208",
+      "fecha_publicacion": "2026-09-14",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "Patineta electrica CHALLENGER PROTENZZA",
+      "marca": "CHALLENGER",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 860.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-challenger-protenzza-56199208",
+      "fecha_publicacion": "2026-09-29",
+      "municipio": "La Lisa"
+    },
+    {
+      "titulo": "🛴 PATINETA ELÉCTRICA G1 – 500W – 36V/7.8Ah – 30-40 KM – $420 USD ⚡",
+      "marca": "G1",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 420.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-g1-500w-36v78ah-30-40-km-420-usd-57793048",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "*Patineta Electrica G1*🛵",
+      "marca": "G1",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 360.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-g1-57795857",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Habana Vieja"
+    },
+    {
+      "titulo": "🛵*Patineta Electrica G1*🛵  ✅ Motor: 500 W ✅ Batería: 36V-7.8Ah ( Litio ) ✅ Autonomía: 30-40 Km ✅ Llanta: Rin 8.5 ✅ Otr",
+      "marca": "G1",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 380.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-g1-motor-500-w-bateria-36v-78ah-litio-autonomia-30-40-km-llanta-rin-85-otr-57639781",
+      "fecha_publicacion": "2026-09-23T18:51:26.230Z",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "*🛴 Patineta Electrica G1*🛴PRECIO 👉 400 USD",
+      "marca": "G1",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 400.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-g1precio-400-usd-57785810",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Diez de Octubre"
+    },
+    {
+      "titulo": "🛵⚡ ¡PATINETA ELÉCTRICA GANGA 500W! ECONÓMICA, PRÁCTICA Y LISTA PARA RODAR ⚡🛵",
+      "marca": "GANGA",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 700.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-ganga-500w-economica-practica-y-lista-para-rodar-56307053",
+      "fecha_publicacion": "2026-09-10",
+      "municipio": "Arroyo Naranjo"
+    },
+    {
+      "titulo": "PATINETA ELECTRICA GANGA",
+      "marca": "GANGA",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 850.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-ganga-56694569",
+      "fecha_publicacion": "2026-08-08",
+      "municipio": "Plaza"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA GANGA  ⚙️ESPECIFICACIONES  • 500w • ⁠48v  • ⁠20ah • ⁠Autonomía de 40km • ⁠Gomas Rin 10  • ⁠Full Luces",
+      "marca": "GANGA",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 700.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-ganga-especificaciones-500w-48v-20ah-autonomia-de-40km-gomas-rin-10-full-luces-56380764",
+      "fecha_publicacion": "2026-09-17T17:14:42.230Z",
+      "municipio": "Diez de Octubre"
+    },
+    {
+      "titulo": "Patineta Eléctrica GT12",
+      "marca": "GT12",
+      "motor_w": 650,
+      "autonomia_km": 30,
+      "precio_usd": 650.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-gt12-57715452",
+      "fecha_publicacion": "2026-09-27",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "🛴 PATINETA ELÉCTRICA GT12 – 650W – 48V – 25-30 KM – $670 USD ⚡",
+      "marca": "GT12",
+      "motor_w": 650,
+      "autonomia_km": 30,
+      "precio_usd": 670.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-gt12-650w-48v-25-30-km-670-usd-57389214",
+      "fecha_publicacion": "2026-09-12T15:30:09.073Z",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "PATINETA ELECTRICA GT12Rebajaaaa!!! Patinete GT12 🔋motor:650w 🔋batería:48v/10/13/15/17.5Ah 🔋caja de 48v 🔋autonomía:",
+      "marca": "GT12",
+      "motor_w": 650,
+      "autonomia_km": 50,
+      "precio_usd": 800.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-gt12rebajaaaa-patinete-gt12-motor650w-bateria48v101315175ah-caja-de-48v-autonomia-56730846",
+      "fecha_publicacion": "2026-08-10T15:00:37.361Z",
+      "municipio": "Plaza"
+    },
+    {
+      "titulo": "Patineta eléctrica Halcon",
+      "marca": "HALCON",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 770.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-halcon-57800414",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "`🛵 PATINETA ELÉCTRICA HALCÓN 🛵`  ⚙️ESPECIFICACIONES • 500w - 48v - 20ah • ⁠batería de GEL • ⁠autonomía de 60 km • ⁠🎁I",
+      "marca": "HALCÓN",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 820.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-halcon-especificaciones-500w-48v-20ah-bateria-de-gel-autonomia-de-60-km-i-56533271",
+      "fecha_publicacion": "2026-07-28T22:28:32.648Z",
+      "municipio": "Plaza"
+    },
+    {
+      "titulo": "Patineta electrica JDM",
+      "marca": "JDM",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 780.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-jdm-57505804",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Boyeros"
+    },
+    {
+      "titulo": "Patineta electrica JMD  0km",
+      "marca": "JMD",
+      "motor_w": 500,
+      "autonomia_km": 50,
+      "precio_usd": 780.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-jmd-0km-57207176",
+      "fecha_publicacion": "2026-09-04",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "🛴 PATINETA ELÉCTRICA JMD – 500W – 48V/20Ah – 40 KM – $770 USD ⚡",
+      "marca": "JMD",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 770.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-jmd-500w-48v20ah-40-km-770-usd-57387869",
+      "fecha_publicacion": "2026-09-12T14:38:59.942Z",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA JMD  ⚙️ESPECIFICACIONES  • 500w • ⁠48v  • ⁠20ah • ⁠Autonomía de 40km • ⁠Gomas Rin 10  • ⁠750USD",
+      "marca": "JMD",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 750.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-jmd-especificaciones-500w-48v-20ah-autonomia-de-40km-gomas-rin-10-750usd-57305362",
+      "fecha_publicacion": "2026-09-09T01:16:19.757Z",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA JMD  ⚙️ESPECIFICACIONES  • 500w • ⁠48v  • ⁠20ah • ⁠Autonomía de 40km • ⁠Gomas Rin 10  780",
+      "marca": "JMD",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 780.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-jmd-especificaciones-500w-48v-20ah-autonomia-de-40km-gomas-rin-10-780-56868714",
+      "fecha_publicacion": "2026-09-17T17:15:10.974Z",
+      "municipio": "Diez de Octubre"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA JMD  ⚙️ESPECIFICACIONES  • 500w • ⁠48v  • ⁠20ah • ⁠Autonomía de 40km • ⁠Gomas Rin 10  • ⁠Full Luces L",
+      "marca": "JMD",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 800.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-jmd-especificaciones-500w-48v-20ah-autonomia-de-40km-gomas-rin-10-full-luces-l-56380784",
+      "fecha_publicacion": "2026-09-17T17:14:43.505Z",
+      "municipio": "Diez de Octubre"
+    },
+    {
+      "titulo": "*PATINETA ELECTRICA JMD*  ⚙️ Especificaciones: • Motor: 500 W • Voltaje: 48 V • Batería: 20 Ah • 🔋 Autonomía: 60 km • ⁠",
+      "marca": "JMD",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 650.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-jmd-especificaciones-motor-500-w-voltaje-48-v-bateria-20-ah-autonomia-60-km-57758497",
+      "fecha_publicacion": "2026-09-29",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "*〽️PATINETA ELECTRICA JMD〽️*  ⚙️ Especificaciones: • Motor: 500 W • Voltaje: 48 V • Batería: 20 Ah • ⁠Traen bluetooh 🔉",
+      "marca": "JMD",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 780.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-jmd-especificaciones-motor-500-w-voltaje-48-v-bateria-20-ah-traen-bluetooh-57149694",
+      "fecha_publicacion": "2026-09-01T22:05:21.847Z",
+      "municipio": "Plaza"
+    },
+    {
+      "titulo": "Patineta electrica JMD moto electrica motico",
+      "marca": "JMD",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 720.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-jmd-moto-electrica-motico-57119407",
+      "fecha_publicacion": "2026-08-31",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "Patineta eléctrica JMD ver detalle en la descripción",
+      "marca": "JMD",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 800.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-jmd-ver-detalle-en-la-descripcion-57145747",
+      "fecha_publicacion": "2026-09-01",
+      "municipio": "San Miguel del Padrón"
+    },
+    {
+      "titulo": "🛴 PATINETA ELÉCTRICA LAITUNING – 0KM – 500W – BATERÍA GEL 48V/20Ah – $800 USD ⚡",
+      "marca": "LAITUNING",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 800.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-laituning-0km-500w-bateria-gel-48v20ah-800-usd-57348309",
+      "fecha_publicacion": "2026-09-10",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "🛴 PATINETA ELÉCTRICA LAITUNING – 500W – 48V/20Ah – 60 KM – $770 USD ⚡",
+      "marca": "LAITUNING",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 770.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-laituning-500w-48v20ah-60-km-770-usd-57387757",
+      "fecha_publicacion": "2026-09-12T14:35:02.400Z",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "Patineta Eléctrica Laituning",
+      "marca": "LAITUNING",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 700.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-laituning-57767977",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Plaza"
+    },
+    {
+      "titulo": "`PATINETA ELÉCTRICA LAITUNING🛴`  ⚙️𝐄𝐒𝐏𝐄𝐂𝐈𝐅𝐈𝐂𝐀𝐂𝐈𝐎𝐍𝐄𝐒 • Motor 500w • 48v - 20ah",
+      "marca": "LAITUNING",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 750.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-laituning-especificaciones-motor-500w-48v-20ah-57333012",
+      "fecha_publicacion": "2026-09-24",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "Patineta electrica laitunnig",
+      "marca": "LAITUNING",
+      "motor_w": null,
+      "autonomia_km": 60,
+      "precio_usd": 750.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-laitunnig-57532962",
+      "fecha_publicacion": "2026-09-18",
+      "municipio": "Marianao"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA MAF",
+      "marca": "MAF",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 800.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-maf-57807540",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA MAF  ⚙️ CARACTERÍSTICAS:   • 1200 Wats  • 48 Volt • 20 Amperes  • Autonomía de 50-60 km • ⁠Pantalla D",
+      "marca": "MAF",
+      "motor_w": 1200,
+      "autonomia_km": 60,
+      "precio_usd": 800.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-maf-caracteristicas-1200-wats-48-volt-20-amperes-autonomia-de-50-60-km-pantalla-d-57170787",
+      "fecha_publicacion": "2026-09-02T23:17:30.824Z",
+      "municipio": "Arroyo Naranjo"
+    },
+    {
+      "titulo": "🛴 PATINETA ELÉCTRICA MAF 🛴*   ☑️Potencia 35",
+      "marca": "MAF",
+      "motor_w": 350,
+      "autonomia_km": 60,
+      "precio_usd": 700.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-maf-potencia-35-57785119",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "*🛴 PATINETA ELÉCTRICA MAF 🛴*   ☑️Potencia 500w  ☑️Bateria 48v - 20ah lithium  ☑️Autonomía: 50-60km por carga ☑️Pantall",
+      "marca": "MAF",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 700.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-maf-potencia-500w-bateria-48v-20ah-lithium-autonomia-50-60km-por-carga-pantall-57640878",
+      "fecha_publicacion": "2026-09-23T19:50:12.127Z",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "Patineta eléctrica marca Ganga",
+      "marca": "GANGA",
+      "motor_w": 700,
+      "autonomia_km": 60,
+      "precio_usd": 670.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-marca-ganga-57735457",
+      "fecha_publicacion": "2026-09-29",
+      "municipio": "Habana Vieja"
+    },
+    {
+      "titulo": "Patineta Electrica MIDHA",
+      "marca": "MIDHA",
+      "motor_w": 800,
+      "autonomia_km": 70,
+      "precio_usd": 860.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-midha-57070727",
+      "fecha_publicacion": "2026-08-28",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "Patineta eléctrica Midha 850 usd",
+      "marca": "MIDHA",
+      "motor_w": 800,
+      "autonomia_km": 70,
+      "precio_usd": 850.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-midha-850-usd-56735291",
+      "fecha_publicacion": "2026-08-10",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA MIDHA    ⚙️CARACTERÍSTICAS :   • 500w - 48v - 20amp • autonomía de 60km • ⁠música por Bluetooth",
+      "marca": "MIDHA",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 930.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-midha-caracteristicas-500w-48v-20amp-autonomia-de-60km-musica-por-bluetooth-56208401",
+      "fecha_publicacion": "2026-09-17T15:10:02.963Z",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA MIDHA    ⚙️CARACTERÍSTICAS :   • 500w - 48v - 20amp • autonomía de 60km • ⁠música por Bluetooth  🔋BA",
+      "marca": "MIDHA",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 850.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-midha-caracteristicas-500w-48v-20amp-autonomia-de-60km-musica-por-bluetooth-ba-56380700",
+      "fecha_publicacion": "2026-09-17",
+      "municipio": "Diez de Octubre"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA MIDHA    ⚙️CARACTERÍSTICAS :   • 800w - 48v - 20amp • autonomía de 60km • ⁠música por Bluetooth 850💵",
+      "marca": "MIDHA",
+      "motor_w": 800,
+      "autonomia_km": 60,
+      "precio_usd": 850.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-midha-caracteristicas-800w-48v-20amp-autonomia-de-60km-musica-por-bluetooth-850-56868663",
+      "fecha_publicacion": "2026-09-17T17:15:10.832Z",
+      "municipio": "Diez de Octubre"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA MIDHA  ⚙️ESPECIFICACIONES • 🔋 batería de LITIO • 500w - 48v - 20ah • ⁠",
+      "marca": "MIDHA",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 860.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-midha-especificaciones-bateria-de-litio-500w-48v-20ah-56434436",
+      "fecha_publicacion": "2026-09-17",
+      "municipio": "Diez de Octubre"
+    },
+    {
+      "titulo": "Patineta electrica Midha moto electrica motico",
+      "marca": "MIDHA",
+      "motor_w": null,
+      "autonomia_km": 60,
+      "precio_usd": 850.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-midha-moto-electrica-motico-57098372",
+      "fecha_publicacion": "2026-08-30",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "🛴 PATINETA ELÉCTRICA ORIS – 500W – 48V/20Ah – 50 KM – $820 USD ⚡",
+      "marca": "ORIS",
+      "motor_w": 500,
+      "autonomia_km": 50,
+      "precio_usd": 820.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-oris-500w-48v20ah-50-km-820-usd-57387614",
+      "fecha_publicacion": "2026-09-12T14:30:58.108Z",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA ORIS",
+      "marca": "ORIS",
+      "motor_w": 500,
+      "autonomia_km": 50,
+      "precio_usd": 750.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-oris-57244418",
+      "fecha_publicacion": "2026-09-06",
+      "municipio": "Arroyo Naranjo"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA ORIS  ⚙️$760  • 500w • ⁠48v  • ⁠20ah • ⁠Autonomía de 50 km • ⁠Gomas Rin 10  • ⁠Full Luces",
+      "marca": "ORIS",
+      "motor_w": 500,
+      "autonomia_km": 50,
+      "precio_usd": 760.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-oris-760-500w-48v-20ah-autonomia-de-50-km-gomas-rin-10-full-luces-56833722",
+      "fecha_publicacion": "2026-09-15T22:48:07.896Z",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA ORIS $800 500w • ⁠48v  • ⁠20ah • ⁠Autonomía de 50 km • ⁠Gomas Rin 10  • ⁠Full Luces",
+      "marca": "ORIS",
+      "motor_w": 500,
+      "autonomia_km": 50,
+      "precio_usd": 800.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-oris-800-500w-48v-20ah-autonomia-de-50-km-gomas-rin-10-full-luces-56582025",
+      "fecha_publicacion": "2026-09-15T22:47:44.544Z",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA ORIS  ⚙️ESPECIFICACIONES  • 500 WATS  • ⁠48 VOLT  • ⁠20 AH  • ⁠Autonomía de 50-60 km 800💵",
+      "marca": "ORIS",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 800.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-oris-especificaciones-500-wats-48-volt-20-ah-autonomia-de-50-60-km-800-56868735",
+      "fecha_publicacion": "2026-09-17T17:15:11.211Z",
+      "municipio": "Diez de Octubre"
+    },
+    {
+      "titulo": "*🛴 PATINETA ELÉCTRICA ORIS 🛴*  ☑️ Potencia 500w ☑️ Bateria 48v 20ah ☑️ Autonomía de 50 km ☑️ Gomas Rin 10  ☑️ Full Luc",
+      "marca": "ORIS",
+      "motor_w": 500,
+      "autonomia_km": 50,
+      "precio_usd": 830.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-oris-potencia-500w-bateria-48v-20ah-autonomia-de-50-km-gomas-rin-10-full-luc-56793309",
+      "fecha_publicacion": "2026-08-13T21:07:51.572Z",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "Patineta electrica plegable w4 pro",
+      "marca": "WQ-W4",
+      "motor_w": null,
+      "autonomia_km": 35,
+      "precio_usd": 360.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-plegable-w4-pro-57426758",
+      "fecha_publicacion": "2026-09-14",
+      "municipio": "Habana Vieja"
+    },
+    {
+      "titulo": "Patineta Eléctrica Pryna 2026",
+      "marca": "PRYNA",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 850.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-pryna-2026-54349867",
+      "fecha_publicacion": "2026-09-29",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "Patineta Eléctrica Roinside 350W – Características Generales 🛴 Motor eléctrico de 350 W de alto rendimiento venta haban",
+      "marca": "ROINSIDE",
+      "motor_w": 350,
+      "autonomia_km": 25,
+      "precio_usd": 350.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-roinside-350w-caracteristicas-generales-motor-electrico-de-350-w-de-alto-rendimiento-venta-haban-56698588",
+      "fecha_publicacion": "2026-08-08T17:02:57.362Z",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "Patineta Eléctrica Roinside 350W*ElectroVentas",
+      "marca": "ROINSIDE",
+      "motor_w": 350,
+      "autonomia_km": 25,
+      "precio_usd": 370.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-roinside-350welectroventas-56754429",
+      "fecha_publicacion": "2026-09-29",
+      "municipio": "Marianao"
+    },
+    {
+      "titulo": "PATINETA ELÉCTRICA UNIZUKI",
+      "marca": "UNIZUKI",
+      "motor_w": 500,
+      "autonomia_km": 65,
+      "precio_usd": 800.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-unizuki-57244467",
+      "fecha_publicacion": "2026-09-06",
+      "municipio": "Arroyo Naranjo"
+    },
+    {
+      "titulo": "Patineta electrica VEDCA",
+      "marca": "VEDCA",
+      "motor_w": null,
+      "autonomia_km": 80,
+      "precio_usd": 1250.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-vedca-55657406",
+      "fecha_publicacion": "2026-09-25",
+      "municipio": "Plaza"
+    },
+    {
+      "titulo": "Patineta eléctrica waryoa",
+      "marca": "WARYOA",
+      "motor_w": 500,
+      "autonomia_km": 35,
+      "precio_usd": 550.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-waryoa-57562981",
+      "fecha_publicacion": "2026-09-20",
+      "municipio": "Plaza"
+    },
+    {
+      "titulo": "Patineta eléctricas LAITUNING 0km",
+      "marca": "LAITUNING",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 640.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electricas-laituning-0km-57621877",
+      "fecha_publicacion": "2026-09-23",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "🛴 PATINETA JMD – 0KM – 500W – +50 KM AUTONOMÍA – $800 USD (🚛 MENSAJERÍA INCLUIDA) ⚡",
+      "marca": "JMD",
+      "motor_w": 500,
+      "autonomia_km": 50,
+      "precio_usd": 800.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-jmd-0km-500w-50-km-autonomia-800-usd-mensajeria-incluida-57346864",
+      "fecha_publicacion": "2026-09-10",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "Patineta JMD Fenix",
+      "marca": "JMD",
+      "motor_w": 1000,
+      "autonomia_km": 70,
+      "precio_usd": 1020.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-jmd-fenix-56659835",
+      "fecha_publicacion": "2026-08-08",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "Patineta jmd fenyx 1000 usd",
+      "marca": "JMD",
+      "motor_w": 1000,
+      "autonomia_km": 70,
+      "precio_usd": 1000.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-jmd-fenyx-1000-usd-56735245",
+      "fecha_publicacion": "2026-08-10",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "Patineta LAITUNING",
+      "marca": "LAITUNING",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 780.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-laituning-57434130",
+      "fecha_publicacion": "2026-09-14",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "🛴 PATINETA LAZER MASTERSONIC 0KM – 500W – 50 KM – $750 USD ⚡",
+      "marca": "LAZER",
+      "motor_w": 500,
+      "autonomia_km": 50,
+      "precio_usd": 750.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-lazer-mastersonic-0km-500w-50-km-750-usd-57717840",
+      "fecha_publicacion": "2026-09-27",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "Patineta Lazer Mastersonic 0km",
+      "marca": "LAZER",
+      "motor_w": 350,
+      "autonomia_km": 50,
+      "precio_usd": 750.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-lazer-mastersonic-0km-57564555",
+      "fecha_publicacion": "2026-09-20",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "⚡🛴 Patineta MAF 2026: 350W, 48V, batería lithium, 50-60 km, pantalla digital y frenos de banda. ¡Solo 750 USD! 🔥🔑",
+      "marca": "MAF",
+      "motor_w": 350,
+      "autonomia_km": 60,
+      "precio_usd": 750.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-maf-2026-350w-48v-bateria-lithium-50-60-km-pantalla-digital-y-frenos-de-banda-solo-750-usd-57703879",
+      "fecha_publicacion": "2026-09-26",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "PATINETA MAF 2026",
+      "marca": "MAF",
+      "motor_w": null,
+      "autonomia_km": 60,
+      "precio_usd": 750.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-maf-2026-57701018",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "PATINETA MAF 2026 transporte gratis para la Habana y ARTEMISA",
+      "marca": "MAF",
+      "motor_w": null,
+      "autonomia_km": 60,
+      "precio_usd": 780.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-maf-2026-transporte-gratis-para-la-habana-y-artemisa-57713222",
+      "fecha_publicacion": "2026-09-27",
+      "municipio": "La Lisa"
+    },
+    {
+      "titulo": "🛵 PATINETA masterSONIC - 500W/60km - GEL - ¡IDEAL PARA LA CIUDAD!",
+      "marca": "LAZER",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 750.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-mastersonic-500w60km-gel-ideal-para-la-ciudad-57619318",
+      "fecha_publicacion": "2026-09-29",
+      "municipio": "Diez de Octubre"
+    },
+    {
+      "titulo": "🛴 PATINETA MIDHA 0KM – 500W – BATERÍA LIFEPO4 – AUTONOMÍA 70KM – $870 USD ⚡",
+      "marca": "MIDHA",
+      "motor_w": 500,
+      "autonomia_km": 70,
+      "precio_usd": 870.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-midha-0km-500w-bateria-lifepo4-autonomia-70km-870-usd-56718515",
+      "fecha_publicacion": "2026-08-09",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "🛴 PATINETA MIDHA LITHIUM – 500W – BATERÍA LITIO 48V/20Ah – 60 KM AUTONOMÍA – $870 USD ⚡",
+      "marca": "MIDHA",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 870.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-midha-lithium-500w-bateria-litio-48v20ah-60-km-autonomia-870-usd-56944083",
+      "fecha_publicacion": "2026-08-21",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "Patineta Oris",
+      "marca": "ORIS",
+      "motor_w": 500,
+      "autonomia_km": 60,
+      "precio_usd": 850.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-oris-57070693",
+      "fecha_publicacion": "2026-08-28",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "Patinetas CAROMA 0km",
+      "marca": "CAROMA",
+      "motor_w": null,
+      "autonomia_km": 50,
+      "precio_usd": 530.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinetas-caroma-0km-57518983",
+      "fecha_publicacion": "2026-09-18",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "Patinetas CAROMA",
+      "marca": "CAROMA",
+      "motor_w": null,
+      "autonomia_km": 50,
+      "precio_usd": 530.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinetas-caroma-57473652",
+      "fecha_publicacion": "2026-09-16",
+      "municipio": "Diez de Octubre"
+    },
+    {
+      "titulo": "PATINETAS  Eléctrica vedca 4209 D2  ✅Motor de 500W ✅Velocidad máxima de hasta 35 km/h. ✅Batería de lithio LiFePO4 48V /",
+      "marca": "VEDCA",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 750.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinetas-electrica-vedca-4209-d2-motor-de-500wvelocidad-maxima-de-hasta-35-kmh-bateria-de-lithio-lifepo4-48v-56964121",
+      "fecha_publicacion": "2026-08-22",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "*Patinetas Eléctricas CHALLENGER ELEGANT 0km $780 Motor de 500w ☑️Batería de 48v/20ah ☑️Autonomía de 50km ☑️Velocidad",
+      "marca": "CHALLENGER",
+      "motor_w": 500,
+      "autonomia_km": 50,
+      "precio_usd": 780.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinetas-electricas-challenger-elegant-0km-780-motor-de-500w-bateria-de-48v20ah-autonomia-de-50km-velocidad-57426571",
+      "fecha_publicacion": "2026-09-15",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "🛴Patinetas Eléctricas CHALLENGER ELEGANT 0km🛴  ✅Motor de 500w ✅Batería de 48v/20ah ✅Autonomía de 50km ✅Velocidad Máx:",
+      "marca": "CHALLENGER",
+      "motor_w": 500,
+      "autonomia_km": 50,
+      "precio_usd": 750.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinetas-electricas-challenger-elegant-0km-motor-de-500w-bateria-de-48v20ah-autonomia-de-50km-velocidad-max-57151001",
+      "fecha_publicacion": "2026-09-01",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "Patinetas eléctricas LAZER 0km",
+      "marca": "LAZER",
+      "motor_w": 350,
+      "autonomia_km": 50,
+      "precio_usd": 800.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinetas-electricas-lazer-0km-57084326",
+      "fecha_publicacion": "2026-09-01",
+      "municipio": "Guanabacoa"
+    },
+    {
+      "titulo": "Patinetas eléctricas marca MAF 0km",
+      "marca": "MAF",
+      "motor_w": 1200,
+      "autonomia_km": 60,
+      "precio_usd": 720.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinetas-electricas-marca-maf-0km-57444451",
+      "fecha_publicacion": "2026-09-14",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "Halcon ⚡ Patineta eléctrica ⚡ vic",
+      "marca": "HALCON",
+      "motor_w": null,
+      "autonomia_km": 60,
+      "precio_usd": 820.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinetas-halcon-55181089",
+      "fecha_publicacion": "2026-09-06",
+      "municipio": "Marianao"
+    },
+    {
+      "titulo": "Patinetas JMD 0km",
+      "marca": "JMD",
+      "motor_w": 500,
+      "autonomia_km": 50,
+      "precio_usd": 750.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinetas-jmd-0km-57123204",
+      "fecha_publicacion": "2026-09-01",
+      "municipio": "Diez de Octubre"
+    },
+    {
+      "titulo": "Patinetas Maf",
+      "marca": "MAF",
+      "motor_w": null,
+      "autonomia_km": 60,
+      "precio_usd": 780.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinetas-maf-57803477",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "PATINETAS PRONTEZZA CHALLENGER",
+      "marca": "CHALLENGER",
+      "motor_w": 500,
+      "autonomia_km": 70,
+      "precio_usd": 820.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinetas-prontezza-challenger-57704131",
+      "fecha_publicacion": "2026-09-26",
+      "municipio": "Diez de Octubre"
+    },
+    {
+      "titulo": "🛴 PATINETE ELÉCTRICO CAROMA CON ASIENTO – 750W – 48 KM – $500 USD ⚡",
+      "marca": "CAROMA",
+      "motor_w": 750,
+      "autonomia_km": 48,
+      "precio_usd": 500.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinete-electrico-caroma-con-asiento-750w-48-km-500-usd-57512689",
+      "fecha_publicacion": "2026-09-17T21:22:58.471Z",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "🛴🛒 PATINETE ELÉCTRICO CAROMA CON ASIENTO – Comodidad, potencia y versatilidad para tu día a día 🛒🛴",
+      "marca": "CAROMA",
+      "motor_w": 750,
+      "autonomia_km": 48,
+      "precio_usd": 575.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinete-electrico-caroma-con-asiento-comodidad-potencia-y-versatilidad-para-tu-dia-a-dia-56918835",
+      "fecha_publicacion": "2026-08-20",
+      "municipio": "Marianao"
+    },
+    {
+      "titulo": "Patinete eléctrico Caroma con asiento para adultos, motor de 750 W de potencia máxima, 48 km de autonomía y 32 km/h,",
+      "marca": "CAROMA",
+      "motor_w": 750,
+      "autonomia_km": 48,
+      "precio_usd": 550.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinete-electrico-caroma-con-asiento-para-adultos-motor-de-750-w-de-potencia-maxima-48-km-de-autonomia-y-32-kmh-57259094",
+      "fecha_publicacion": "2026-09-17",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "Patinete eléctrico Caroma  Con asiento para adultos, motor de 750 W de potencia máxima, 48 km de autonomía y 32 km/h, pa",
+      "marca": "CAROMA",
+      "motor_w": 750,
+      "autonomia_km": 48,
+      "precio_usd": 580.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinete-electrico-caroma-con-asiento-para-adultos-motor-de-750-w-de-potencia-maxima-48-km-de-autonomia-y-32-kmh-pa-56572626",
+      "fecha_publicacion": "2026-09-27",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "Patinete eléctrico Caroma con asiento para adultos, motor de 750 W de potencia máxima, 48 km de autonomía y 32 km/h, pat",
+      "marca": "CAROMA",
+      "motor_w": 750,
+      "autonomia_km": 48,
+      "precio_usd": 570.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinete-electrico-caroma-con-asiento-para-adultos-motor-de-750-w-de-potencia-maxima-48-km-de-autonomia-y-32-kmh-pat-57516230",
+      "fecha_publicacion": "2026-09-18",
+      "municipio": "Marianao"
+    },
+    {
+      "titulo": "Patinete eléctrico Caroma con asiento para adultos, motor de 750 W de potencia máxima, 48 km de autonomía,530 usd*nova",
+      "marca": "CAROMA",
+      "motor_w": 750,
+      "autonomia_km": 48,
+      "precio_usd": 530.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinete-electrico-caroma-con-asiento-para-adultos-motor-de-750-w-de-potencia-maxima-48-km-de-autonomia530-usdnova-57474784",
+      "fecha_publicacion": "2026-09-16",
+      "municipio": "La Lisa"
+    },
+    {
+      "titulo": "Patinete Electrico G1",
+      "marca": "G1",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 450.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinete-electrico-g1-57519078",
+      "fecha_publicacion": "2026-09-18",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "🛴⚡ PATINETE ELÉCTRICO GT12 ⚡🛴Motor eléctrico de 350 W. ✅ Batería de litio de 48 V / 15 Ah. ✅ 25-30 KM 📲53321047",
+      "marca": "GT12",
+      "motor_w": 350,
+      "autonomia_km": 30,
+      "precio_usd": 460.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinete-electrico-gt12-motor-electrico-de-350-w-bateria-de-litio-de-48-v-15-ah-25-30-km-53321047-57775902",
+      "fecha_publicacion": "2026-09-29",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "🛴 PATINETE ELÉCTRICO PLEGABLE SPORT – 500W – 48V/10Ah – 40 KM – $560 USD ⚡",
+      "marca": "SPORT",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 560.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinete-electrico-plegable-sport-500w-48v10ah-40-km-570-usd-57793423",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "*🛴PATINETE ELÉCTRICO PLEGABLE SPORT🛴*   ☑️ Potecia 500W  ☑️Bateria 48V - 10 Ah   ☑️ ⁠batería de litio antiexplosiva  ☑",
+      "marca": "SPORT",
+      "motor_w": 500,
+      "autonomia_km": 40,
+      "precio_usd": 500.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinete-electrico-plegable-sport-potecia-500w-bateria-48v-10-ah-bateria-de-litio-antiexplosiva-57758101",
+      "fecha_publicacion": "2026-09-29",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "PATINETE ELÉCTRICO PLEGABLE SPORT🛴*‼️REBAJA ‼️⁠batería de litio antiexplosiva  ☑️ Hasta 40 km de autonomía",
+      "marca": "SPORT",
+      "motor_w": null,
+      "autonomia_km": 40,
+      "precio_usd": 550.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinete-electrico-plegable-sportrebaja-bateria-de-litio-antiexplosiva-hasta-40-km-de-autonomia-57788149",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Plaza"
+    },
+    {
+      "titulo": "Patinete eléctrico Roinside – 350 W / 37 km / 10,4 mAh  Precio : 390 USD",
+      "marca": "ROINSIDE",
+      "motor_w": 350,
+      "autonomia_km": 37,
+      "precio_usd": 390.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinete-electrico-roinside-350-w-37-km-104-mah-precio-390-usd-56949501",
+      "fecha_publicacion": "2026-08-22T00:31:32.771Z",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "Patinete GT12 400 usd",
+      "marca": "GT12",
+      "motor_w": 350,
+      "autonomia_km": 30,
+      "precio_usd": 400.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinete-gt12-490-usd-57601103",
+      "fecha_publicacion": "2026-09-29",
+      "municipio": "Marianao"
+    },
+    {
+      "titulo": "REBAJADA‼️ PATINETA ELÉCTRICA MAF 🛴",
+      "marca": "MAF",
+      "motor_w": 1200,
+      "autonomia_km": 60,
+      "precio_usd": 650.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/rebajada-patineta-electrica-maf-57532680",
+      "fecha_publicacion": "2026-09-24",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "🛴 Riuiio Scooter Eléctrico Profesional – 350W",
+      "marca": "RIUIIO",
+      "motor_w": 350,
+      "autonomia_km": 34,
+      "precio_usd": 370.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/riuiio-scooter-electrico-profesional-350w-55802404",
+      "fecha_publicacion": "2026-08-04",
+      "municipio": "Plaza"
+    },
+    {
+      "titulo": "Scooter eléctrica DXH X8 PRO  El DXH X8 PRO es un scooter eléctrico para adultos.",
+      "marca": "DXH",
+      "motor_w": 500,
+      "autonomia_km": 32,
+      "precio_usd": 350.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/scooter-electrica-dxh-x8-pro-el-dxh-x8-pro-es-un-scooter-electrico-para-adultos-57094604",
+      "fecha_publicacion": "2026-08-29",
+      "municipio": "Boyeros"
+    },
+    {
+      "titulo": "Scooter eléctrico MAF disponible en la Habana a q esperas",
+      "marca": "MAF",
+      "motor_w": 500,
+      "autonomia_km": 45,
+      "precio_usd": 650.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/scooter-electrico-maf-disponible-en-la-habana-a-q-esperas-57414332",
+      "fecha_publicacion": "2026-09-13",
+      "municipio": "Plaza"
+    },
+    {
+      "titulo": "Scooter Eléctrico Plegable S3 –  Carriola, Potencia y Portabilidad 🚀",
+      "marca": "S3",
+      "motor_w": 350,
+      "autonomia_km": 30,
+      "precio_usd": 350.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/scooter-electrico-plegable-s3-carriola-potencia-y-portabilidad-54625344",
+      "fecha_publicacion": "2026-09-28",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "Scooter Eléctrico Plegable WERHY H0 nuevo con transporte incluido",
+      "marca": "WERHY",
+      "motor_w": 350,
+      "autonomia_km": 26,
+      "precio_usd": 340.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/scooter-electrico-plegable-werhy-h0-nuevo-con-transporte-incluido-55859758",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "🛴 SCOOTER ELÉCTRICO RIUIIO CON ASIENTO DESMONTABLE ⚡ 🩷",
+      "marca": "RIUIIO",
+      "motor_w": 350,
+      "autonomia_km": 34,
+      "precio_usd": 380.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/scooter-electrico-riuiio-con-asiento-desmontable-56111750",
+      "fecha_publicacion": "2026-09-12",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "🛴 SCOOTER ELÉCTRICO RIUIIO CON ASIENTO DESMONTABLE ⚡🩷 Carriola patineta",
+      "marca": "RIUIIO",
+      "motor_w": 350,
+      "autonomia_km": 34,
+      "precio_usd": 370.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/scooter-electrico-riuiio-con-asiento-desmontable-carriola-patineta-56104042",
+      "fecha_publicacion": "2026-09-29",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "Scooter eléctrico Volpam nuevo en su caja",
+      "marca": "VOLPAM",
+      "motor_w": 350,
+      "autonomia_km": 24,
+      "precio_usd": 330.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/scooter-electrico-volpam-nuevo-en-su-caja-57127536",
+      "fecha_publicacion": "2026-09-06",
+      "municipio": "Plaza"
+    },
+    {
+      "titulo": "Scooter eléctrico Volpam: - Potencia: 350w",
+      "marca": "VOLPAM",
+      "motor_w": 350,
+      "autonomia_km": 24,
+      "precio_usd": 280.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/scooter-electrico-volpam-potencia-350w-57701006",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Playa"
+    },
+    {
+      "titulo": "Scooter eléctrico WARYOA wk10 con asiento",
+      "marca": "WARYOA",
+      "motor_w": 500,
+      "autonomia_km": 43,
+      "precio_usd": 550.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/scooter-electrico-waryoa-wk10-con-asiento-56897657",
+      "fecha_publicacion": "2026-08-29",
+      "municipio": "San Miguel del Padrón"
+    },
+    {
+      "titulo": "Scooter Eléctrico WERHY H03 (Nuevo en caja)",
+      "marca": "WERHY",
+      "motor_w": 350,
+      "autonomia_km": 24,
+      "precio_usd": 330.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/scooter-electrico-werhy-h03-nuevo-en-caja-57630774",
+      "fecha_publicacion": "2026-09-25",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "Scooter Eléctrico WQ-W4 Pro – Plegable y práctico para ciudad",
+      "marca": "WQ-W4",
+      "motor_w": 350,
+      "autonomia_km": 30,
+      "precio_usd": 350.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/scooter-electrico-wq-w4-pro-plegable-y-practico-para-ciudad-55950045",
+      "fecha_publicacion": "2026-09-26",
+      "municipio": "Centro Habana"
+    },
+    {
+      "titulo": "Scooter Eléctrico WQ-W4 Pro – Plegable y práctico para ciudad | Transporte | Nuevo | Garantía 5 | videojuegoshabana.com",
+      "marca": "WQ-W4",
+      "motor_w": 350,
+      "autonomia_km": 30,
+      "precio_usd": 340.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/scooter-electrico-wq-w4-pro-plegable-y-practico-para-ciudad-transporte-nuevo-garantia-5-videojuegoshabanacom-55961718",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Habana Vieja"
+    },
+    {
+      "titulo": "Vendo SCOOTER ELÉCTRICO RAINBOW POWER",
+      "marca": "RAINBOW",
+      "motor_w": 1000,
+      "autonomia_km": 70,
+      "precio_usd": 1200.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/vendo-scooter-electrico-rainbow-power-57304141",
+      "fecha_publicacion": "2026-09-08",
+      "municipio": "La Lisa"
+    },
+    {
+      "titulo": "🛴 WERHY Scooter Eléctrico Plegable H0 | Transporte | Nuevo | Garantía 5 | videojuegoshabana.com",
+      "marca": "WERHY",
+      "motor_w": 350,
+      "autonomia_km": 26,
+      "precio_usd": 340.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/werhy-scooter-electrico-plegable-h0-transporte-nuevo-garantia-5-videojuegoshabanacom-55961919",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Habana Vieja"
+    }
+  ],
+  "descartados_revision_manual": [
+    "MOTO SCOOTER FLY",
+    "Motos eléctricas marca Vedca Scooter. Nuevas a estrenar .",
+    "MOTOS ELÉCTRICAS VEDCA modelo SCOOTER RS 4200 T 4: 2300usd 📍",
+    "VENDO MOTO ELECTRICA JMD SCOOTER [EM]",
+    "⚡ Scooter eléctrica YOAZAKI 707."
+  ],
+  "anuncios_excluidos_sin_marca": [
+    {
+      "titulo": "🛴🔥 ¡GOKEEP G2 PRO — POTENCIA QUE SE SIENTE! 🔥  ¿Quieres una patineta eléctrica potente, rápida? 😎  La GOKEEP G2 PRO",
+      "url": "https://www.revolico.com/item/gokeep-g2-pro-potencia-que-se-siente-quieres-una-patineta-electrica-potente-rapida-la-gokeep-g2-pro-57652210",
+      "precio_usd": 1000.0
+    },
+    {
+      "titulo": "Kukirin G2 Electric Scooter | 48V15.6Ah Battery Range 55KM 10''",
+      "url": "https://www.revolico.com/item/kukirin-g2-electric-scooter-48v156ah-battery-range-55km-10-57027319",
+      "precio_usd": 300.0
+    },
+    {
+      "titulo": "🔥🛵 ¡OPORTUNIDAD! SCOOTER ELÉCTRICA CASI NUEVA — SOLO 2 MESES DE USO 🛵🔥",
+      "url": "https://www.revolico.com/item/oportunidad-scooter-electrica-casi-nueva-solo-2-meses-de-uso-56807547",
+      "precio_usd": 600.0
+    },
+    {
+      "titulo": "〽️PATINETA ELÉCTRICA CON 2 MESES DE USO ESTA NUEVA〽️",
+      "url": "https://www.revolico.com/item/patineta-electrica-con-2-meses-de-uso-esta-nueva-56664765",
+      "precio_usd": 640.0
+    },
+    {
+      "titulo": "Patineta electrica home",
+      "url": "https://www.revolico.com/item/patineta-electrica-home-56656572",
+      "precio_usd": 850.0
+    },
+    {
+      "titulo": "🛴 Scooter Eléctrico en existencia",
+      "url": "https://www.revolico.com/item/scooter-electrico-en-existencia-57536696",
+      "precio_usd": 345.0
+    },
+    {
+      "titulo": "Scooter Eléctrico ( nuevo en caja)",
+      "url": "https://www.revolico.com/item/scooter-electrico-nuevo-en-caja-57672143",
+      "precio_usd": 300.0
+    },
+    {
+      "titulo": "Scooter eléctrico pegable",
+      "url": "https://www.revolico.com/item/scooter-electrico-pegable-57694116",
+      "precio_usd": 280.0
+    },
+    {
+      "titulo": "Scooters disponibles",
+      "url": "https://www.revolico.com/item/scooter-electrico-volpam-q2-350w-plegable-30-kmh-autonomia-25-km-54339516",
+      "precio_usd": 350.0
+    },
+    {
+      "titulo": "Scotter, patineta o carriola eléctrico 350 w, hasta 20 km de autonomía",
+      "url": "https://www.revolico.com/item/scotter-patineta-o-carriola-electrico-350-w-hasta-20-km-de-autonomia-56195024",
+      "precio_usd": 350.0
+    },
+    {
+      "titulo": "Pstineta electrica ,scooter nueva en su caja .",
+      "url": "https://www.revolico.com/item/taller-de-bici-latepdalcascos-gomas-candados-luces-bombascamaras-rayos-y-mas-te-esperamos-48653221",
+      "precio_usd": 320.0
+    }
+  ]
+}
