@@ -1,0 +1,25 @@
+{
+  "correcciones": [
+    {
+      "url": "https://www.revolico.com/item/bicimoto-yoazaky-707-especificaciones-3000w-48v-50-ah-bateria-de-litio-antiexplosiva-hasta-120-km-de-au-54795693",
+      "campo": "precio_usd",
+      "antes": 707.0,
+      "ahora": 1800.0,
+      "motivo": "precio_erroneo_modelo"
+    },
+    {
+      "url": "https://www.revolico.com/item/bicimoto-topmaq-evolution-envio-gratis-en-toda-la-habana-3000w-45v-45a-120-km-autonomia-57396679",
+      "campo": "ubicacion",
+      "antes": "Artemisa",
+      "ahora": "La Habana",
+      "motivo": "error_lectura_verificado"
+    },
+    {
+      "url": "https://www.revolico.com/item/bicimoto-unizuki-2000w-48v-50amp-bateria-de-litio-antiexplosiva-hasta-130km-de-autono-56452534",
+      "campo": "marca",
+      "antes": "TRANK",
+      "ahora": "Unizuki",
+      "motivo": "extraccion_erronea"
+    }
+  ]
+}
