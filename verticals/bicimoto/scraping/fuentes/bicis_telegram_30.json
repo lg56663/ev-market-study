@@ -1,0 +1,318 @@
+{
+  "vehiculo": "bicimoto_electrica",
+  "fuente": "telegram",
+  "fecha_scraping": "2026-10-01",
+  "total_anuncios_validos": 30,
+  "campos": [
+    "titulo",
+    "marca",
+    "motor_w",
+    "autonomia_km",
+    "precio_usd",
+    "ubicacion",
+    "municipio",
+    "fuente"
+  ],
+  "anuncios": [
+    {
+      "titulo": "TOPMAQ 3000W - 120km",
+      "marca": "TOPMAQ",
+      "motor_w": 3000,
+      "autonomia_km": 120,
+      "precio_usd": 1880.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "TOPMAQ 3000W - 90km",
+      "marca": "TOPMAQ",
+      "motor_w": 3000,
+      "autonomia_km": 90,
+      "precio_usd": 1500.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "JMD 3000W - 80km",
+      "marca": "JMD",
+      "motor_w": 3000,
+      "autonomia_km": 80,
+      "precio_usd": 1650.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "TOPMAQ 3000W - 120km",
+      "marca": "TOPMAQ",
+      "motor_w": 3000,
+      "autonomia_km": 120,
+      "precio_usd": 1900.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "VEDCA 800W - 80km",
+      "marca": "VEDCA",
+      "motor_w": 800,
+      "autonomia_km": 80,
+      "precio_usd": 1450.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "TOPMAQ 3000W - 120km",
+      "marca": "TOPMAQ",
+      "motor_w": 3000,
+      "autonomia_km": 120,
+      "precio_usd": 1850.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "MISHOZUKI 3000W - 120km",
+      "marca": "MISHOZUKI",
+      "motor_w": 3000,
+      "autonomia_km": 120,
+      "precio_usd": 1980.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "YOAZAKY 3000W - 120km",
+      "marca": "YOAZAKY",
+      "motor_w": 3000,
+      "autonomia_km": 120,
+      "precio_usd": 2050.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "JMD 3000W - 110km",
+      "marca": "JMD",
+      "motor_w": 3000,
+      "autonomia_km": 110,
+      "precio_usd": 1550.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "VEDCA 800W - 80km",
+      "marca": "VEDCA",
+      "motor_w": 800,
+      "autonomia_km": 80,
+      "precio_usd": 1480.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "YOAZAKY 3000W - 110km",
+      "marca": "YOAZAKY",
+      "motor_w": 3000,
+      "autonomia_km": 110,
+      "precio_usd": 1950.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "TOPMAQ 3000W - 120km",
+      "marca": "TOPMAQ",
+      "motor_w": 3000,
+      "autonomia_km": 120,
+      "precio_usd": 1850.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "TRANK 3000W - 120km",
+      "marca": "TRANK",
+      "motor_w": 3000,
+      "autonomia_km": 120,
+      "precio_usd": 1550.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "TOPMAQ 3000W - 120km",
+      "marca": "TOPMAQ",
+      "motor_w": 3000,
+      "autonomia_km": 120,
+      "precio_usd": 1880.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "RX 3000W - 130km",
+      "marca": "RX",
+      "motor_w": 3000,
+      "autonomia_km": 130,
+      "precio_usd": 2150.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "TOPMAQ 3000W - 120km",
+      "marca": "TOPMAQ",
+      "motor_w": 3000,
+      "autonomia_km": 120,
+      "precio_usd": 1400.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "RYDER 3000W - 100km",
+      "marca": "RYDER",
+      "motor_w": 3000,
+      "autonomia_km": 100,
+      "precio_usd": 1500.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "YOAZAKY 3000W - 120km",
+      "marca": "YOAZAKY",
+      "motor_w": 3000,
+      "autonomia_km": 120,
+      "precio_usd": 2000.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "TOPMAQ 3000W - 120km",
+      "marca": "TOPMAQ",
+      "motor_w": 3000,
+      "autonomia_km": 120,
+      "precio_usd": 1250.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "BUCATTI 3000W - 120km",
+      "marca": "BUCATTI",
+      "motor_w": 3000,
+      "autonomia_km": 120,
+      "precio_usd": 1200.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "TRANK 3000W - 120km",
+      "marca": "TRANK",
+      "motor_w": 3000,
+      "autonomia_km": 120,
+      "precio_usd": 1550.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "MZ 2000W - 100km",
+      "marca": "MZ",
+      "motor_w": 2000,
+      "autonomia_km": 100,
+      "precio_usd": 1600.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "JMD 3000W - 80km",
+      "marca": "JMD",
+      "motor_w": 3000,
+      "autonomia_km": 80,
+      "precio_usd": 1650.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "JMD 3000W - 100km",
+      "marca": "JMD",
+      "motor_w": 3000,
+      "autonomia_km": 100,
+      "precio_usd": 1600.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "TOPMAQ 3000W - 120km",
+      "marca": "TOPMAQ",
+      "motor_w": 3000,
+      "autonomia_km": 120,
+      "precio_usd": 1880.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "TOPMAQ 3000W - 120km",
+      "marca": "TOPMAQ",
+      "motor_w": 3000,
+      "autonomia_km": 120,
+      "precio_usd": 1850.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "TOPMAQ 3000W - 120km",
+      "marca": "TOPMAQ",
+      "motor_w": 3000,
+      "autonomia_km": 120,
+      "precio_usd": 1900.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "JMD 3000W - 120km",
+      "marca": "JMD",
+      "motor_w": 3000,
+      "autonomia_km": 120,
+      "precio_usd": 1400.0,
+      "ubicacion": "La Habana",
+      "municipio": "Playa",
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "JMD 3000W - 120km",
+      "marca": "JMD",
+      "motor_w": 3000,
+      "autonomia_km": 120,
+      "precio_usd": 1550.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    },
+    {
+      "titulo": "MISHOZUKI 3000W - 120km",
+      "marca": "MISHOZUKI",
+      "motor_w": 3000,
+      "autonomia_km": 120,
+      "precio_usd": 2000.0,
+      "ubicacion": "La Habana",
+      "municipio": null,
+      "fuente": "telegram"
+    }
+  ]
+}
