@@ -1,0 +1,328 @@
+==============================================================================
+CLUSTERING K-MEANS — SCOOTERS ELECTRICOS — 121 ANUNCIOS (LA HABANA, 2026)
+==============================================================================
+Fecha de analisis   : 2026-10-02T22:46:23
+Archivo origen      : /home/leandro/ev-market-study/verticals/scooter/scraping/scooters_electricos_139.json
+Vehiculo            : scooter_electrico
+Features usadas     : precio_usd, motor_w, autonomia_km
+Solo descriptivos   : marca, municipio, ubicacion
+Normalizacion       : StandardScaler
+Algoritmo           : KMeans(random_state=42, n_init=10)
+k elegido           : 6  (6 clusters, sin fusion)
+Silhouette final    : 0.5215
+Anuncios clusterizados: 108 de 121
+
+0. QUE CAMBIA RESPECTO AL ANALISIS DE 30 ANUNCIOS
+==============================================================================
+  El analisis previo (clustering_30/) usaba 2 features (precio_usd + autonomia_km)
+  sobre 30 anuncios y fijaba a mano los nombres de los segmentos. Este analisis:
+    - usa las 3 features tecnicas disponibles (precio_usd, motor_w, autonomia_km);
+    - sube a los 121 anuncios del merge original + ampliacion;
+    - elige k por silhouette con reglas de tamano, en vez de fijarlo a mano;
+    - deriva los nombres de los datos (precio + motor + autonomia).
+
+1. DESCARTES PREVIOS
+==============================================================================
+  Anuncios en scooters_electricos_139.json : 121   (el nombre del archivo dice 139,
+                                              pero el campo total_anuncios_validos
+                                              y la lista traen 121)
+
+   filtro                             | anuncio(s) | motivo                | archivo de salida
+   ---------------------------------- + ---------- + ---------------------- + ----------------------
+   precio_usd < 200                   |         0 | precio_placeholder    | descartados_outliers.json
+   precio_usd > 2000                  |         0 | precio_outlier_premium | descartados_outliers.json
+   motor_w null                       |        13 | sin_motor_w           | descartados_sin_motor.json
+   ---------------------------------- + ---------- + ---------------------- + ----------------------
+   total descartado                   |        13 |                       |
+   ANUNCIOS CLUSTERIZADOS             |       108 |                       |
+
+   Rango de precio observado en los 121 anuncios: 280 - 1250 USD.
+   Ningun anuncio cae fuera de los cortes de 200 / 2000 USD, asi que el filtro de
+   outliers de precio no descarto nada: queda como red de seguridad documentada.
+   Los 13 anuncios sin motor_w si se descartan, porque motor_w es una de las
+   3 features del modelo y no se puede imputar sin inventar el dato. Se conservan
+   completos en descartados_sin_motor.json (con precio y autonomia) para poder
+   recuperarlos si el scraper vuelve a capturar la potencia del motor.
+
+   Los 13 anuncios sin motor_w por marca:
+     CAROMA                  3
+     MAF                     3
+     CHALLENGER              1
+     LAITUNING               1
+     MIDHA                   1
+     WQ-W4                   1
+     VEDCA                   1
+     HALCON                  1
+     SPORT                   1
+
+   Los 13 anuncios sin motor_w por municipio:
+     Plaza                   3
+     Centro Habana           3
+     Marianao                2
+     Guanabacoa              1
+     Habana Vieja            1
+     Playa                   1
+     La Lisa                 1
+     Diez de Octubre         1
+
+2. BARRIDO k = 2..10 SOBRE EL DATASET CLUSTERIZABLE (n=108)
+==============================================================================
+   k |   inercia  |  silhouette  | min raw | max raw | cumple | k_fin | sil_fin | cumple_f | fusiones
+  --- + ---------- + ------------ + -------- + -------- + ------ + ------ + ------- + -------- + ---------
+  2   |   157.41  |     0.5184  |      32 |      76 |   no   |     2 |  0.5184 |   no  | sin fusion posible
+  3   |    90.23  |     0.5609  |       9 |      67 |   no   |     3 |  0.5609 |   no  | sin fusion posible
+  4   |    61.50  |     0.5025  |       9 |      51 |   si   |     4 |  0.5025 |   si  | - (particion cruda ya valida)
+  5   |    48.05  |     0.4886  |       9 |      36 |   si   |     5 |  0.4886 |   si  | - (particion cruda ya valida)
+  6   |    38.22  |     0.5215  |       7 |      35 |   si   |     6 |  0.5215 |   si  | - (particion cruda ya valida)
+  7   |    28.73  |     0.5391  |       3 |      35 |   no   |     6 |  0.4616 |   si  | C0+C6(6.82%)
+  8   |    24.17  |     0.5242  |       3 |      35 |   no   |     6 |  0.5179 |   si  | C0+C7(1.02%), C3+C4(2.40%)
+  9   |    20.28  |     0.5382  |       3 |      35 |   no   |     9 |  0.5382 |   no  | sin fusion posible
+  10  |    17.46  |     0.5127  |       3 |      23 |   no   |    10 |  0.5127 |   no  | sin fusion posible
+
+   TAMANOS DE CLUSTER POR k (ordenados de menor a mayor, n=108)
+==============================================================================
+    k=2  crudo: [32, 76]                       final (k_fin=2): n/a
+    k=3  crudo: [9, 32, 67]                    final (k_fin=3): n/a
+    k=4  crudo: [9, 22, 26, 51]                final (k_fin=4): [9, 22, 26, 51]
+    k=5  crudo: [9, 18, 20, 25, 36]            final (k_fin=5): [9, 18, 20, 25, 36]
+    k=6  crudo: [7, 9, 13, 19, 25, 35]         final (k_fin=6): [7, 9, 13, 19, 25, 35]
+    k=7  crudo: [3, 6, 7, 13, 19, 25, 35]      final (k_fin=6): [6, 7, 13, 19, 28, 35]
+    k=8  crudo: [3, 6, 7, 11, 11, 16, 19, 35]  final (k_fin=6): [6, 7, 11, 14, 19, 51]
+    k=9  crudo: [3, 3, 4, 6, 11, 11, 16, 19, 35] final (k_fin=9): n/a
+    k=10 crudo: [3, 3, 4, 6, 10, 11, 12, 17, 19, 23] final (k_fin=10): n/a
+
+3. k ELEGIDO Y JUSTIFICACION
+==============================================================================
+  Reglas aplicadas, en orden:
+    1. filtro de outliers de precio (precio_usd en [200, 2000])
+    2. filtro de motor_w null (feature obligatoria, sin imputacion)
+    3. ningun cluster con menos de 4 anuncios
+    4. ningun cluster con mas del 50% del total (>54 anuncios)
+    5. clausula de fusion: dos clusters cuyo precio promedio difiere <10% se
+       fusionan; el resultado se vuelve a validar contra las reglas 3 y 4
+    6. entre los k que cumplen, gana el de mayor silhouette
+
+  k ELEGIDO                  : 6
+  clusters finales           : 6
+  silhouette                 : 0.5215
+  fusiones aplicadas         : - (particion cruda ya valida)
+
+  k que cumplen las reglas (silhouette final, de mayor a menor):
+    k=6  sil=0.5215  k_fin=6  tamanos=[7, 9, 13, 19, 25, 35]
+    k=8  sil=0.5179  k_fin=6  tamanos=[6, 7, 11, 14, 19, 51]
+    k=4  sil=0.5025  k_fin=4  tamanos=[9, 22, 26, 51]
+    k=5  sil=0.4886  k_fin=5  tamanos=[9, 18, 20, 25, 36]
+    k=7  sil=0.4616  k_fin=6  tamanos=[6, 7, 13, 19, 28, 35]
+
+  Motivo: k=6 tiene el silhouette mas alto (0.5215) de todos los k que
+  respetan el piso de 4 anuncios y el tope de 54. Su particion cruda ya
+  cumple las dos reglas, asi que la clausula de fusion no hace falta.
+
+  k descartados por romper el tope del 50%:
+    k=2  sil=0.5184 pero su cluster mayor tiene 76 anuncios = 70% del total (fusionar solo puede
+        agrandar clusters, asi que no hay reparacion posible)
+    k=3  sil=0.5609 pero su cluster mayor tiene 67 anuncios = 62% del total (fusionar solo puede
+        agrandar clusters, asi que no hay reparacion posible)
+  k descartados por dejar un cluster de menos de 4 anuncios:
+    k=7  sil=0.5391 pero su cluster menor tiene 3 anuncio(s); su particion cruda NO cumple
+    k=8  sil=0.5242 pero su cluster menor tiene 3 anuncio(s); su particion cruda NO cumple
+    k=9  sil=0.5382 pero su cluster menor tiene 3 anuncio(s); su particion cruda NO cumple
+    k=10 sil=0.5127 pero su cluster menor tiene 3 anuncio(s); su particion cruda NO cumple
+
+  k reparables por fusion (gap de precio < 10%), con la mejor silhouette alcanzable:
+    k=7  crudo [3, 6, 7, 13, 19, 25, 35] -> k_fin=6 sil=0.4616  (C0+C6(6.82%))
+        sil 0.4616 < sil 0.5215 de k=6, asi que no gana
+    k=8  crudo [3, 6, 7, 11, 11, 16, 19, 35] -> k_fin=6 sil=0.5179  (C0+C7(1.02%), C3+C4(2.40%))
+        sil 0.5179 < sil 0.5215 de k=6, asi que no gana
+
+  k sin particion valida posible (ni cruda ni encadenando fusiones):
+    k=9  deja 2 cluster(s) de menos de 4 anuncios ([3, 3, 4, 6, 11, 11, 16, 19, 35]);
+        la busqueda de fusiones dio: 9 pares <10%, 40 estados explorados, ninguna cadena deja la particion valida
+        -> ningun par con precio promedio a menos del 10% toca esos clusters chicos, asi que no hay reparacion posible
+    k=10 deja 2 cluster(s) de menos de 4 anuncios ([3, 3, 4, 6, 10, 11, 12, 17, 19, 23]);
+        la busqueda de fusiones dio: 10 pares <10%, 92 estados explorados, ninguna cadena deja la particion valida
+        -> ningun par con precio promedio a menos del 10% toca esos clusters chicos, asi que no hay reparacion posible
+
+  Nota sobre la clausula de fusion: la busqueda es exhaustiva sobre las cadenas de
+  mergers con gap < 10% (orden ascendente de gap, con poda de los estados que ya
+  superan el tope de 50%), no solo de un merger. Aun asi, en este dataset la fusion
+  solo llega a repairing k=7 y k=8, y en ambos casos el silhouette reparado queda
+  por debajo del de k=6 sin reparar. El ganador no necesita fusion: su
+  particion cruda ya cumple las dos reglas de tamano.
+
+4. CLUSTERS FINALES
+==============================================================================
+  Los nombres salen de los datos: el precio se parte en 3 tramos con los terciles de
+  la propia distribucion, la autonomia tambien, y el motor entra como el rango de
+  potencias presente en el cluster. El prefijo C0..C5 garantiza que el nombre sea
+  unico.
+
+   id | nombre                                      |   n |   %  | precio | motor   | autonomia | marca      | motores presentes
+  --- + ------------------------------------------- + ---- + ---- + ------ + ------- + --------- + ---------- + ---------------
+  0   | Patinete básico       |   19 | 17.6% |    361 | 350W    |      29 km | ROINSIDE   | [350]
+  1   | Patinete urbano   |   13 | 12.0% |    475 | 500-650W |      38 km | G1         | [500, 650]
+  2   | Patinete intermedio   |    7 |  6.5% |    568 | 700-750W |      50 km | CAROMA     | [700, 750]
+  3   | Scooter estándar  |   25 | 23.1% |    774 | 350-650W |      47 km | JMD        | [350, 500, 650]
+  4   | Scooter de largo alcance   |   35 | 32.4% |    791 | 350-500W |      61 km | MIDHA      | [350, 500]
+  5   | Scooter premium  |    9 |  8.3% |    883 | 800-1200W |      66 km | MAF        | [800, 1000, 1200]
+
+  Patinete básico
+    anuncios      : 19 (17.6% del total)
+    precio USD    : prom 361 | min 280 | max 460
+    motor W       : prom 350 | min 350 | max 350
+    autonomia km  : prom 29 | min 24 | max 37
+    top marcas    : ROINSIDE (3), RIUIIO (3), WERHY (3)
+    descripcion   : 19 anuncios de 280 a 460 USD (prom 361); motor de 350 a 350 W (prom 350 W) y autonomia de 24 a 37 km (prom 29 km). Es el segmento mas economico. Marca dominante: ROINSIDE (3 de 19 anuncios).
+
+  Patinete urbano
+    anuncios      : 13 (12.0% del total)
+    precio USD    : prom 475 | min 330 | max 670
+    motor W       : prom 523 | min 500 | max 650
+    autonomia km  : prom 38 | min 30 | max 43
+    top marcas    : G1 (6), GT12 (2), WARYOA (2)
+    descripcion   : 13 anuncios de 330 a 670 USD (prom 475); motor de 500 a 650 W (prom 523 W) y autonomia de 30 a 43 km (prom 38 km). Es un segmento intermedio por precio. Marca dominante: G1 (6 de 13 anuncios).
+
+  Patinete intermedio
+    anuncios      : 7 (6.5% del total)
+    precio USD    : prom 568 | min 500 | max 670
+    motor W       : prom 743 | min 700 | max 750
+    autonomia km  : prom 50 | min 48 | max 60
+    top marcas    : CAROMA (6), GANGA (1)
+    descripcion   : 7 anuncios de 500 a 670 USD (prom 568); motor de 700 a 750 W (prom 743 W) y autonomia de 48 a 60 km (prom 50 km). Es un segmento intermedio por precio. Marca dominante: CAROMA (6 de 7 anuncios).
+
+  Scooter estándar
+    anuncios      : 25 (23.1% del total)
+    precio USD    : prom 774 | min 650 | max 850
+    motor W       : prom 494 | min 350 | max 650
+    autonomia km  : prom 47 | min 40 | max 50
+    top marcas    : JMD (7), ORIS (6), CHALLENGER (3)
+    descripcion   : 25 anuncios de 650 a 850 USD (prom 774); motor de 350 a 650 W (prom 494 W) y autonomia de 40 a 50 km (prom 47 km). Es un segmento intermedio por precio. Marca dominante: JMD (7 de 25 anuncios).
+
+  Scooter de largo alcance
+    anuncios      : 35 (32.4% del total)
+    precio USD    : prom 791 | min 640 | max 930
+    motor W       : prom 491 | min 350 | max 500
+    autonomia km  : prom 61 | min 60 | max 70
+    top marcas    : MIDHA (8), LAITUNING (6), CHALLENGER (4)
+    descripcion   : 35 anuncios de 640 a 930 USD (prom 791); motor de 350 a 500 W (prom 491 W) y autonomia de 60 a 70 km (prom 61 km). Es un segmento intermedio por precio. Marca dominante: MIDHA (8 de 35 anuncios).
+
+  Scooter premium
+    anuncios      : 9 (8.3% del total)
+    precio USD    : prom 883 | min 650 | max 1200
+    motor W       : prom 1000 | min 800 | max 1200
+    autonomia km  : prom 66 | min 60 | max 70
+    top marcas    : MAF (3), MIDHA (3), JMD (2)
+    descripcion   : 9 anuncios de 650 a 1200 USD (prom 883); motor de 800 a 1200 W (prom 1000 W) y autonomia de 60 a 70 km (prom 66 km). Es el segmento mas caro. Marca dominante: MAF (3 de 9 anuncios).
+
+5. CORRELACIONES ENTRE LAS 3 FEATURES
+==============================================================================
+  Pearson sobre las 108 anuncios clusterizados:
+
+                   precio_usd       motor_w  autonomia_km
+    precio_usd         1.0000        0.4140        0.8210
+    motor_w            0.4140        1.0000        0.4751
+    autonomia_km         0.8210        0.4751        1.0000
+
+    precio_usd ~ autonomia_km    r = +0.8210  (fuerte, positiva)
+    motor_w ~ autonomia_km       r = +0.4751  (moderada, positiva)
+    precio_usd ~ motor_w         r = +0.4140  (moderada, positiva)
+
+  Lectura:
+    precio ~ autonomia es la correlacion fuerte (+0.8210): el precio de estos
+      scooters sube casi linealmente con el alcance, porque el paquete de bateria es
+      lo que encarece. Es la variable que mas manda en el precio.
+    motor ~ autonomia es moderada (+0.4751): mas vatios dan mas autonomia, pero con
+      fecha: el motor es proxy del modelo, no la causa directa del alcance.
+    precio ~ motor es moderada (+0.4140): 500 W aparece en casi todos los tramos de precio
+      (ver el crosstab de la seccion 4), asi que los vatios por si solos no explican
+      el precio. Por eso el cluster de mayor precio (C5) se define por tener 800-1200 W
+      Y 60-70 km, no solo por los vatios.
+
+  Distribucion cruzada motor_w x cluster (n=108):
+      cluster |   350 W |   500 W |   650 W |   700 W |   750 W |   800 W |  1000 W |  1200 W |  total
+      C0      |      19 |       0 |       0 |       0 |       0 |       0 |       0 |       0 |     19
+      C1      |       0 |      11 |       2 |       0 |       0 |       0 |       0 |       0 |     13
+      C2      |       0 |       0 |       0 |       1 |       6 |       0 |       0 |       0 |      7
+      C3      |       2 |      22 |       1 |       0 |       0 |       0 |       0 |       0 |     25
+      C4      |       2 |      33 |       0 |       0 |       0 |       0 |       0 |       0 |     35
+      C5      |       0 |       0 |       0 |       0 |       0 |       3 |       3 |       3 |      9
+
+  Distribucion cruzada autonomia_km x cluster (n=108):
+      cluster |    <=35 |   36-50 |     >50 |  total
+      C0      |       18 |        1 |        0 |     19
+      C1      |        4 |        9 |        0 |     13
+      C2      |        0 |        6 |        1 |      7
+      C3      |        0 |       25 |        0 |     25
+      C4      |        0 |        0 |       35 |     35
+      C5      |        0 |        0 |        9 |      9
+
+6. TOP MARCAS POR CLUSTER
+==============================================================================
+   id | nombre                                      | marcas mas frecuentes (n)
+  --- + ------------------------------------------- + ------------------------------------
+  0   | Patinete básico       | ROINSIDE (3), RIUIIO (3), WERHY (3)
+  1   | Patinete urbano   | G1 (6), GT12 (2), WARYOA (2)
+  2   | Patinete intermedio   | CAROMA (6), GANGA (1)
+  3   | Scooter estándar  | JMD (7), ORIS (6), CHALLENGER (3)
+  4   | Scooter de largo alcance   | MIDHA (8), LAITUNING (6), CHALLENGER (4)
+  5   | Scooter premium  | MAF (3), MIDHA (3), JMD (2)
+
+  Top 20 marcas del dataset clusterizado (108 anuncios, 30 marcas distintas):
+    JMD                    13  (12.0% del total)
+    MIDHA                  11  (10.2% del total)
+    ORIS                    8  (7.4% del total)
+    MAF                     8  (7.4% del total)
+    CHALLENGER              7  (6.5% del total)
+    G1                      6  (5.6% del total)
+    LAITUNING               6  (5.6% del total)
+    CAROMA                  6  (5.6% del total)
+    GT12                    5  (4.6% del total)
+    GANGA                   4  (3.7% del total)
+    LAZER                   4  (3.7% del total)
+    ROINSIDE                3  (2.8% del total)
+    RIUIIO                  3  (2.8% del total)
+    WERHY                   3  (2.8% del total)
+    NAVIC                   2  (1.9% del total)
+    WARYOA                  2  (1.9% del total)
+    SPORT                   2  (1.9% del total)
+    VOLPAM                  2  (1.9% del total)
+    WQ-W4                   2  (1.9% del total)
+    JOYHIS                  1  (0.9% del total)
+
+  Las 20 marcas mas comunes cubren 98 de los 108 anuncios (91%);
+  las 10 marcas restantes son de a 1 anuncio. El mercado esta
+  muy fragmentado por marca, asi que la marca sirve como descriptor, no como segmentador.
+
+  Municipios por cluster (top 3):
+    C0: Centro Habana (7), Plaza (5), Playa (3)
+    C1: Playa (6), Centro Habana (2), Habana Vieja (1)
+    C2: Marianao (2), Centro Habana (2), Habana Vieja (1)
+    C3: Centro Habana (8), Playa (6), Diez de Octubre (4)
+    C4: Centro Habana (12), Playa (9), Diez de Octubre (6)
+    C5: Centro Habana (6), Arroyo Naranjo (1), Diez de Octubre (1)
+
+7. LIMITACIONES
+==============================================================================
+  1. Solo 3 features y las 3 estan correlacionadas entre si (precio~autonomia +0.82,
+     motor~autonomia +0.48). El clustering termina separando principalmente por precio,
+     que es lo que mas varianza aporta; motor y autonomia ordenan dentro de cada tramo
+     mas que separar grupos independientes.
+  2. motor_w tiene solo 8 valores distintos (350, 500, 650, 700, 750, 800, 1000, 1200 W) y
+     el 500 W representa 66 de los 108 anuncios. Es una variable casi
+     categorica: los clusters se definen por saltos entre las potencias que el scraper
+     encontro, no por una escala continua de potencia.
+  3. Con n=108 anuncios y 6 clusters, el promedio es de 18.0 anuncios por cluster; 2 clusters
+     tienen menos de 10 anuncios y 1 (C2) tiene 7: son segmentos marginales.
+  4. El silhouette de 0.52 es modesto: con 3
+     features los clusters se superponen mas (C3 y C4 tienen precios casi iguales y
+     se distinguian solo por autonomia). La frontera entre ambos no es nitida.
+  5. Los 13 anuncios sin motor_w quedaron fuera del modelo. Como motor_w viene del
+     texto del anuncio, el scraper pierde los anuncios con ficha incompleta, que
+     pueden estar sesgados hacia un segmento concreto (no es una muestra aleatoria).
+  6. Muestra de una sola ciudad (La Habana) y de un solo canal (revolico).
+  7. Los cortes de outliers (200 / 2000 USD) no descartaron nada: el precio de este
+     mercado esta muy acotado (280-1250 USD).
+  8. autonomy_km se toma tal cual sale del anuncio y a veces es un rango ('50-60 km');
+     no se normalizo a un valor puntual, asi que la feature tiene ruido de redaccion.
+
+==============================================================================

@@ -1,0 +1,13 @@
+{
+  "vehiculo": "bicimoto_electrica",
+  "filtro": "outliers de precio_usd",
+  "reglas": {
+    "precio_placeholder": "precio_usd < 500.0",
+    "precio_outlier_premium": "precio_usd > 4000.0"
+  },
+  "total_anuncios_originales": 120,
+  "total_descartados": 0,
+  "total_limpios": 120,
+  "fecha_analisis": "2026-10-02T21:29:38",
+  "descartados": []
+}

@@ -1,0 +1,13 @@
+{
+  "vehiculo": "moto_combustion",
+  "filtro": "outliers de precio_usd",
+  "reglas": {
+    "precio_placeholder": "precio_usd < 500.0",
+    "precio_outlier_premium": "precio_usd > 5000.0"
+  },
+  "total_anuncios_originales": 90,
+  "total_descartados": 0,
+  "total_limpios": 90,
+  "fecha_analisis": "2026-10-02T22:00:49",
+  "descartados": []
+}

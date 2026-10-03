@@ -1,0 +1,220 @@
+==============================================================================
+CLUSTERING K-MEANS — MOTOS ELECTRICAS — 120 ANUNCIOS (90 REVOLICO + 30 TELEGRAM)
+==============================================================================
+Base original: 120 anuncios. outliers de precio descartados: 2. base clusterizada: 118 anuncios.
+Fecha de analisis   : 2026-10-02T20:54:51
+Archivo origen      : /home/leandro/ev-market-study/verticals/moto/scraping/motos_electricas_120.json
+Vehiculo            : moto_electrica
+Features usadas     : precio_usd, motor_w, autonomia_km
+Normalizacion       : StandardScaler
+Algoritmo           : KMeans(random_state=42, n_init=10)
+
+1. OUTLIERS DESCARTADOS ANTES DE CLUSTERIZAR
+==============================================================================
+  Anuncios en el JSON original     : 120
+  Descartados por precio_usd < 500  (precio_placeholder)      : 1
+  Descartados por precio_usd > 4000 (precio_outlier_premium) : 1
+  Total descartado                : 2
+  Anuncios clusterizados (limpios): 118
+
+  detalle de cada descarte:
+   motivo                   | marca    | motor_w | autonomia_km | precio_usd | fuente
+   ------------------------ + -------- + ------- + ------------ + ---------- + -------
+   precio_outlier_premium   | Topmaq   |    4000 |          120 |       4200 | revolico
+   precio_placeholder       | Yoazaky  |    3000 |          160 |        160 | revolico
+
+  Nota: los descartes NO se corrigen ni se reasignan de precio; se eliminan del
+  dataset de clustering y quedan listados en descartados_outliers.json. El valor de
+  160 USD corresponde a un anuncio cuyo titulo anuncia 3150 USD (error de tipeo del
+  vendedor), y el de 4200 USD es un modelo premium aislado del resto del catalogo.
+
+2. BARRIDO k = 2..10 SOBRE EL DATASET LIMPIO (n=118)
+==============================================================================
+   k |    inercia   |  silhouette  |  min raw |  max raw | cumple | k_fin | sil_fin | cumple_f
+  --- + ------------ + ------------ + -------- + -------- + ------ + ------ + ------- + --------
+  2   |     157.15  |     0.5532  |      33 |      85 |   no   |     2 |  0.5532 | no    n/a 
+  3   |     106.02  |     0.5150  |      16 |      79 |   no   |     3 |  0.5150 | no    n/a 
+  4   |      77.11  |     0.5163  |      16 |      64 |   no   |     4 |  0.5163 | no    n/a 
+  5   |      63.76  |     0.5046  |       9 |      63 |   no   |     5 |  0.5046 | no    n/a 
+  6   |      53.23  |     0.4776  |      10 |      54 |   si   |     6 |  0.4776 | si  [10, 10, 13, 15, 16, 54]
+  7   |      47.31  |     0.4770  |       7 |      54 |   si   |     7 |  0.4770 | si  [7, 10, 10, 11, 13, 13, 54]
+  8   |      41.20  |     0.5063  |       4 |      53 |   si   |     8 |  0.5063 | si  [4, 5, 5, 11, 12, 13, 15, 53]
+  9   |      35.28  |     0.5202  |       2 |      52 |   no   |     8 |  0.4997 | si  [4, 7, 8, 9, 10, 14, 14, 52]
+  10  |      30.64  |     0.4440  |       2 |      39 |   no   |     9 |  0.4254 | si  [4, 5, 7, 8, 11, 12, 13, 19, 39]
+
+3. k ELEGIDO Y JUSTIFICACION
+==============================================================================
+  Reglas aplicadas, en orden:
+    1. filtro de outliers de precio (precio_usd en [500, 4000])
+    2. ningun cluster con menos de 4 anuncios
+    3. ningun cluster con mas del 50% del total (>59 anuncios)
+    4. clausula de fusion: dos clusters cuyo precio promedio difiere <10%
+       se fusionan; el resultado se vuelve a validar contra las reglas 2 y 3
+    5. entre los k que cumplen, gana el de mayor silhouette
+
+  k ELEGIDO              : 8
+  silhouette (final)     : 0.5063
+  clusters finales       : 8
+  fusiones aplicadas     : -
+
+  k que cumplen las reglas (silhouette post-fusion, de mayor a menor):
+    k=8  sil=0.5063  tamanos=[4, 5, 5, 11, 12, 13, 15, 53]
+    k=9  sil=0.4997  tamanos=[4, 7, 8, 9, 10, 14, 14, 52]
+    k=6  sil=0.4776  tamanos=[10, 10, 13, 15, 16, 54]
+    k=7  sil=0.4770  tamanos=[7, 10, 10, 11, 13, 13, 54]
+    k=10 sil=0.4254  tamanos=[4, 5, 7, 8, 11, 12, 13, 19, 39]
+
+  Motivo de la eleccion: k=8 es el de mayor silhouette entre los k que
+  respetan el piso de 4 anuncios y el tope del 50%. Los k con silhouette mayor sin
+  esas restricciones (k=2, 3, 4, 5) concentran entre el
+  53% y el 72% de los anuncios en un unico cluster y por eso quedan
+  descartados: no describen segmentos, repiten el mismo mercado. Ningun k quedo con
+  clusters de 1-2 anuncios despues del filtro de outliers, que era justamente lo que
+  hacia imposible cumplir las reglas antes.
+  La clausula de fusion no se activo para k=8 porque su particion ya cumplia
+  las reglas de tamano; la fusion queda reservada para reparar particiones que las
+  incumplen (k=9 y k=10 si hubieran necesitado reparacion).
+
+  Nota sobre la clausula de fusion: se aplica como mecanismo de reparacion, no como
+  poda de una particion que ya es valida. Forzar una fusion en k=8 uniria
+  clusters que ya son segmentos defendibles (por precio, no por tamano) y bajaria el
+  silhouette sin motivo.
+
+4. CLUSTERS FINALES
+==============================================================================
+  Los nombres se derivan de los datos: cada feature se parte en 3 tramos usando los
+  terciles de la propia distribucion y cada cluster se nombra por el tramo en que cae
+  su promedio (precio / motor / autonomia). El prefijo C0..C{n} garantiza que el
+  nombre sea unico. Varios clusters comparten tramo (C0, C1 y C3 son los tres de
+  'precio bajo / bajo Kw / corta autonomia'): eso es informacion, no un error de
+  nombres, son segmentos distintos dentro del mismo tramo de precio.
+
+   id | nombre                                        |   n | %     | precio |  motor |  autonomia | marca    | fuente
+  --- + --------------------------------------------- + ---- + ----- + ------ + ------ + ---------- + -------- + -------
+  0   | Económica urbana  |   12 | 10.2% |   1629 |   1125 |       67.9 | Kvitova  | revolico
+  1   | Económica de trabajo  |    5 | 4.2% |   1790 |   1600 |       98.0 | Jmd      | revolico
+  2   | Económica de largo alcance  |    4 | 3.4% |   2062 |   2750 |      137.5 | Halcon   | telegram
+  3   | Media-baja urbana  |    5 | 4.2% |   2270 |   1600 |       82.0 | Panda    | revolico
+  4   | Media de trabajo |   15 | 12.7% |   2536 |   1367 |      122.3 | Vedca    | revolico
+  5   | Deportiva urbana |   11 | 9.3% |   2668 |   3000 |       92.7 | Topmaq   | revolico
+  6   | Estándar del mercado |   53 | 44.9% |   2725 |   3000 |      119.3 | Topmaq   | revolico
+  7   | Premium  |   13 | 11.0% |   2835 |   3231 |      150.8 | Halcon   | revolico
+
+  C0 — Económica urbana
+    anuncios    : 12 (10.2% del total)
+    precio USD  : prom 1629 | min 1300 | max 1900
+    motor W     : prom 1125
+    autonomia km: prom 67.9
+    top marcas  : Kvitova (6), Challenger (2), Oim (1)
+    fuentes     : revolico 9 / telegram 3 -> dominante revolico
+    descripcion : 12 anuncios en 1300-1900 USD (prom 1629); motor 1000-2000 W (prom 1125); autonomia 40-80 km (prom 68). Es el segmento mas economico por precio. Marca dominante: Kvitova (6/12).
+
+  C1 — Económica de trabajo
+    anuncios    : 5 (4.2% del total)
+    precio USD  : prom 1790 | min 1600 | max 2000
+    motor W     : prom 1600
+    autonomia km: prom 98.0
+    top marcas  : Jmd (1), Leiliang (1), Fly (1)
+    fuentes     : revolico 4 / telegram 1 -> dominante revolico
+    descripcion : 5 anuncios en 1600-2000 USD (prom 1790); motor 1000-2000 W (prom 1600); autonomia 90-100 km (prom 98). Es un segmento intermedio por precio. Marca dominante: Jmd (1/5).
+
+  C2 — Económica de largo alcance
+    anuncios    : 4 (3.4% del total)
+    precio USD  : prom 2062 | min 1950 | max 2200
+    motor W     : prom 2750
+    autonomia km: prom 137.5
+    top marcas  : Halcon (2), Volta X (1), Izuki (1)
+    fuentes     : revolico 0 / telegram 4 -> dominante telegram
+    descripcion : 4 anuncios en 1950-2200 USD (prom 2062); motor 2000-3000 W (prom 2750); autonomia 120-150 km (prom 138). Es un segmento intermedio por precio. Marca dominante: Halcon (2/4).
+
+  C3 — Media-baja urbana
+    anuncios    : 5 (4.2% del total)
+    precio USD  : prom 2270 | min 2200 | max 2300
+    motor W     : prom 1600
+    autonomia km: prom 82.0
+    top marcas  : Panda (4), Vedca (1)
+    fuentes     : revolico 4 / telegram 1 -> dominante revolico
+    descripcion : 5 anuncios en 2200-2300 USD (prom 2270); motor 1500-2000 W (prom 1600); autonomia 80-90 km (prom 82). Es un segmento intermedio por precio. Marca dominante: Panda (4/5).
+
+  C4 — Media de trabajo
+    anuncios    : 15 (12.7% del total)
+    precio USD  : prom 2536 | min 2400 | max 2800
+    motor W     : prom 1367
+    autonomia km: prom 122.3
+    top marcas  : Vedca (8), Gs Racing (5), Ava (1)
+    fuentes     : revolico 13 / telegram 2 -> dominante revolico
+    descripcion : 15 anuncios en 2400-2800 USD (prom 2536); motor 1000-2000 W (prom 1367); autonomia 100-140 km (prom 122). Es un segmento intermedio por precio. Marca dominante: Vedca (8/15).
+
+  C5 — Deportiva urbana
+    anuncios    : 11 (9.3% del total)
+    precio USD  : prom 2668 | min 2000 | max 2950
+    motor W     : prom 3000
+    autonomia km: prom 92.7
+    top marcas  : Topmaq (4), Ava (2), Izuki (2)
+    fuentes     : revolico 9 / telegram 2 -> dominante revolico
+    descripcion : 11 anuncios en 2000-2950 USD (prom 2668); motor 3000-3000 W (prom 3000); autonomia 80-100 km (prom 93). Es un segmento intermedio por precio. Marca dominante: Topmaq (4/11).
+
+  C6 — Estándar del mercado
+    anuncios    : 53 (44.9% del total)
+    precio USD  : prom 2725 | min 2450 | max 3250
+    motor W     : prom 3000
+    autonomia km: prom 119.3
+    top marcas  : Topmaq (26), Bucatti (12), Izuki (6)
+    fuentes     : revolico 38 / telegram 15 -> dominante revolico
+    descripcion : 53 anuncios en 2450-3250 USD (prom 2725); motor 3000-3000 W (prom 3000); autonomia 110-135 km (prom 119). Es un segmento intermedio por precio. Marca dominante: Topmaq (26/53).
+
+  C7 — Premium
+    anuncios    : 13 (11.0% del total)
+    precio USD  : prom 2835 | min 2550 | max 3150
+    motor W     : prom 3231
+    autonomia km: prom 150.8
+    top marcas  : Halcon (6), Yoazaky (2), Bucatti (2)
+    fuentes     : revolico 11 / telegram 2 -> dominante revolico
+    descripcion : 13 anuncios en 2550-3150 USD (prom 2835); motor 3000-4500 W (prom 3231); autonomia 140-160 km (prom 151). Es el segmento mas caro por precio. Marca dominante: Halcon (6/13).
+
+5. CORRELACIONES PEARSON ENTRE LAS 3 FEATURES (n=118)
+==============================================================================
+              precio_usd  motor_w  autonomia_km
+  precio_usd       +1.0000  +0.6874       +0.6420
+  motor_w          +0.6874  +1.0000       +0.5537
+  autonomia_km     +0.6420  +0.5537       +1.0000
+
+  precio_usd ~ motor_w: r = +0.6874 (moderada, positiva)
+  precio_usd ~ autonomia_km: r = +0.6420 (moderada, positiva)
+  motor_w ~ autonomia_km: r = +0.5537 (moderada, positiva)
+
+6. DISTRIBUCION DE FUENTE POR CLUSTER (revolico vs telegram)
+==============================================================================
+   id | nombre                                        | revolico | telegram | dominante  | %telegram
+  --- + --------------------------------------------- + -------- + -------- + ---------- + ---------
+  0   | Económica urbana  |        9 |        3 | revolico   |    25.0%
+  1   | Económica de trabajo  |        4 |        1 | revolico   |    20.0%
+  2   | Económica de largo alcance  |        0 |        4 | telegram   |   100.0%
+  3   | Media-baja urbana  |        4 |        1 | revolico   |    20.0%
+  4   | Media de trabajo |       13 |        2 | revolico   |    13.3%
+  5   | Deportiva urbana |        9 |        2 | revolico   |    18.2%
+  6   | Estándar del mercado |       38 |       15 | revolico   |    28.3%
+  7   | Premium  |       11 |        2 | revolico   |    15.4%
+      | TOTAL                                         |       88 |       30 |            |    25.4%
+
+  Base total limpia: 118 anuncios (revolico 88 / telegram 30).
+
+7. LIMITACIONES
+==============================================================================
+  1. Muestra chica (118 anuncios) y de una sola plataforma/ciudad; los clusters
+     describen este catalogo, no el mercado de motos electricas en general.
+  2. El filtro de outliers quita 2 anuncios (1.7%);
+     el precio de 160 USD corresponde a un titulo que anuncia 3150 USD (error de
+     tipeo del vendedor), asi que ese anuncio es recuperable y sesgaria el
+     resultado si se dejara dentro. Conviene corregir el scraper para no perderlo.
+  3. Se usan solo 3 features cuantitativas. Variables cualitativas del anuncio
+     (tipo de bateria, voltaje, si es plegable) no estan en el esquema actual y no
+     pueden discriminar clusters.
+  4. Silhouette ~0.5 indica estructura moderada, no clusters compactos y bien
+     separados: hay solapamiento real entre segmentos de precio.
+  5. Telegram y revolico no son la misma poblacion (canal de compraventa contra
+     marketplace); mezclarlos puede separar por fuente y no por producto.
+  6. Los cortes de outliers (500 USD / 4000 USD) son umbrales operativos elegidos
+     para este set; con otra muestra hay que revisarlos.
+
+==============================================================================

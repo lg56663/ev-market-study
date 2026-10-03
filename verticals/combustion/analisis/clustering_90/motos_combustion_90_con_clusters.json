@@ -1,0 +1,1334 @@
+{
+  "vehiculo": "moto_combustion",
+  "total_anuncios": 90,
+  "k_elegido": 9,
+  "k_clusters_finales": 8,
+  "silhouette": 0.6003,
+  "fecha_analisis": "2026-10-02T22:00:51",
+  "features_usadas": [
+    "precio_usd",
+    "cilindrada_cc"
+  ],
+  "campos_solo_descriptivos": [
+    "marca",
+    "autonomia_km",
+    "municipio"
+  ],
+  "campos_no_existentes": [
+    "capacidad_tanque_l"
+  ],
+  "normalizacion": "StandardScaler",
+  "algoritmo": "KMeans(random_state=42, n_init=10)",
+  "reglas_aplicadas": {
+    "filtro_outliers": {
+      "precio_placeholder": "precio_usd < 500.0",
+      "precio_outlier_premium": "precio_usd > 5000.0",
+      "descartados": 0
+    },
+    "min_anuncios_por_cluster": 4,
+    "max_fraccion_por_cluster": 0.5,
+    "maximo_absoluto_por_cluster": 45,
+    "gap_fusion_precio": 0.1,
+    "fusiones_aplicadas": "C3+C6(9.78%)"
+  },
+  "clusters": [
+    {
+      "id": 0,
+      "nombre": "C0 - precio bajo 138cc mixto",
+      "n_anuncios": 6,
+      "precio_promedio_usd": 1355.0,
+      "precio_min_usd": 1000.0,
+      "precio_max_usd": 1530.0,
+      "cilindrada_promedio_cc": 137.5,
+      "cilindrada_min_cc": 125,
+      "cilindrada_max_cc": 150,
+      "marcas_mas_comunes": [
+        {
+          "marca": "Taeko",
+          "n": 2
+        },
+        {
+          "marca": "Treck",
+          "n": 1
+        },
+        {
+          "marca": "Ava",
+          "n": 1
+        }
+      ],
+      "marca_mas_comun": "Taeko",
+      "descripcion": "6 anuncios en 1000-1530 USD (prom 1355, el rango mas bajo de los tres); cilindrada 138 cc promedio, con cc 125, 150 presentes. Es el segmento mas economico por precio. Marca dominante: Taeko (2/6)."
+    },
+    {
+      "id": 1,
+      "nombre": "C1 - precio bajo 150cc",
+      "n_anuncios": 18,
+      "precio_promedio_usd": 1907.78,
+      "precio_min_usd": 1650.0,
+      "precio_max_usd": 2100.0,
+      "cilindrada_promedio_cc": 150.0,
+      "cilindrada_min_cc": 150,
+      "cilindrada_max_cc": 150,
+      "marcas_mas_comunes": [
+        {
+          "marca": "Ava",
+          "n": 3
+        },
+        {
+          "marca": "Treck",
+          "n": 3
+        },
+        {
+          "marca": "Restrepa",
+          "n": 2
+        }
+      ],
+      "marca_mas_comun": "Ava",
+      "descripcion": "18 anuncios en 1650-2100 USD (prom 1908, el rango mas bajo de los tres); cilindrada 150 cc promedio, con cc 150 presentes. Es un segmento intermedio por precio. Marca dominante: Ava (3/18)."
+    },
+    {
+      "id": 2,
+      "nombre": "C2 - precio medio 125cc",
+      "n_anuncios": 14,
+      "precio_promedio_usd": 2037.86,
+      "precio_min_usd": 1900.0,
+      "precio_max_usd": 2200.0,
+      "cilindrada_promedio_cc": 125.0,
+      "cilindrada_min_cc": 125,
+      "cilindrada_max_cc": 125,
+      "marcas_mas_comunes": [
+        {
+          "marca": "Jincheng",
+          "n": 3
+        },
+        {
+          "marca": "Souka",
+          "n": 2
+        },
+        {
+          "marca": "Halcón",
+          "n": 2
+        }
+      ],
+      "marca_mas_comun": "Jincheng",
+      "descripcion": "14 anuncios en 1900-2200 USD (prom 2038, el rango intermedio); cilindrada 125 cc promedio, con cc 125 presentes. Es un segmento intermedio por precio. Marca dominante: Jincheng (3/14)."
+    },
+    {
+      "id": 3,
+      "nombre": "C3 - precio medio 200cc",
+      "n_anuncios": 6,
+      "precio_promedio_usd": 2100.0,
+      "precio_min_usd": 1800.0,
+      "precio_max_usd": 2300.0,
+      "cilindrada_promedio_cc": 200.0,
+      "cilindrada_min_cc": 200,
+      "cilindrada_max_cc": 200,
+      "marcas_mas_comunes": [
+        {
+          "marca": "Topmaq",
+          "n": 2
+        },
+        {
+          "marca": "Katzu",
+          "n": 1
+        },
+        {
+          "marca": "Ava",
+          "n": 1
+        }
+      ],
+      "marca_mas_comun": "Topmaq",
+      "descripcion": "6 anuncios en 1800-2300 USD (prom 2100, el rango intermedio); cilindrada 200 cc promedio, con cc 200 presentes. Es un segmento intermedio por precio. Marca dominante: Topmaq (2/6)."
+    },
+    {
+      "id": 4,
+      "nombre": "C4 - precio medio 150cc",
+      "n_anuncios": 15,
+      "precio_promedio_usd": 2347.33,
+      "precio_min_usd": 2150.0,
+      "precio_max_usd": 2600.0,
+      "cilindrada_promedio_cc": 150.0,
+      "cilindrada_min_cc": 150,
+      "cilindrada_max_cc": 150,
+      "marcas_mas_comunes": [
+        {
+          "marca": "Mishozuki",
+          "n": 4
+        },
+        {
+          "marca": "Wys",
+          "n": 3
+        },
+        {
+          "marca": "Huawin",
+          "n": 2
+        }
+      ],
+      "marca_mas_comun": "Mishozuki",
+      "descripcion": "15 anuncios en 2150-2600 USD (prom 2347, el rango intermedio); cilindrada 150 cc promedio, con cc 150 presentes. Es un segmento intermedio por precio. Marca dominante: Mishozuki (4/15)."
+    },
+    {
+      "id": 5,
+      "nombre": "C5 - precio alto 200cc",
+      "n_anuncios": 16,
+      "precio_promedio_usd": 2668.75,
+      "precio_min_usd": 2450.0,
+      "precio_max_usd": 3000.0,
+      "cilindrada_promedio_cc": 200.0,
+      "cilindrada_min_cc": 200,
+      "cilindrada_max_cc": 200,
+      "marcas_mas_comunes": [
+        {
+          "marca": "Tank",
+          "n": 4
+        },
+        {
+          "marca": "Mountain",
+          "n": 3
+        },
+        {
+          "marca": "Italy",
+          "n": 2
+        }
+      ],
+      "marca_mas_comun": "Tank",
+      "descripcion": "16 anuncios en 2450-3000 USD (prom 2669, el rango mas alto de los tres); cilindrada 200 cc promedio, con cc 200 presentes. Es un segmento intermedio por precio. Marca dominante: Tank (4/16)."
+    },
+    {
+      "id": 6,
+      "nombre": "C6 - precio alto 250cc",
+      "n_anuncios": 9,
+      "precio_promedio_usd": 2680.0,
+      "precio_min_usd": 2400.0,
+      "precio_max_usd": 3260.0,
+      "cilindrada_promedio_cc": 250.0,
+      "cilindrada_min_cc": 250,
+      "cilindrada_max_cc": 250,
+      "marcas_mas_comunes": [
+        {
+          "marca": "Furia",
+          "n": 3
+        },
+        {
+          "marca": "Katzu",
+          "n": 2
+        },
+        {
+          "marca": "Lifan",
+          "n": 2
+        }
+      ],
+      "marca_mas_comun": "Furia",
+      "descripcion": "9 anuncios en 2400-3260 USD (prom 2680, el rango mas alto de los tres); cilindrada 250 cc promedio, con cc 250 presentes. Es un segmento intermedio por precio. Marca dominante: Furia (3/9)."
+    },
+    {
+      "id": 7,
+      "nombre": "C7 - precio alto 162cc mixto",
+      "n_anuncios": 6,
+      "precio_promedio_usd": 3750.0,
+      "precio_min_usd": 3400.0,
+      "precio_max_usd": 4200.0,
+      "cilindrada_promedio_cc": 162.5,
+      "cilindrada_min_cc": 125,
+      "cilindrada_max_cc": 200,
+      "marcas_mas_comunes": [
+        {
+          "marca": "Suzuki",
+          "n": 3
+        },
+        {
+          "marca": "Itálica",
+          "n": 1
+        },
+        {
+          "marca": "Mishozuki",
+          "n": 1
+        }
+      ],
+      "marca_mas_comun": "Suzuki",
+      "descripcion": "6 anuncios en 3400-4200 USD (prom 3750, el rango mas alto de los tres); cilindrada 162 cc promedio, con cc 125, 200 presentes. Es el segmento mas caro por precio. Marca dominante: Suzuki (3/6)."
+    }
+  ],
+  "anuncios": [
+    {
+      "titulo": "MOTO AUTOMÁTICA MOUNTAIN. MOTO DE GASOLINA. MOTO 200CC.",
+      "marca": "Mountain",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 2600.0,
+      "ubicacion": "La Habana / Diez de Octubre",
+      "url": "https://www.revolico.com/item/moto-automatica-mountain-moto-de-gasolina-moto-200cc-56715725",
+      "fecha_publicacion": "2026-09-09",
+      "municipio": "Diez de Octubre",
+      "cluster": 5
+    },
+    {
+      "titulo": "MOTO DEPORTIVA DE COMBUSTIÓN FURIA PRO. MOTO DE 250CC. MOTO DE GASOLINA. MOTO DE 6 VELOCIDADES.",
+      "marca": "Furia",
+      "cilindrada_cc": 250,
+      "autonomia_km": null,
+      "precio_usd": 2680.0,
+      "ubicacion": "La Habana / Diez de Octubre",
+      "url": "https://www.revolico.com/item/moto-deportiva-de-combustion-furia-pro-56715660",
+      "fecha_publicacion": "2026-09-09",
+      "municipio": "Diez de Octubre",
+      "cluster": 6
+    },
+    {
+      "titulo": "MOTO AUTOMÁTICA ITALY RX COMBAT 2025. MOTO 4 TIEMPOS. MOTO 200CC. MOTO CON CHAPA. MOTO DE GASOLINA. MOTO DE COMBUSTIÓN.",
+      "marca": "Italy",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 2700.0,
+      "ubicacion": "La Habana / Diez de Octubre",
+      "url": "https://www.revolico.com/item/moto-automatica-italy-rx-combat-2025-moto-4-tiempos-moto-200cc-moto-con-chapa-moto-de-gasolina-moto-de-combustion-56732835",
+      "fecha_publicacion": "2026-09-09",
+      "municipio": "Diez de Octubre",
+      "cluster": 5
+    },
+    {
+      "titulo": "Moto 150cc gasolina Ava Avispon",
+      "marca": "Ava",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 1900.0,
+      "ubicacion": "La Habana / Habana Vieja",
+      "url": "https://www.revolico.com/item/moto-150cc-gasolina-ava-avispon-57060212",
+      "fecha_publicacion": "2026-08-27",
+      "municipio": "Habana Vieja",
+      "cluster": 1
+    },
+    {
+      "titulo": "Moto de gasolina WYS Monster  ✅Nueva 0km 150cc ✅ 4 tiempos ,caja 5ta ✅Hace 40km x Litro  ✅Directo a chapa   💠Tiene gara",
+      "marca": "Wys",
+      "cilindrada_cc": 150,
+      "autonomia_km": 520,
+      "precio_usd": 2150.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/moto-de-gasolina-wys-monster-nueva-0km-150cc-4-tiempos-caja-5ta-hace-40km-x-litro-directo-a-chapa-tiene-gara-56645013",
+      "fecha_publicacion": "2026-08-05",
+      "municipio": "Centro Habana",
+      "cluster": 4
+    },
+    {
+      "titulo": "Moto de gasolina 150 cc marca Seiko",
+      "marca": "Seiko",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 1950.0,
+      "ubicacion": "La Habana / Cerro",
+      "url": "https://www.revolico.com/item/moto-de-gasolina-150-cc-marca-seiko-56199235",
+      "fecha_publicacion": "2026-09-24",
+      "municipio": "Cerro",
+      "cluster": 1
+    },
+    {
+      "titulo": "Moto de gasolina – 200 cc – Nueva. Modelo Tank",
+      "marca": "Tank",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 2700.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/moto-de-gasolina-200-cc-nueva-modelo-tank-54684781",
+      "fecha_publicacion": "2026-09-15",
+      "municipio": "Playa",
+      "cluster": 5
+    },
+    {
+      "titulo": "HUAWIN 150CC Moto de gasolina P0524-AV011",
+      "marca": "Huawin",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 2380.0,
+      "ubicacion": "La Habana / Diez de Octubre",
+      "url": "https://www.revolico.com/item/huawin-150cc-moto-de-gasolina-p0524-av011-57215676",
+      "fecha_publicacion": "2026-09-27",
+      "municipio": "Diez de Octubre",
+      "cluster": 4
+    },
+    {
+      "titulo": "Se vende moto de gasolina Taeko 125cc",
+      "marca": "Taeko",
+      "cilindrada_cc": 125,
+      "autonomia_km": null,
+      "precio_usd": 1200.0,
+      "ubicacion": "La Habana / Arroyo Naranjo",
+      "url": "https://www.revolico.com/item/se-vende-moto-de-gasolina-taeko-125cc-56968399",
+      "fecha_publicacion": "2026-08-23",
+      "municipio": "Arroyo Naranjo",
+      "cluster": 0
+    },
+    {
+      "titulo": "MOTO DE COMBUSTIÓN AUTOMÁTICA DE 125CC, 4 TIEMPOS, MARCA SOUKA. MOTO DE GASOLINA.",
+      "marca": "Souka",
+      "cilindrada_cc": 125,
+      "autonomia_km": null,
+      "precio_usd": 2200.0,
+      "ubicacion": "La Habana / Diez de Octubre",
+      "url": "https://www.revolico.com/item/moto-de-combustion-automatica-de-125cc-4-tiempos-marca-souka-moto-de-gasolina-57069979",
+      "fecha_publicacion": "2026-09-09",
+      "municipio": "Diez de Octubre",
+      "cluster": 2
+    },
+    {
+      "titulo": "MOTO DE COMBUSTIÓN AUTOMÁTICA DE 200CC CON CHAPA, MARCA TOPMAQ RAPTOR. MOTO 4 TIEMPOS. MOTO DE GASOLINA.",
+      "marca": "Topmaq",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 2500.0,
+      "ubicacion": "La Habana / Diez de Octubre",
+      "url": "https://www.revolico.com/item/moto-de-combustion-automatica-de-200cc-con-chapa-marca-topmaq-raptor-moto-4-tiempos-moto-de-gasolina-57069796",
+      "fecha_publicacion": "2026-09-09",
+      "municipio": "Diez de Octubre",
+      "cluster": 5
+    },
+    {
+      "titulo": "MOTO DE COMBUSTIÓN AUTOMÁTICA DE 200CC CON CHAPA, MARCA ITÁLICA SUPRA. MOTO 4 TIEMPOS. MOTO DE GASOLINA.",
+      "marca": "Itálica",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 3600.0,
+      "ubicacion": "La Habana / Diez de Octubre",
+      "url": "https://www.revolico.com/item/moto-de-combustion-automatica-de-200cc-con-chapa-marca-italica-supra-moto-4-tiempos-moto-de-gasolina-57054526",
+      "fecha_publicacion": "2026-09-09",
+      "municipio": "Diez de Octubre",
+      "cluster": 7
+    },
+    {
+      "titulo": "MOTO DE COMBUSTIÓN AUTOMÁTICA DE 200CC CON CHAPA MARCA TOPMAQ MODELO AVISPÓN. MOTO 4 TIEMPOS. MOTO DE GASOLINA.",
+      "marca": "Topmaq",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 2250.0,
+      "ubicacion": "La Habana / Diez de Octubre",
+      "url": "https://www.revolico.com/item/moto-de-combustion-automatica-de-200cc-con-chapa-marca-topmaq-modelo-avispon-moto-4-tiempos-moto-de-gasolina-56733170",
+      "fecha_publicacion": "2026-09-09",
+      "municipio": "Diez de Octubre",
+      "cluster": 3
+    },
+    {
+      "titulo": "Moto Nueva de Gasolina Mizhozuki CHP 200 cc",
+      "marca": "Mishozuki",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 3500.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/moto-nueva-de-gasolina-mizhozuki-chp-200-cc-56679959",
+      "fecha_publicacion": "2026-09-18",
+      "municipio": "Playa",
+      "cluster": 7
+    },
+    {
+      "titulo": "MOTO AUTOMÁTICA MISHOZUKI SCT 🛵`150cc - Gasolina",
+      "marca": "Mishozuki",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 2300.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/moto-automatica-mishozuki-sct-150cc-gasolina-57412974",
+      "fecha_publicacion": "2026-09-13",
+      "municipio": "Playa",
+      "cluster": 4
+    },
+    {
+      "titulo": "*MOTO KATZU CHEETAH 200*  ⚙️ Especificaciones: • Motor: 200 cc • Gasolina  • ⁠4 tiempos • ⁠Tanque de 16,5 Litros  • ⁠5 V",
+      "marca": "Katzu",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 2200.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/moto-katzu-cheetah-200-especificaciones-motor-200-cc-gasolina-4-tiempos-tanque-de-165-litros-5-v-57666731",
+      "fecha_publicacion": "2026-09-25",
+      "municipio": "Centro Habana",
+      "cluster": 3
+    },
+    {
+      "titulo": "*MOTO KATZU SNAPDRAGON 250*  ⚙️ Especificaciones: • Motor: 250 cc • Gasolina  • ⁠4 tiempo",
+      "marca": "Katzu",
+      "cilindrada_cc": 250,
+      "autonomia_km": null,
+      "precio_usd": 2500.0,
+      "ubicacion": "La Habana / Boyeros",
+      "url": "https://www.revolico.com/item/moto-katzu-snapdragon-250-especificaciones-motor-250-cc-gasolina-4-tiempo-57545083",
+      "fecha_publicacion": "2026-09-26",
+      "municipio": "Boyeros",
+      "cluster": 6
+    },
+    {
+      "titulo": "*MOTO AUTOMÁTICA MISHOZUKI BÚHO TRANSFORMER*  ⚙️ CARACTERÍSTICAS:  • 150 cc  • Gasolina  • Autonomía de 40 km x litro •",
+      "marca": "Mishozuki",
+      "cilindrada_cc": 150,
+      "autonomia_km": 284,
+      "precio_usd": 2400.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/moto-automatica-mishozuki-buho-transformer-caracteristicas-150-cc-gasolina-autonomia-de-40-km-x-litro-57154003",
+      "fecha_publicacion": "2026-09-02",
+      "municipio": "Centro Habana",
+      "cluster": 4
+    },
+    {
+      "titulo": "MOTO AUTOMÁTICA SUZUKI BURGMAN   ⚙️ CARACTERÍSTICAS  • Motor 4 Tiempos  • ⁠Automática • ⁠125 CC • ⁠Gasolina • ⁠Pizarra D",
+      "marca": "Suzuki",
+      "cilindrada_cc": 125,
+      "autonomia_km": null,
+      "precio_usd": 4200.0,
+      "ubicacion": "La Habana / Guanabacoa",
+      "url": "https://www.revolico.com/item/moto-automatica-suzuki-burgman-caracteristicas-motor-4-tiempos-automatica-125-cc-gasolina-pizarra-d-56727432",
+      "fecha_publicacion": "2026-09-17",
+      "municipio": "Guanabacoa",
+      "cluster": 7
+    },
+    {
+      "titulo": "*MOTO LIFAN GN 250CC*",
+      "marca": "Lifan",
+      "cilindrada_cc": 250,
+      "autonomia_km": null,
+      "precio_usd": 2500.0,
+      "ubicacion": "La Habana / Cerro",
+      "url": "https://www.revolico.com/item/moto-lifan-gn-250cc-57735234",
+      "fecha_publicacion": "2026-09-28",
+      "municipio": "Cerro",
+      "cluster": 6
+    },
+    {
+      "titulo": "Moto de Combustión moto de combustible 125CC Treck trek MT 125",
+      "marca": "Treck",
+      "cilindrada_cc": 125,
+      "autonomia_km": null,
+      "precio_usd": 1400.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/moto-de-combustion-moto-de-combustible-125cc-treck-trek-mt-125-53263923",
+      "fecha_publicacion": "2026-09-28",
+      "municipio": "Centro Habana",
+      "cluster": 0
+    },
+    {
+      "titulo": "Moto de Combustión moto de combustible 200CC Treck trek krathos 200 krato",
+      "marca": "Treck",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 2550.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/moto-de-combustion-moto-de-combustible-200cc-treck-trek-krathos-200-krato-53263717",
+      "fecha_publicacion": "2026-09-28",
+      "municipio": "Centro Habana",
+      "cluster": 5
+    },
+    {
+      "titulo": "MOTO DE COMBUSTIÓN MARCA MOTOR TRECK   ⚙️CARACTERÍSTICAS :  • Motor 4 Tiempo  • ⁠150 CC  • ⁠40 KM/L  • ⁠Tanque de 5 L  •",
+      "marca": "Treck",
+      "cilindrada_cc": 150,
+      "autonomia_km": 200,
+      "precio_usd": 1950.0,
+      "ubicacion": "La Habana / Cotorro",
+      "url": "https://www.revolico.com/item/moto-de-combustion-marca-motor-treck-caracteristicas-motor-4-tiempo-150-cc-40-kml-tanque-de-5-l-57665547",
+      "fecha_publicacion": "2026-09-25",
+      "municipio": "Cotorro",
+      "cluster": 1
+    },
+    {
+      "titulo": "Moto de combustión marca HALCÓN 125cc 0km",
+      "marca": "Halcón",
+      "cilindrada_cc": 125,
+      "autonomia_km": null,
+      "precio_usd": 1900.0,
+      "ubicacion": "La Habana / Plaza",
+      "url": "https://www.revolico.com/item/moto-de-combustion-marca-halcon-125cc-0km-57629576",
+      "fecha_publicacion": "2026-09-28",
+      "municipio": "Plaza",
+      "cluster": 2
+    },
+    {
+      "titulo": "MOTO DE COMBUSTIÓN JINCHEN CADENERA  ⚙️CARACTERÍSTICAS:  • 125 CC  • ⁠4 Tiempo • ⁠5 Velocidades • ⁠Capacidad del Tanque",
+      "marca": "Jincheng",
+      "cilindrada_cc": 125,
+      "autonomia_km": null,
+      "precio_usd": 2100.0,
+      "ubicacion": "La Habana / Cerro",
+      "url": "https://www.revolico.com/item/moto-de-combustion-jinchen-cadenera-caracteristicas-125-cc-4-tiempo-5-velocidades-capacidad-del-tanque-57543210",
+      "fecha_publicacion": "2026-09-22",
+      "municipio": "Cerro",
+      "cluster": 2
+    },
+    {
+      "titulo": "MOTO DE COMBUSTIÓN AUTOMÁTICA DE 200CC 4 TIEMPOS, MARCA TK200T UNISON. CON CHAPA Y SIN CHAPA.",
+      "marca": "TK",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 2600.0,
+      "ubicacion": "La Habana / Diez de Octubre",
+      "url": "https://www.revolico.com/item/moto-de-combustion-automatica-de-200cc-4-tiempos-marca-tk200t-unison-con-chapa-y-sin-chapa-57070232",
+      "fecha_publicacion": "2026-09-09",
+      "municipio": "Diez de Octubre",
+      "cluster": 5
+    },
+    {
+      "titulo": "Moto de combustión Restrepa 150cc",
+      "marca": "Restrepa",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 1800.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/moto-de-combustion-restrepa-150cc-56835469",
+      "fecha_publicacion": "2026-08-16",
+      "municipio": "Playa",
+      "cluster": 1
+    },
+    {
+      "titulo": "*🏍 Moto de Combustión GN 150cc🏍*   ☑️Kit Suzuki modelo H ☑️Unidad Varillera ☑️Autonomía  42km/L ☑️Cuadro Hecho en Cuba",
+      "marca": "Suzuki",
+      "cilindrada_cc": 150,
+      "autonomia_km": 42,
+      "precio_usd": 1900.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/moto-de-combustion-gn-150cc-kit-suzuki-modelo-h-unidad-varillera-autonomia-42kml-cuadro-hecho-en-cuba-57468222",
+      "fecha_publicacion": "2026-09-15",
+      "municipio": "Playa",
+      "cluster": 1
+    },
+    {
+      "titulo": "Ava flamingo 200cc",
+      "marca": "Ava",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 1800.0,
+      "ubicacion": "La Habana / Plaza",
+      "url": "https://www.revolico.com/item/ava-flamingo-200cc-56625199",
+      "fecha_publicacion": "2026-08-04",
+      "municipio": "Plaza",
+      "cluster": 3
+    },
+    {
+      "titulo": "Isuki delta Ford 200cc",
+      "marca": "Isuki",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 2200.0,
+      "ubicacion": "La Habana / Regla",
+      "url": "https://www.revolico.com/item/isuki-delta-ford-200cc-56884013",
+      "fecha_publicacion": "2026-08-31",
+      "municipio": "Regla",
+      "cluster": 3
+    },
+    {
+      "titulo": "Italika 150cc automatica  4t con kit de reparación , kit de accesorios y otras partes",
+      "marca": "Italika",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 2500.0,
+      "ubicacion": "La Habana / Cerro",
+      "url": "https://www.revolico.com/item/italika-150cc-automatica-4t-con-kit-de-reparacion-kit-de-accesorios-y-otras-partes-56328440",
+      "fecha_publicacion": "2026-08-24",
+      "municipio": "Cerro",
+      "cluster": 4
+    },
+    {
+      "titulo": "Moto 4t modelo Tank Efi 200cc,chapa y papeles en mano",
+      "marca": "Tank",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 1850.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/moto-4t-modelo-tank-efi-200ccchapa-y-papeles-en-mano-57017558",
+      "fecha_publicacion": "2026-08-25",
+      "municipio": "Centro Habana",
+      "cluster": 3
+    },
+    {
+      "titulo": "MOTO ALCON 125cc",
+      "marca": "Alcon",
+      "cilindrada_cc": 125,
+      "autonomia_km": null,
+      "precio_usd": 1930.0,
+      "ubicacion": "La Habana / Habana Vieja",
+      "url": "https://www.revolico.com/item/moto-alcon-125cc-57040558",
+      "fecha_publicacion": "2026-08-26",
+      "municipio": "Habana Vieja",
+      "cluster": 2
+    },
+    {
+      "titulo": "`🛵 MOTO AUTOMÁTICA AVA AK 150Cc 🛵`",
+      "marca": "Ava",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 2000.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/moto-automatica-ava-ak-150cc-56627858",
+      "fecha_publicacion": "2026-08-04",
+      "municipio": "Playa",
+      "cluster": 1
+    },
+    {
+      "titulo": "`🏍️MOTO AUTOMÁTICA HALCÓN DAKAR PRO 2026🏍️`  ⚙️𝐄𝐒𝐏𝐄𝐂𝐈𝐅𝐈𝐂𝐀𝐂𝐈𝐎𝐍𝐄𝐒 ▸ 150cc - Motor 4 tiempos**globo",
+      "marca": "Halcón",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 2600.0,
+      "ubicacion": "La Habana / La Lisa",
+      "url": "https://www.revolico.com/item/moto-automatica-halcon-dakar-pro-2026-especificaciones-150cc-motor-4-tiempos-57722714",
+      "fecha_publicacion": "2026-09-27",
+      "municipio": "La Lisa",
+      "cluster": 4
+    },
+    {
+      "titulo": "🏍️MOTO AUTOMÁTICA MOUNTAIN🏍️  ⚙️𝐄𝐒𝐏𝐄𝐂𝐈𝐅𝐈𝐂𝐀𝐂𝐈𝐎𝐍𝐄𝐒 • 200cc - Carburación • Velocidad máxima: 90 km/h • P",
+      "marca": "Mountain",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 2600.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/moto-automatica-mountain-especificaciones-200cc-carburacion-velocidad-maxima-90-kmh-p-56693431",
+      "fecha_publicacion": "2026-08-08",
+      "municipio": "Playa",
+      "cluster": 5
+    },
+    {
+      "titulo": "MOTO AUTOMÁTICA SUZUKI BURGMAN. MOTO 4 TIEMPOS. MOTO DE 125CC. MOTO DE GASOLINA. MOTO DE COMBUSTIÓN. MOTO CON CHAPA.",
+      "marca": "Suzuki",
+      "cilindrada_cc": 125,
+      "autonomia_km": null,
+      "precio_usd": 4200.0,
+      "ubicacion": "La Habana / Diez de Octubre",
+      "url": "https://www.revolico.com/item/moto-automatica-suzuki-burgman-moto-4-tiempos-moto-de-125cc-moto-de-gasolina-moto-de-combustion-moto-con-chapa-56732693",
+      "fecha_publicacion": "2026-09-09",
+      "municipio": "Diez de Octubre",
+      "cluster": 7
+    },
+    {
+      "titulo": "🏍️ MOTO AUTOMÁTICA UNIZUKI 2026 – 200CC – $2600 USD ⛽",
+      "marca": "Unizuki",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 2600.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/moto-automatica-unizuki-2026-200cc-2600-usd-57622356",
+      "fecha_publicacion": "2026-09-22",
+      "municipio": "Playa",
+      "cluster": 5
+    },
+    {
+      "titulo": "🏍️ MOTO AUTOMÁTICA YAMAKI 2026 – 150CC – FACTURA + DIRECTO A CHAPA – $2200 USD 🔥",
+      "marca": "Yamaki",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 2200.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/moto-automatica-yamaki-2026-150cc-factura-directo-a-chapa-2200-usd-57202207",
+      "fecha_publicacion": "2026-09-04",
+      "municipio": "Playa",
+      "cluster": 4
+    },
+    {
+      "titulo": "Moto Ava Leopard 150cc",
+      "marca": "Ava",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 1500.0,
+      "ubicacion": "La Habana / Cerro",
+      "url": "https://www.revolico.com/item/moto-ava-leopard-150cc-56660364",
+      "fecha_publicacion": "2026-08-06",
+      "municipio": "Cerro",
+      "cluster": 0
+    },
+    {
+      "titulo": "🏍*MOTO AX100 CON MOTOR DE AVA 4TIEMPO 150cc*  📃*Factura de Mypime*  a nombre del cliente, incluye *cuño de tránsito*,",
+      "marca": "Ava",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 1650.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/moto-ax100-con-motor-de-ava-4tiempo-150cc-factura-de-mypime-a-nombre-del-cliente-incluye-cuno-de-transito-57302035",
+      "fecha_publicacion": "2026-09-08",
+      "municipio": "Centro Habana",
+      "cluster": 1
+    },
+    {
+      "titulo": "MOTO BWS 4T 150cc NARANJA",
+      "marca": "Bws",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 1900.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/moto-bws-4t-150cc-naranja-53821278",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Centro Habana",
+      "cluster": 1
+    },
+    {
+      "titulo": "MOTO DE COMBUSTIÓN AUTOMÁTICA DE 150 CC MODELO MISHOZUKI BÚHO TRANSFORMER. MOTO DE GASOLINA. MOTO AUTOMÁTICA.",
+      "marca": "Mishozuki",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 2500.0,
+      "ubicacion": "La Habana / Diez de Octubre",
+      "url": "https://www.revolico.com/item/moto-de-combustion-automatica-de-150-cc-modelo-mishozuki-buho-transformer-moto-de-gasolina-moto-automatica-57054262",
+      "fecha_publicacion": "2026-09-09",
+      "municipio": "Diez de Octubre",
+      "cluster": 4
+    },
+    {
+      "titulo": "MOTO DE COMBUSTIÓN AUTOMÁTICA DE 150CC CON CHAPA, MODELO TRECK ADV ACORADA. MOTO 4 TIEMPOS. MOTO DE GASOLINA.",
+      "marca": "Treck",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 2500.0,
+      "ubicacion": "La Habana / Diez de Octubre",
+      "url": "https://www.revolico.com/item/moto-de-combustion-automatica-de-150cc-con-chapa-modelo-treck-adv-acorada-moto-4-tiempos-moto-de-gasolina-57069619",
+      "fecha_publicacion": "2026-09-09",
+      "municipio": "Diez de Octubre",
+      "cluster": 4
+    },
+    {
+      "titulo": "MOTO DE COMBUSTIÓN AUTOMÁTICA DE 200CC MARCA AGUILA UNISON. MOTO DE GASOLINA.",
+      "marca": "TK",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 2700.0,
+      "ubicacion": "La Habana / Diez de Octubre",
+      "url": "https://www.revolico.com/item/moto-de-combustion-automatica-de-200cc-marca-aguila-unison-moto-de-gasolina-57054619",
+      "fecha_publicacion": "2026-09-09",
+      "municipio": "Diez de Octubre",
+      "cluster": 5
+    },
+    {
+      "titulo": "MOTO DE COMBUSTIÓN FURIA PRO 250CC",
+      "marca": "Furia",
+      "cilindrada_cc": 250,
+      "autonomia_km": null,
+      "precio_usd": 2700.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/moto-de-combustion-furia-pro-250cc-57068721",
+      "fecha_publicacion": "2026-08-28",
+      "municipio": "Centro Habana",
+      "cluster": 6
+    },
+    {
+      "titulo": "*🏍 Moto de Combustión Jincheng 125 cc🏍*   ☑️Cadenera  ☑️La copia del Suzuki kid H ☑️Autonomía  de 45 km por litro   ⚠️",
+      "marca": "Jincheng",
+      "cilindrada_cc": 125,
+      "autonomia_km": 338,
+      "precio_usd": 2000.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/moto-de-combustion-jincheng-125-cc-cadenera-la-copia-del-suzuki-kid-h-autonomia-de-45-km-por-litro-57302097",
+      "fecha_publicacion": "2026-09-08",
+      "municipio": "Centro Habana",
+      "cluster": 2
+    },
+    {
+      "titulo": "*🏍️ MOTO DE COMBUSTIÓN YOAZAKY 🏍️*  *⚙️ Características*  • Motor 4 tiempos • 125cc  • Caja 5ta • Autonomía de 40Km/L",
+      "marca": "Yoazaky",
+      "cilindrada_cc": 125,
+      "autonomia_km": 40,
+      "precio_usd": 2000.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/moto-de-combustion-yoazaky-caracteristicas-motor-4-tiempos-125cc-caja-5ta-autonomia-de-40kml-57023156",
+      "fecha_publicacion": "2026-08-25",
+      "municipio": "Centro Habana",
+      "cluster": 2
+    },
+    {
+      "titulo": "*MOTO DE GASOLINA DEPORTIVA FURIA 250CC 🏍️*",
+      "marca": "Furia",
+      "cilindrada_cc": 250,
+      "autonomia_km": null,
+      "precio_usd": 2500.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/moto-de-gasolina-deportiva-furia-250cc-56780019",
+      "fecha_publicacion": "2026-08-13",
+      "municipio": "Playa",
+      "cluster": 6
+    },
+    {
+      "titulo": "Moto de gasolina KATZU 250 CC  Precio: 2980 USD",
+      "marca": "Katzu",
+      "cilindrada_cc": 250,
+      "autonomia_km": null,
+      "precio_usd": 2980.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/moto-de-gasolina-katzu-250-cc-precio-2980-usd-57393880",
+      "fecha_publicacion": "2026-09-12",
+      "municipio": "Playa",
+      "cluster": 6
+    },
+    {
+      "titulo": "〽️Moto de gasolina WYS Monster〽️  ✅Nueva 0km 150cc ✅ 4 tiempos ,caja 5ta ✅Hace 40km x Litro  ✅Directo a chapa   💠Tiene",
+      "marca": "Wys",
+      "cilindrada_cc": 150,
+      "autonomia_km": 520,
+      "precio_usd": 2100.0,
+      "ubicacion": "La Habana / Plaza",
+      "url": "https://www.revolico.com/item/moto-de-gasolina-wys-monster-nueva-0km-150cc-4-tiempos-caja-5ta-hace-40km-x-litro-directo-a-chapa-tiene-56859822",
+      "fecha_publicacion": "2026-08-17",
+      "municipio": "Plaza",
+      "cluster": 1
+    },
+    {
+      "titulo": "Moto Deportiva de carrera de gasolina ✅Izuki 250 cc",
+      "marca": "Izuki",
+      "cilindrada_cc": 250,
+      "autonomia_km": null,
+      "precio_usd": 2600.0,
+      "ubicacion": "La Habana / Diez de Octubre",
+      "url": "https://www.revolico.com/item/moto-deportiva-de-carrera-de-gasolina-izuki-250-cc-57771718",
+      "fecha_publicacion": "2026-09-29",
+      "municipio": "Diez de Octubre",
+      "cluster": 6
+    },
+    {
+      "titulo": "MOTO DEPORTIVA DE COMBUSTIÓN WYS 2026  ⚙️CARACTERÍSTICAS:  • 150 CC  • ⁠4 Tiempo • ⁠5 Velocidades • ⁠Capacidad del Tanqu",
+      "marca": "Wys",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 2400.0,
+      "ubicacion": "La Habana / Habana Vieja",
+      "url": "https://www.revolico.com/item/moto-deportiva-de-combustion-wys-2026-caracteristicas-150-cc-4-tiempo-5-velocidades-capacidad-del-tanqu-57543187",
+      "fecha_publicacion": "2026-09-22",
+      "municipio": "Habana Vieja",
+      "cluster": 4
+    },
+    {
+      "titulo": "MOTO DEPORTIVA SHINERAY 125cc 🏍* chapa y circulación B",
+      "marca": "Shineray",
+      "cilindrada_cc": 125,
+      "autonomia_km": null,
+      "precio_usd": 2100.0,
+      "ubicacion": "La Habana / La Lisa",
+      "url": "https://www.revolico.com/item/moto-deportiva-shineray-125cc-chapa-y-circulacion-b-57665963",
+      "fecha_publicacion": "2026-09-25",
+      "municipio": "La Lisa",
+      "cluster": 2
+    },
+    {
+      "titulo": "MOTO HAOJUE DM 150 CC",
+      "marca": "Haojue",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 2100.0,
+      "ubicacion": "La Habana / Arroyo Naranjo",
+      "url": "https://www.revolico.com/item/moto-haojue-dm-150-cc-52527929",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Arroyo Naranjo",
+      "cluster": 1
+    },
+    {
+      "titulo": "〽️MOTO Italy RX combat〽️  ✅Automatica 4 tiempo   ✅Nuevas 0km 200cc  ✅Full inyección   ✅Directo a chapa   Disponible en c",
+      "marca": "Italy",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 2450.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/moto-italy-rx-combat-automatica-4-tiempo-nuevas-0km-200cc-full-inyeccion-directo-a-chapa-disponible-en-c-56651522",
+      "fecha_publicacion": "2026-08-06",
+      "municipio": "Centro Habana",
+      "cluster": 5
+    },
+    {
+      "titulo": "Moto Jin 150cc, Motors Treck",
+      "marca": "Jin",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 1500.0,
+      "ubicacion": "La Habana / Plaza",
+      "url": "https://www.revolico.com/item/moto-jin-150cc-motors-treck-57698642",
+      "fecha_publicacion": "2026-09-26",
+      "municipio": "Plaza",
+      "cluster": 0
+    },
+    {
+      "titulo": "Moto Lexzuki GN 150cc 0KM",
+      "marca": "Lexzuki",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 1530.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/moto-lexzuki-gn-150cc-0km-56492729",
+      "fecha_publicacion": "2026-08-31",
+      "municipio": "Playa",
+      "cluster": 0
+    },
+    {
+      "titulo": "Moto lifan GN250cc",
+      "marca": "Lifan",
+      "cilindrada_cc": 250,
+      "autonomia_km": null,
+      "precio_usd": 2400.0,
+      "ubicacion": "La Habana / Cerro",
+      "url": "https://www.revolico.com/item/moto-lifan-gn250cc-57063733",
+      "fecha_publicacion": "2026-08-28",
+      "municipio": "Cerro",
+      "cluster": 6
+    },
+    {
+      "titulo": "🏍️ MOTO TANK TRANSPRO – 200CC AUTOMÁTICA – DIRECTO A CHAPA – $2850 USD 🔥",
+      "marca": "Tank",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 2850.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/moto-tank-transpro-200cc-automatica-directo-a-chapa-2850-usd-57202054",
+      "fecha_publicacion": "2026-09-04",
+      "municipio": "Playa",
+      "cluster": 5
+    },
+    {
+      "titulo": "MOTOR 150 cc RESTREPA",
+      "marca": "Restrepa",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 1800.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/motor-150-cc-restrepa-56304761",
+      "fecha_publicacion": "2026-09-25",
+      "municipio": "Centro Habana",
+      "cluster": 1
+    },
+    {
+      "titulo": "‼️ MOTOR DE COMBUSTIÓN Jin 150cc 1890USD‼️",
+      "marca": "Jin",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 1890.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/motor-de-combustion-jin-150cc-1890usd-se-le-regala-un-casco-integral-por-la-compra-55897546",
+      "fecha_publicacion": "2026-09-26",
+      "municipio": "Centro Habana",
+      "cluster": 1
+    },
+    {
+      "titulo": "‼️ MOTOR DE COMBUSTIÓN Krathos 250cc 3260usd‼️",
+      "marca": "Treck",
+      "cilindrada_cc": 250,
+      "autonomia_km": null,
+      "precio_usd": 3260.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/motor-de-combustion-krathos-250cc-3260usd-56063166",
+      "fecha_publicacion": "2026-09-26",
+      "municipio": "Centro Habana",
+      "cluster": 6
+    },
+    {
+      "titulo": "🏍️ Motor Krathos 200cc 🏍️",
+      "marca": "Treck",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 2550.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/motor-krathos-200cc-56305026",
+      "fecha_publicacion": "2026-09-29",
+      "municipio": "Centro Habana",
+      "cluster": 5
+    },
+    {
+      "titulo": "🏍️ MOTORSTRECK RESTREPA 150CC – 0KM – FACTURA MIPYME – $1800 USD 🔥",
+      "marca": "Treck",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 1800.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/motorstreck-restrepa-150cc-0km-factura-mipyme-1700-usd-56843775",
+      "fecha_publicacion": "2026-08-17",
+      "municipio": "Playa",
+      "cluster": 1
+    },
+    {
+      "titulo": "Motos automáticas 🏍️ Italica Supra 2026 , 200cc . Nuevas 0km",
+      "marca": "Italica",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 3600.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/motos-automaticas-marca-italica-supra-2026-200cc-nuevas-0km-57082301",
+      "fecha_publicacion": "2026-09-22",
+      "municipio": "Playa",
+      "cluster": 7
+    },
+    {
+      "titulo": "Motos automáticas marca Mountain, 200cc . Nuevas 0km",
+      "marca": "Mountain",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 2600.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/motos-automaticas-marca-mountain-200cc-nuevas-0km-57006758",
+      "fecha_publicacion": "2026-09-05",
+      "municipio": "Centro Habana",
+      "cluster": 5
+    },
+    {
+      "titulo": "Motos automáticas marca Topmaq Avispón , 200cc .Nuevas 0km",
+      "marca": "Topmaq",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 2300.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/motos-automaticas-marca-topmaq-avispon-200cc-nuevas-0km-57006750",
+      "fecha_publicacion": "2026-09-05",
+      "municipio": "Centro Habana",
+      "cluster": 3
+    },
+    {
+      "titulo": "Motos automáticas marca Trank TransPro 200cc . Nuevas 0km",
+      "marca": "Tank",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 2850.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/motos-automaticas-marca-trank-transpro-200cc-nuevas-0km-57305231",
+      "fecha_publicacion": "2026-09-28",
+      "municipio": "Playa",
+      "cluster": 5
+    },
+    {
+      "titulo": "Motos automáticas MISHOZUKI 150cc 0km",
+      "marca": "Mishozuki",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 2300.0,
+      "ubicacion": "La Habana / Cotorro",
+      "url": "https://www.revolico.com/item/motos-automaticas-mishozuki-150cc-0km-57133592",
+      "fecha_publicacion": "2026-09-01",
+      "municipio": "Cotorro",
+      "cluster": 4
+    },
+    {
+      "titulo": "Motos automáticas 🏍️ Souka 125cc ... Nuevas 0km.",
+      "marca": "Souka",
+      "cilindrada_cc": 125,
+      "autonomia_km": null,
+      "precio_usd": 2200.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/motos-automaticas-souka-125cc-nuevas-0km-57082314",
+      "fecha_publicacion": "2026-09-22",
+      "municipio": "Playa",
+      "cluster": 2
+    },
+    {
+      "titulo": "Motos automáticas 🏍️ Tank Trans Pro 200cc ... Nuevas 0km",
+      "marca": "Tank",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 2850.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/motos-automaticas-tank-trans-pro-200cc-nuevas-0km-57285231",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Centro Habana",
+      "cluster": 5
+    },
+    {
+      "titulo": "Motos automáticas 🏍️ Wys 150cc ... Nuevas 0km",
+      "marca": "Wys",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 2200.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/motos-automaticas-wys-150cc-nuevas-0km-57334774",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Centro Habana",
+      "cluster": 4
+    },
+    {
+      "titulo": "Motos automáticas 🏍️ Yamaki 2026 ... 150cc ... Nuevas 0km",
+      "marca": "Yamaki",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 2200.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/motos-automaticas-yamaki-2026-150cc-nuevas-0km-57285160",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Centro Habana",
+      "cluster": 4
+    },
+    {
+      "titulo": "Motos de combustión Dakar Gn kit F 125cc . Nuevas 0km",
+      "marca": "Dakar",
+      "cilindrada_cc": 125,
+      "autonomia_km": null,
+      "precio_usd": 2000.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/motos-de-combustion-dakar-gn-kit-f-125cc-nuevas-0km-56852069",
+      "fecha_publicacion": "2026-09-19",
+      "municipio": "Playa",
+      "cluster": 2
+    },
+    {
+      "titulo": "Motos de combustión 🏍️ Diana 125cc ... Nuevas 0km.",
+      "marca": "Diana",
+      "cilindrada_cc": 125,
+      "autonomia_km": null,
+      "precio_usd": 2150.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/motos-de-combustion-diana-125cc-nuevas-0km-57027733",
+      "fecha_publicacion": "2026-09-27",
+      "municipio": "Playa",
+      "cluster": 2
+    },
+    {
+      "titulo": "Motos de combustión 🏍️ GN Shineray 125cc ... Nuevas 0km.",
+      "marca": "Shineray",
+      "cilindrada_cc": 125,
+      "autonomia_km": null,
+      "precio_usd": 2050.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/motos-de-combustion-gn-shineray-125cc-nuevas-0km-57285515",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Centro Habana",
+      "cluster": 2
+    },
+    {
+      "titulo": "Motos de combustión 🏍️ GN Topmaq 150cc ... Nuevas 0km .",
+      "marca": "Topmaq",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 2200.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/motos-de-combustion-gn-topmaq-150cc-nuevas-0km-57787964",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Centro Habana",
+      "cluster": 4
+    },
+    {
+      "titulo": "Motos de combustión Halcon 125cc . Nuevas 0km",
+      "marca": "Halcón",
+      "cilindrada_cc": 125,
+      "autonomia_km": null,
+      "precio_usd": 1900.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/motos-de-combustion-halcon-125cc-nuevas-0km-56851557",
+      "fecha_publicacion": "2026-09-28",
+      "municipio": "Playa",
+      "cluster": 2
+    },
+    {
+      "titulo": "Motos de combustión 🏍️ Huawin 150cc ... Nuevas 0km",
+      "marca": "Huawin",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 2380.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/motos-de-combustion-huawin-150cc-nuevas-0km-57197711",
+      "fecha_publicacion": "2026-09-14",
+      "municipio": "Centro Habana",
+      "cluster": 4
+    },
+    {
+      "titulo": "Motos de combustión Lexzuki Kid H 150cc . Nuevas 0km",
+      "marca": "Lexzuki",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 1950.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/motos-de-combustion-lexzuki-kid-h-150cc-nuevas-0km-56852029",
+      "fecha_publicacion": "2026-09-15",
+      "municipio": "Playa",
+      "cluster": 1
+    },
+    {
+      "titulo": "Motos de combustión marca Egok , 150cc . Nuevas 0km",
+      "marca": "Egok",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 1850.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/motos-de-combustion-marca-egok-150cc-nuevas-0km-57006789",
+      "fecha_publicacion": "2026-09-17",
+      "municipio": "Centro Habana",
+      "cluster": 1
+    },
+    {
+      "titulo": "Motos de combustión marca Fonts , 150cc . Nuevas 0km",
+      "marca": "Fonts",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 1900.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/motos-de-combustion-marca-fonts-150cc-nuevas-0km-57377137",
+      "fecha_publicacion": "2026-09-29",
+      "municipio": "Playa",
+      "cluster": 1
+    },
+    {
+      "titulo": "Motos de combustión marca Jincheng 125cc . Nuevas 0km",
+      "marca": "Jincheng",
+      "cilindrada_cc": 125,
+      "autonomia_km": null,
+      "precio_usd": 2100.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/motos-de-combustion-marca-jincheng-125cc-nuevas-0km-57006809",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Centro Habana",
+      "cluster": 2
+    },
+    {
+      "titulo": "Motos de combustión marca Motostreck retrepa 150cc , con  unidad Lifan. Nuevas 0km",
+      "marca": "Treck",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 1950.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/motos-de-combustion-marca-motostreck-unidad-lifan-nuevas-0km-56814314",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Centro Habana",
+      "cluster": 1
+    },
+    {
+      "titulo": "Motos de combustión marca Mountain 150cc kit F . Nuevas 0km",
+      "marca": "Mountain",
+      "cilindrada_cc": 150,
+      "autonomia_km": null,
+      "precio_usd": 1950.0,
+      "ubicacion": "La Habana / Playa",
+      "url": "https://www.revolico.com/item/motos-de-combustion-marca-mountain-150cc-kit-f-nuevas-0km-57305299",
+      "fecha_publicacion": "2026-10-01",
+      "municipio": "Playa",
+      "cluster": 1
+    },
+    {
+      "titulo": "Motos de combustión marca Suzuki Gn125F 2026 ... 125cc . Nuevas 0km",
+      "marca": "Suzuki",
+      "cilindrada_cc": 125,
+      "autonomia_km": null,
+      "precio_usd": 3400.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/motos-de-combustion-marca-suzuki-gn125f-2026-125cc-nuevas-0km-57006781",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Centro Habana",
+      "cluster": 7
+    },
+    {
+      "titulo": "Motos de combustión marca Yoazaki 125cc . Nuevas 0km",
+      "marca": "Yoazaki",
+      "cilindrada_cc": 125,
+      "autonomia_km": null,
+      "precio_usd": 1900.0,
+      "ubicacion": "La Habana / Centro Habana",
+      "url": "https://www.revolico.com/item/motos-de-combustion-marca-yoazaki-125cc-nuevas-0km-56814489",
+      "fecha_publicacion": "2026-09-04",
+      "municipio": "Centro Habana",
+      "cluster": 2
+    },
+    {
+      "titulo": "Se vende moto gasolina Taeko 125cc",
+      "marca": "Taeko",
+      "cilindrada_cc": 125,
+      "autonomia_km": null,
+      "precio_usd": 1000.0,
+      "ubicacion": "La Habana / Arroyo Naranjo",
+      "url": "https://www.revolico.com/item/se-vende-moto-gasolina-taeko-125cc-57390150",
+      "fecha_publicacion": "2026-09-12",
+      "municipio": "Arroyo Naranjo",
+      "cluster": 0
+    },
+    {
+      "titulo": "Toqmap T ultra max 200cc",
+      "marca": "Topmaq",
+      "cilindrada_cc": 200,
+      "autonomia_km": null,
+      "precio_usd": 3000.0,
+      "ubicacion": "La Habana / Habana Vieja",
+      "url": "https://www.revolico.com/item/toqmap-t-ultra-max-200cc-57528036",
+      "fecha_publicacion": "2026-09-18",
+      "municipio": "Habana Vieja",
+      "cluster": 5
+    }
+  ]
+}

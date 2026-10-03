@@ -1,0 +1,18 @@
+{
+  "vehiculo": "scooter_electrico",
+  "filtro": "outliers de precio_usd",
+  "reglas": {
+    "precio_placeholder": "precio_usd < 200.0",
+    "precio_outlier_premium": "precio_usd > 2000.0"
+  },
+  "total_anuncios_originales": 121,
+  "total_descartados": 0,
+  "total_precio_placeholder": 0,
+  "total_precio_outlier_premium": 0,
+  "rango_precio_usd": [
+    280.0,
+    1250.0
+  ],
+  "fecha_analisis": "2026-10-02T22:46:21",
+  "descartados": []
+}

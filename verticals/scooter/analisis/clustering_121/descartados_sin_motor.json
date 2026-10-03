@@ -1,0 +1,170 @@
+{
+  "vehiculo": "scooter_electrico",
+  "filtro": "anuncios sin motor_w (feature obligatoria del clustering)",
+  "reglas": {
+    "sin_motor_w": "motor_w is null o ausente"
+  },
+  "total_anuncios_originales": 121,
+  "total_descartados": 13,
+  "total_limpios": 108,
+  "motivo": "motor_w es una de las 3 features del modelo y no se puede imputar: se descarta el anuncio en vez de inventar el dato",
+  "fecha_analisis": "2026-10-02T22:46:21",
+  "descartados": [
+    {
+      "titulo": "Patineta Caroma",
+      "marca": "CAROMA",
+      "motor_w": null,
+      "autonomia_km": 50,
+      "precio_usd": 530.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-caroma-57562938",
+      "fecha_publicacion": "2026-09-20",
+      "municipio": "Plaza",
+      "motivo_descarte": "sin_motor_w"
+    },
+    {
+      "titulo": "Patineta Challenger",
+      "marca": "CHALLENGER",
+      "motor_w": null,
+      "autonomia_km": 50,
+      "precio_usd": 800.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-challenger-56656516",
+      "fecha_publicacion": "2026-08-06",
+      "municipio": "Guanabacoa",
+      "motivo_descarte": "sin_motor_w"
+    },
+    {
+      "titulo": "Patineta electrica laitunnig",
+      "marca": "LAITUNING",
+      "motor_w": null,
+      "autonomia_km": 60,
+      "precio_usd": 750.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-laitunnig-57532962",
+      "fecha_publicacion": "2026-09-18",
+      "municipio": "Marianao",
+      "motivo_descarte": "sin_motor_w"
+    },
+    {
+      "titulo": "Patineta electrica Midha moto electrica motico",
+      "marca": "MIDHA",
+      "motor_w": null,
+      "autonomia_km": 60,
+      "precio_usd": 850.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-midha-moto-electrica-motico-57098372",
+      "fecha_publicacion": "2026-08-30",
+      "municipio": "Centro Habana",
+      "motivo_descarte": "sin_motor_w"
+    },
+    {
+      "titulo": "Patineta electrica plegable w4 pro",
+      "marca": "WQ-W4",
+      "motor_w": null,
+      "autonomia_km": 35,
+      "precio_usd": 360.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-plegable-w4-pro-57426758",
+      "fecha_publicacion": "2026-09-14",
+      "municipio": "Habana Vieja",
+      "motivo_descarte": "sin_motor_w"
+    },
+    {
+      "titulo": "Patineta electrica VEDCA",
+      "marca": "VEDCA",
+      "motor_w": null,
+      "autonomia_km": 80,
+      "precio_usd": 1250.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-electrica-vedca-55657406",
+      "fecha_publicacion": "2026-09-25",
+      "municipio": "Plaza",
+      "motivo_descarte": "sin_motor_w"
+    },
+    {
+      "titulo": "PATINETA MAF 2026",
+      "marca": "MAF",
+      "motor_w": null,
+      "autonomia_km": 60,
+      "precio_usd": 750.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-maf-2026-57701018",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Playa",
+      "motivo_descarte": "sin_motor_w"
+    },
+    {
+      "titulo": "PATINETA MAF 2026 transporte gratis para la Habana y ARTEMISA",
+      "marca": "MAF",
+      "motor_w": null,
+      "autonomia_km": 60,
+      "precio_usd": 780.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patineta-maf-2026-transporte-gratis-para-la-habana-y-artemisa-57713222",
+      "fecha_publicacion": "2026-09-27",
+      "municipio": "La Lisa",
+      "motivo_descarte": "sin_motor_w"
+    },
+    {
+      "titulo": "Patinetas CAROMA 0km",
+      "marca": "CAROMA",
+      "motor_w": null,
+      "autonomia_km": 50,
+      "precio_usd": 530.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinetas-caroma-0km-57518983",
+      "fecha_publicacion": "2026-09-18",
+      "municipio": "Centro Habana",
+      "motivo_descarte": "sin_motor_w"
+    },
+    {
+      "titulo": "Patinetas CAROMA",
+      "marca": "CAROMA",
+      "motor_w": null,
+      "autonomia_km": 50,
+      "precio_usd": 530.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinetas-caroma-57473652",
+      "fecha_publicacion": "2026-09-16",
+      "municipio": "Diez de Octubre",
+      "motivo_descarte": "sin_motor_w"
+    },
+    {
+      "titulo": "Halcon ⚡ Patineta eléctrica ⚡ vic",
+      "marca": "HALCON",
+      "motor_w": null,
+      "autonomia_km": 60,
+      "precio_usd": 820.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinetas-halcon-55181089",
+      "fecha_publicacion": "2026-09-06",
+      "municipio": "Marianao",
+      "motivo_descarte": "sin_motor_w"
+    },
+    {
+      "titulo": "Patinetas Maf",
+      "marca": "MAF",
+      "motor_w": null,
+      "autonomia_km": 60,
+      "precio_usd": 780.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinetas-maf-57803477",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Centro Habana",
+      "motivo_descarte": "sin_motor_w"
+    },
+    {
+      "titulo": "PATINETE ELÉCTRICO PLEGABLE SPORT🛴*‼️REBAJA ‼️⁠batería de litio antiexplosiva  ☑️ Hasta 40 km de autonomía",
+      "marca": "SPORT",
+      "motor_w": null,
+      "autonomia_km": 40,
+      "precio_usd": 550.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/patinete-electrico-plegable-sportrebaja-bateria-de-litio-antiexplosiva-hasta-40-km-de-autonomia-57788149",
+      "fecha_publicacion": "2026-09-30",
+      "municipio": "Plaza",
+      "motivo_descarte": "sin_motor_w"
+    }
+  ]
+}

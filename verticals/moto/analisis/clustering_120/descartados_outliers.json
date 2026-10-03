@@ -1,0 +1,39 @@
+{
+  "motivo_filtro": "outliers de precioUsd",
+  "reglas": {
+    "precio_placeholder": "precio_usd < 500.0",
+    "precio_outlier_premium": "precio_usd > 4000.0"
+  },
+  "total_anuncios_originales": 120,
+  "total_descartados": 2,
+  "total_limpios": 118,
+  "fecha_analisis": "2026-10-02T20:54:49",
+  "descartados": [
+    {
+      "titulo": "MOTO ELÉCTRICA TOPMAQ T-MAX ULTRA LITHIUM 72V75AH * Potencia del motor 4000w * Motor y batería marca topmaq * Voltaje: 7",
+      "marca": "Topmaq",
+      "motor_w": 4000,
+      "autonomia_km": 120,
+      "precio_usd": 4200.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/moto-electrica-topmaq-t-max-ultra-lithium-72v75ah-potencia-del-motor-4000w-motor-y-bateria-marca-topmaq-voltaje-7-57302979",
+      "fecha_publicacion": "2026-09-08T22:53:01.176Z",
+      "municipio": "Playa",
+      "fuente": "revolico",
+      "motivo_descarte": "precio_outlier_premium"
+    },
+    {
+      "titulo": "🛵 MOTO ELÉCTRICA YOAZAKY SÚPER 0KM – 3000W – 160 KM AUTONOMÍA – $3150 USD ⚡",
+      "marca": "Yoazaky",
+      "motor_w": 3000,
+      "autonomia_km": 160,
+      "precio_usd": 160.0,
+      "ubicacion": "La Habana",
+      "url": "https://www.revolico.com/item/moto-electrica-yoazaky-super-0km-3000w-160-km-autonomia-3150-usd-56844527",
+      "fecha_publicacion": "2026-08-16",
+      "municipio": "Playa",
+      "fuente": "revolico",
+      "motivo_descarte": "precio_placeholder"
+    }
+  ]
+}

@@ -1,0 +1,279 @@
+==============================================================================
+CLUSTERING K-MEANS — MOTOS DE COMBUSTION — 90 ANUNCIOS (LA HABANA, 2026)
+==============================================================================
+Fecha de analisis   : 2026-10-02T22:00:51
+Archivo origen      : /home/leandro/ev-market-study/verticals/combustion/scraping/motos_combustion_90.json
+Vehiculo            : moto_combustion
+Features usadas     : precio_usd, cilindrada_cc
+Solo descriptivos   : marca, autonomia_km, municipio
+Normalizacion       : StandardScaler
+Algoritmo           : KMeans(random_state=42, n_init=10)
+k elegido           : 9  ->  8 clusters tras la clausula de fusion
+Silhouette final    : 0.6003
+
+0. VERIFICACION PREVIA DEL CAMPO capacidad_tanque_l
+==============================================================================
+  anuncios totales                                 : 90
+  anuncios que tienen la clave capacidad_tanque_l  : 0
+  anuncios sin la clave capacidad_tanque_l         : 90
+  anuncios con valor NO null                       : 0
+  rango / distribucion de valores                  : N/A (la clave no existe)
+
+  Conclusion: el campo capacidad_tanque_l NO existe en este dataset. El esquema del
+  scraper tiene 9 campos (titulo, marca, cilindrada_cc, autonomia_km, precio_usd,
+  ubicacion, url, fecha_publicacion, municipio) y ninguno es la capacidad del tanque.
+  Decisiones que se tomaron por eso:
+    - no se usa como feature ni como campo descriptivo de los clusters;
+    - NO se agrega como clave null a los anuncios del JSON de salida, porque el
+      origen no la tiene y anadirla seria inventar un campo del esquema. Los
+      anuncios de salida conservan exactamente las 9 claves originales + 'cluster';
+    - queda registrada en campos_no_existentes del JSON de salida.
+
+  Estado de los otros campos (con valor sobre 90 anuncios):
+    marca           :  90/90
+    autonomia_km    :   7/90
+    municipio       :  90/90
+    autonomia_km tiene dato en solo 7 de 90 anuncios, asi que no sirve para
+    segmentar: por eso queda como campo descriptivo y no como feature.
+
+1. OUTLIERS DESCARTADOS ANTES DE CLUSTERIZAR
+==============================================================================
+  Anuncios en el JSON original     : 90
+  Descartados por precio_usd < 500  (precio_placeholder)      : 0
+  Descartados por precio_usd > 5000 (precio_outlier_premium) : 0
+  Total descartado                : 0
+  Anuncios clusterizados (limpios): 90
+
+  No se descarto ningun anuncio. El precio esta acotado entre 1000 y
+  4200 USD, muy por dentro de los cortes de 500 y 5000 USD.
+  Este dataset ya venia limpio: el merge previo excluyo los 3 anuncios dudosos
+  (el DKW de 700 USD marcado como 'precio_outlier_sospechoso', el lote de dos motos
+  y las dos motos usadas), asi que el filtro queda como red de seguridad
+  documentada. (descartados_outliers.json queda generado con total_descartados=0.)
+
+2. BARRIDO k = 2..10 SOBRE EL DATASET LIMPIO (n=90)
+==============================================================================
+   k |   inercia  |  silhouette  | min raw | max raw | cumple | k_fin | sil_fin | cumple_f
+  --- + ---------- + ------------ + -------- + -------- + ------ + ------ + ------- + --------
+  2   |    79.51  |     0.5613  |      35 |      55 |   no   |     2 |  0.5613 | no
+  3   |    49.07  |     0.5935  |       6 |      53 |   no   |     3 |  0.5935 | no
+  4   |    37.84  |     0.5748  |       6 |      53 |   no   |     4 |  0.5748 | no
+  5   |    28.29  |     0.5230  |       6 |      46 |   no   |     5 |  0.5230 | no
+  6   |    22.01  |     0.5406  |       3 |      46 |   no   |     6 |  0.5406 | no
+  7   |    16.69  |     0.5091  |       3 |      29 |   no   |     7 |  0.5091 | no
+  8   |    12.73  |     0.5985  |       3 |      20 |   no   |     7 |  0.5760 | si
+  9   |     8.50  |     0.6269  |       3 |      18 |   no   |     8 |  0.6003 | si
+  10  |     7.03  |     0.6380  |       2 |      19 |   no   |    10 |  0.6380 | no
+
+   TAMANOS DE CLUSTER POR k (ordenados de menor a mayor, n=90)
+==============================================================================
+    k=2  crudo: [35, 55]                 final (k_fin=2): n/a
+    k=3  crudo: [6, 31, 53]              final (k_fin=3): n/a
+    k=4  crudo: [6, 9, 22, 53]           final (k_fin=4): n/a
+    k=5  crudo: [6, 7, 9, 22, 46]        final (k_fin=5): n/a
+    k=6  crudo: [3, 3, 7, 9, 22, 46]     final (k_fin=6): n/a
+    k=7  crudo: [3, 4, 7, 9, 17, 21, 29] final (k_fin=7): n/a
+    k=8  crudo: [3, 3, 6, 9, 14, 15, 20, 20] final (k_fin=7): [6, 6, 9, 14, 15, 20, 20]
+    k=9  crudo: [3, 3, 6, 6, 9, 14, 15, 16, 18] final (k_fin=8): [6, 6, 6, 9, 14, 15, 16, 18]
+    k=10 crudo: [2, 3, 3, 3, 6, 7, 14, 16, 17, 19] final (k_fin=10): n/a
+
+3. k ELEGIDO Y JUSTIFICACION
+==============================================================================
+  Reglas aplicadas, en orden:
+    1. filtro de outliers de precio (precio_usd en [500, 5000])
+    2. ningun cluster con menos de 4 anuncios
+    3. ningun cluster con mas del 50% del total (>45 anuncios)
+    4. clausula de fusion: dos clusters cuyo precio promedio difiere <10%
+       se fusionan; el resultado se vuelve a validar contra las reglas 2 y 3
+    5. entre los k que cumplen, gana el de mayor silhouette
+
+  k ELEGIDO (barrido)      : 9
+  clusters finales         : 8  (tras 1 fusion)
+  silhouette (final)       : 0.6003
+  fusiones aplicadas       : C3+C6(9.78%)
+
+  k que cumplen las reglas (silhouette post-fusion, de mayor a menor):
+    k=9  sil=0.6003  tamanos=[6, 6, 6, 9, 14, 15, 16, 18]
+    k=8  sil=0.5760  tamanos=[6, 6, 9, 14, 15, 20, 20]
+
+  Motivo de la eleccion: k=9 es el de mayor silhouette entre los k que
+  respetan el piso de 4 anuncios y el tope del 50%.
+  k descartados por romper el tope del 50% (cluster mayor > 45 anuncios):
+    k=2  sil=0.5613 pero su cluster mayor tiene 55 anuncios = 61% del total
+    k=3  sil=0.5935 pero su cluster mayor tiene 53 anuncios = 59% del total
+    k=4  sil=0.5748 pero su cluster mayor tiene 53 anuncios = 59% del total
+    k=5  sil=0.5230 pero su cluster mayor tiene 46 anuncios = 51% del total
+    k=6  sil=0.5406 pero su cluster mayor tiene 46 anuncios = 51% del total
+  k descartados por tener un cluster de menos de 4 anuncios:
+    k=6  sil=0.5406 pero su cluster menor tiene 3 anuncio(s)
+    k=7  sil=0.5091 pero su cluster menor tiene 3 anuncio(s)
+    k=8  sil=0.5985 pero su cluster menor tiene 3 anuncio(s)
+    k=9  sil=0.6269 pero su cluster menor tiene 3 anuncio(s)
+    k=10 sil=0.6380 pero su cluster menor tiene 2 anuncio(s)
+
+  Clausula de fusion: con solo 2 features (una de ellas con 4 valores discretos),
+  casi todos los k dejan un cluster de 2 o 3 anuncios. La fusion por precio (gap
+  <10%) solo alcanza para reparar k=8 (-> sil 0.5760, 7 clusters) y k=9 (-> sil 0.6003, 8 clusters).
+  k=2 a k=7 y k=10 no tienen ningun par con precios promedio a menos del 10% que
+  permita arreglar el cluster chico sin romper el tope del 50%, asi que quedan
+  fuera. Gana k=9 -> 8 clusters con silhouette 0.6003.
+
+  Fusion aplicada: C3+C6(9.78%).
+
+  En la particion cruda de k=9 habia 5 pares con diferencia de precio
+  promedio < 10%, pero la mayoria no toca los dos clusters de 3 anuncios, asi que
+  su merge deja todavia un cluster chico y la fusion se descarta en la post-validacion:
+    C0+C4  gap  0.42%     descartado (deja un cluster < 4)
+    C1+C8  gap  3.00%     descartado (deja un cluster < 4)
+    C1+C7  gap  6.59%     descartado (deja un cluster < 4)
+    C7+C8  gap  9.59%     descartado (deja un cluster < 4)
+    C3+C6  gap  9.78%  -> FUSIONADO
+
+  Tras la fusion los 8 clusters quedan entre 6 y 18 anuncios, todos dentro del
+  piso de 4 y del tope de 45.
+
+4. CLUSTERS FINALES
+==============================================================================
+  Los nombres se derivan de los datos: el precio se parte en 3 tramos con los
+  terciles de la propia distribucion y cada cluster se nombra por el tramo en que
+  cae su precio promedio, mas la cilindrada promedio. El prefijo C0..C{n} garantiza
+  que el nombre sea unico.
+
+   id | nombre                            |   n |   %  | precio |  cc | cc rango | marca    | cc presentes
+  --- + --------------------------------- + ---- + ---- + ------ + --- + -------- + -------- + ------------
+  0   | C0 - precio bajo 138cc mixto      |    6 |  6.7% |   1355 | 138 | 125-150  | Taeko    | [125, 150]
+  1   | C1 - precio bajo 150cc            |   18 | 20.0% |   1908 | 150 | 150-150  | Ava      | [150]
+  2   | C2 - precio medio 125cc           |   14 | 15.6% |   2038 | 125 | 125-125  | Jincheng | [125]
+  3   | C3 - precio medio 200cc           |    6 |  6.7% |   2100 | 200 | 200-200  | Topmaq   | [200]
+  4   | C4 - precio medio 150cc           |   15 | 16.7% |   2347 | 150 | 150-150  | Mishozuki | [150]
+  5   | C5 - precio alto 200cc            |   16 | 17.8% |   2669 | 200 | 200-200  | Tank     | [200]
+  6   | C6 - precio alto 250cc            |    9 | 10.0% |   2680 | 250 | 250-250  | Furia    | [250]
+  7   | C7 - precio alto 162cc mixto      |    6 |  6.7% |   3750 | 162 | 125-200  | Suzuki   | [125, 200]
+
+  C0 - precio bajo 138cc mixto
+    anuncios     : 6 (6.7% del total)
+    precio USD   : prom 1355 | min 1000 | max 1530
+    cilindrada cc: prom 138 | min 125 | max 150
+    top marcas   : Taeko (2), Treck (1), Ava (1)
+    descripcion  : 6 anuncios en 1000-1530 USD (prom 1355, el rango mas bajo de los tres); cilindrada 138 cc promedio, con cc 125, 150 presentes. Es el segmento mas economico por precio. Marca dominante: Taeko (2/6).
+
+  C1 - precio bajo 150cc
+    anuncios     : 18 (20.0% del total)
+    precio USD   : prom 1908 | min 1650 | max 2100
+    cilindrada cc: prom 150 | min 150 | max 150
+    top marcas   : Ava (3), Treck (3), Restrepa (2)
+    descripcion  : 18 anuncios en 1650-2100 USD (prom 1908, el rango mas bajo de los tres); cilindrada 150 cc promedio, con cc 150 presentes. Es un segmento intermedio por precio. Marca dominante: Ava (3/18).
+
+  C2 - precio medio 125cc
+    anuncios     : 14 (15.6% del total)
+    precio USD   : prom 2038 | min 1900 | max 2200
+    cilindrada cc: prom 125 | min 125 | max 125
+    top marcas   : Jincheng (3), Souka (2), Halcón (2)
+    descripcion  : 14 anuncios en 1900-2200 USD (prom 2038, el rango intermedio); cilindrada 125 cc promedio, con cc 125 presentes. Es un segmento intermedio por precio. Marca dominante: Jincheng (3/14).
+
+  C3 - precio medio 200cc
+    anuncios     : 6 (6.7% del total)
+    precio USD   : prom 2100 | min 1800 | max 2300
+    cilindrada cc: prom 200 | min 200 | max 200
+    top marcas   : Topmaq (2), Katzu (1), Ava (1)
+    descripcion  : 6 anuncios en 1800-2300 USD (prom 2100, el rango intermedio); cilindrada 200 cc promedio, con cc 200 presentes. Es un segmento intermedio por precio. Marca dominante: Topmaq (2/6).
+
+  C4 - precio medio 150cc
+    anuncios     : 15 (16.7% del total)
+    precio USD   : prom 2347 | min 2150 | max 2600
+    cilindrada cc: prom 150 | min 150 | max 150
+    top marcas   : Mishozuki (4), Wys (3), Huawin (2)
+    descripcion  : 15 anuncios en 2150-2600 USD (prom 2347, el rango intermedio); cilindrada 150 cc promedio, con cc 150 presentes. Es un segmento intermedio por precio. Marca dominante: Mishozuki (4/15).
+
+  C5 - precio alto 200cc
+    anuncios     : 16 (17.8% del total)
+    precio USD   : prom 2669 | min 2450 | max 3000
+    cilindrada cc: prom 200 | min 200 | max 200
+    top marcas   : Tank (4), Mountain (3), Italy (2)
+    descripcion  : 16 anuncios en 2450-3000 USD (prom 2669, el rango mas alto de los tres); cilindrada 200 cc promedio, con cc 200 presentes. Es un segmento intermedio por precio. Marca dominante: Tank (4/16).
+
+  C6 - precio alto 250cc
+    anuncios     : 9 (10.0% del total)
+    precio USD   : prom 2680 | min 2400 | max 3260
+    cilindrada cc: prom 250 | min 250 | max 250
+    top marcas   : Furia (3), Katzu (2), Lifan (2)
+    descripcion  : 9 anuncios en 2400-3260 USD (prom 2680, el rango mas alto de los tres); cilindrada 250 cc promedio, con cc 250 presentes. Es un segmento intermedio por precio. Marca dominante: Furia (3/9).
+
+  C7 - precio alto 162cc mixto
+    anuncios     : 6 (6.7% del total)
+    precio USD   : prom 3750 | min 3400 | max 4200
+    cilindrada cc: prom 162 | min 125 | max 200
+    top marcas   : Suzuki (3), Itálica (1), Mishozuki (1)
+    descripcion  : 6 anuncios en 3400-4200 USD (prom 3750, el rango mas alto de los tres); cilindrada 162 cc promedio, con cc 125, 200 presentes. Es el segmento mas caro por precio. Marca dominante: Suzuki (3/6).
+
+5. CORRELACION PRECIO-CILINDRADA
+==============================================================================
+  Pearson precio_usd ~ cilindrada_cc (n=90) : r = +0.4101
+  correlacion moderada, positiva: a mayor cilindrada,
+  mayor precio, pero no de forma tight. Ojo con el rango: cilindrada_cc solo toma
+  4 valores (125, 150, 200 y 250 cc) y el 68% de los anuncios se concentra en 150 y
+  200 cc, asi que la correlacion de Pearson entre un continuo y una variable casi
+  categorica es fragil y no debe leerse como una relacion de oferta y demanda.
+  Distribucion cruzada cc x cluster (de la particion final):
+      cluster |  125 cc |  150 cc |  200 cc |  250 cc |  total
+      C0      |       3 |       3 |       0 |       0 |      6
+      C1      |       0 |      18 |       0 |       0 |     18
+      C2      |      14 |       0 |       0 |       0 |     14
+      C3      |       0 |       0 |       6 |       0 |      6
+      C4      |       0 |      15 |       0 |       0 |     15
+      C5      |       0 |       0 |      16 |       0 |     16
+      C6      |       0 |       0 |       0 |       9 |      9
+      C7      |       3 |       0 |       3 |       0 |      6
+
+6. TOP MARCAS POR CLUSTER
+==============================================================================
+   id | nombre                            | marcas mas frecuentes (n)
+  --- + --------------------------------- + ------------------------------------------
+  0   | C0 - precio bajo 138cc mixto      | Taeko (2), Treck (1), Ava (1)
+  1   | C1 - precio bajo 150cc            | Ava (3), Treck (3), Restrepa (2)
+  2   | C2 - precio medio 125cc           | Jincheng (3), Souka (2), Halcón (2)
+  3   | C3 - precio medio 200cc           | Topmaq (2), Katzu (1), Ava (1)
+  4   | C4 - precio medio 150cc           | Mishozuki (4), Wys (3), Huawin (2)
+  5   | C5 - precio alto 200cc            | Tank (4), Mountain (3), Italy (2)
+  6   | C6 - precio alto 250cc            | Furia (3), Katzu (2), Lifan (2)
+  7   | C7 - precio alto 162cc mixto      | Suzuki (3), Itálica (1), Mishozuki (1)
+
+  Top 15 marcas del dataset completo (90 anuncios con marca, 39 marcas distintas):
+    Treck                   8
+    Ava                     5
+    Tank                    5
+    Topmaq                  5
+    Mishozuki               5
+    Mountain                4
+    Wys                     4
+    Suzuki                  4
+    Furia                   3
+    Katzu                   3
+    Halcón                  3
+    Jincheng                3
+    Italy                   2
+    Huawin                  2
+    Taeko                   2
+
+7. LIMITACIONES
+==============================================================================
+  1. Solo 2 features y una sola variable tecnica (cilindrada_cc). En un mercado
+     donde el precio lo define tambien el modelo, el ano, el estado y el vendedor,
+     el clustering con precio + cc no puede separar segmentos reales: separa por
+     donde cae cada combinacion precio/cc, no por producto.
+  2. cilindrada_cc toma solo 4 valores (125, 150, 200, 250 cc) y el precio es
+     continuo, asi que los clusters tienen forma de franjas de precio dentro de una
+     cilindrada. El silhouette alto no significa que los segmentos de mercado esten
+     bien definidos: en parte premia que los datos sean casi categoricos.
+  3. Con n=90 anuncios y 8 clusters, el promedio es de 11.2 anuncios por cluster.
+     Los tres clusters mas chicos (6 anuncios) son demasiado chicos para decidir
+     precio o compra; sirven como senal, no como segmento.
+  4. Muestra de una sola ciudad (La Habana) y de un solo canal (revolico): no hay
+     variacion geografica ni de fuente, asi que no se puede medir su efecto.
+  5. capacidad_tanque_l no existe en el dataset y autonomia_km tiene 7 datos de 90,
+     asi que las variables que suelen explicar el precio de una moto (capacidad,
+     autonomia real, tipo de motor) no estan disponibles. Recomendacion: agregar
+     capacidad_tanque_l y tipo_motor al esquema del scraper y re-scrapear.
+  6. Los cortes de outliers (500 / 5000 USD) no descartaron nada en esta muestra.
+
+==============================================================================
