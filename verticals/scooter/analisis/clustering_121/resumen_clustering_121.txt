@@ -1,7 +1,7 @@
 ==============================================================================
 CLUSTERING K-MEANS — SCOOTERS ELECTRICOS — 121 ANUNCIOS (LA HABANA, 2026)
 ==============================================================================
-Fecha de analisis   : 2026-10-02T22:46:23
+Fecha de analisis   : 2026-10-02T22:57:28
 Archivo origen      : /home/leandro/ev-market-study/verticals/scooter/scraping/scooters_electricos_139.json
 Vehiculo            : scooter_electrico
 Features usadas     : precio_usd, motor_w, autonomia_km
@@ -159,14 +159,14 @@ Anuncios clusterizados: 108 de 121
 
    id | nombre                                      |   n |   %  | precio | motor   | autonomia | marca      | motores presentes
   --- + ------------------------------------------- + ---- + ---- + ------ + ------- + --------- + ---------- + ---------------
-  0   | Patinete básico       |   19 | 17.6% |    361 | 350W    |      29 km | ROINSIDE   | [350]
-  1   | Patinete urbano   |   13 | 12.0% |    475 | 500-650W |      38 km | G1         | [500, 650]
-  2   | Patinete intermedio   |    7 |  6.5% |    568 | 700-750W |      50 km | CAROMA     | [700, 750]
-  3   | Scooter estándar  |   25 | 23.1% |    774 | 350-650W |      47 km | JMD        | [350, 500, 650]
-  4   | Scooter de largo alcance   |   35 | 32.4% |    791 | 350-500W |      61 km | MIDHA      | [350, 500]
-  5   | Scooter premium  |    9 |  8.3% |    883 | 800-1200W |      66 km | MAF        | [800, 1000, 1200]
+  0   | C0 - precio bajo 350W alcance corto       |   19 | 17.6% |    361 | 350W    |      29 km | ROINSIDE   | [350]
+  1   | C1 - precio bajo 500-650W alcance corto   |   13 | 12.0% |    475 | 500-650W |      38 km | G1         | [500, 650]
+  2   | C2 - precio bajo 700-750W alcance medio   |    7 |  6.5% |    568 | 700-750W |      50 km | CAROMA     | [700, 750]
+  3   | C3 - precio medio 350-650W alcance medio  |   25 | 23.1% |    774 | 350-650W |      47 km | JMD        | [350, 500, 650]
+  4   | C4 - precio alto 350-500W alcance largo   |   35 | 32.4% |    791 | 350-500W |      61 km | MIDHA      | [350, 500]
+  5   | C5 - precio alto 800-1200W alcance largo  |    9 |  8.3% |    883 | 800-1200W |      66 km | MAF        | [800, 1000, 1200]
 
-  Patinete básico
+  C0 - precio bajo 350W alcance corto
     anuncios      : 19 (17.6% del total)
     precio USD    : prom 361 | min 280 | max 460
     motor W       : prom 350 | min 350 | max 350
@@ -174,7 +174,7 @@ Anuncios clusterizados: 108 de 121
     top marcas    : ROINSIDE (3), RIUIIO (3), WERHY (3)
     descripcion   : 19 anuncios de 280 a 460 USD (prom 361); motor de 350 a 350 W (prom 350 W) y autonomia de 24 a 37 km (prom 29 km). Es el segmento mas economico. Marca dominante: ROINSIDE (3 de 19 anuncios).
 
-  Patinete urbano
+  C1 - precio bajo 500-650W alcance corto
     anuncios      : 13 (12.0% del total)
     precio USD    : prom 475 | min 330 | max 670
     motor W       : prom 523 | min 500 | max 650
@@ -182,7 +182,7 @@ Anuncios clusterizados: 108 de 121
     top marcas    : G1 (6), GT12 (2), WARYOA (2)
     descripcion   : 13 anuncios de 330 a 670 USD (prom 475); motor de 500 a 650 W (prom 523 W) y autonomia de 30 a 43 km (prom 38 km). Es un segmento intermedio por precio. Marca dominante: G1 (6 de 13 anuncios).
 
-  Patinete intermedio
+  C2 - precio bajo 700-750W alcance medio
     anuncios      : 7 (6.5% del total)
     precio USD    : prom 568 | min 500 | max 670
     motor W       : prom 743 | min 700 | max 750
@@ -190,7 +190,7 @@ Anuncios clusterizados: 108 de 121
     top marcas    : CAROMA (6), GANGA (1)
     descripcion   : 7 anuncios de 500 a 670 USD (prom 568); motor de 700 a 750 W (prom 743 W) y autonomia de 48 a 60 km (prom 50 km). Es un segmento intermedio por precio. Marca dominante: CAROMA (6 de 7 anuncios).
 
-  Scooter estándar
+  C3 - precio medio 350-650W alcance medio
     anuncios      : 25 (23.1% del total)
     precio USD    : prom 774 | min 650 | max 850
     motor W       : prom 494 | min 350 | max 650
@@ -198,7 +198,7 @@ Anuncios clusterizados: 108 de 121
     top marcas    : JMD (7), ORIS (6), CHALLENGER (3)
     descripcion   : 25 anuncios de 650 a 850 USD (prom 774); motor de 350 a 650 W (prom 494 W) y autonomia de 40 a 50 km (prom 47 km). Es un segmento intermedio por precio. Marca dominante: JMD (7 de 25 anuncios).
 
-  Scooter de largo alcance
+  C4 - precio alto 350-500W alcance largo
     anuncios      : 35 (32.4% del total)
     precio USD    : prom 791 | min 640 | max 930
     motor W       : prom 491 | min 350 | max 500
@@ -206,7 +206,7 @@ Anuncios clusterizados: 108 de 121
     top marcas    : MIDHA (8), LAITUNING (6), CHALLENGER (4)
     descripcion   : 35 anuncios de 640 a 930 USD (prom 791); motor de 350 a 500 W (prom 491 W) y autonomia de 60 a 70 km (prom 61 km). Es un segmento intermedio por precio. Marca dominante: MIDHA (8 de 35 anuncios).
 
-  Scooter premium
+  C5 - precio alto 800-1200W alcance largo
     anuncios      : 9 (8.3% del total)
     precio USD    : prom 883 | min 650 | max 1200
     motor W       : prom 1000 | min 800 | max 1200
@@ -260,12 +260,12 @@ Anuncios clusterizados: 108 de 121
 ==============================================================================
    id | nombre                                      | marcas mas frecuentes (n)
   --- + ------------------------------------------- + ------------------------------------
-  0   | Patinete básico       | ROINSIDE (3), RIUIIO (3), WERHY (3)
-  1   | Patinete urbano   | G1 (6), GT12 (2), WARYOA (2)
-  2   | Patinete intermedio   | CAROMA (6), GANGA (1)
-  3   | Scooter estándar  | JMD (7), ORIS (6), CHALLENGER (3)
-  4   | Scooter de largo alcance   | MIDHA (8), LAITUNING (6), CHALLENGER (4)
-  5   | Scooter premium  | MAF (3), MIDHA (3), JMD (2)
+  0   | C0 - precio bajo 350W alcance corto       | ROINSIDE (3), RIUIIO (3), WERHY (3)
+  1   | C1 - precio bajo 500-650W alcance corto   | G1 (6), GT12 (2), WARYOA (2)
+  2   | C2 - precio bajo 700-750W alcance medio   | CAROMA (6), GANGA (1)
+  3   | C3 - precio medio 350-650W alcance medio  | JMD (7), ORIS (6), CHALLENGER (3)
+  4   | C4 - precio alto 350-500W alcance largo   | MIDHA (8), LAITUNING (6), CHALLENGER (4)
+  5   | C5 - precio alto 800-1200W alcance largo  | MAF (3), MIDHA (3), JMD (2)
 
   Top 20 marcas del dataset clusterizado (108 anuncios, 30 marcas distintas):
     JMD                    13  (12.0% del total)

@@ -8,7 +8,7 @@
   "total_descartados": 13,
   "total_limpios": 108,
   "motivo": "motor_w es una de las 3 features del modelo y no se puede imputar: se descarta el anuncio en vez de inventar el dato",
-  "fecha_analisis": "2026-10-02T22:46:21",
+  "fecha_analisis": "2026-10-02T22:57:26",
   "descartados": [
     {
       "titulo": "Patineta Caroma",

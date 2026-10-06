@@ -70,3 +70,15 @@ errores.log
 *.scraper_run.log
 **/.cache_pool.json
 **/.scraper_run.log
+
+# Caches de scraping (no subir)
+verticals/*/scraping/cache_*/
+verticals/*/scraping/cache_html*/
+
+# Python
+__pycache__/
+*.pyc
+
+# Entorno virtual
+venv/
+.env

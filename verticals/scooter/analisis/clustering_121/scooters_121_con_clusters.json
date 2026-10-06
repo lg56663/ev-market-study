@@ -5,7 +5,7 @@
   "k_elegido": 6,
   "k_clusters_finales": 6,
   "silhouette": 0.5215,
-  "fecha_analisis": "2026-10-02T22:46:23",
+  "fecha_analisis": "2026-10-02T22:57:28",
   "features_usadas": [
     "precio_usd",
     "motor_w",
@@ -37,7 +37,7 @@
   "clusters": [
     {
       "id": 0,
-      "nombre": "Patinete básico",
+      "nombre": "C0 - precio bajo 350W alcance corto",
       "n_anuncios": 19,
       "precio_promedio_usd": 361.05,
       "precio_min_usd": 280.0,
@@ -67,7 +67,7 @@
     },
     {
       "id": 1,
-      "nombre": "Patinete urbano",
+      "nombre": "C1 - precio bajo 500-650W alcance corto",
       "n_anuncios": 13,
       "precio_promedio_usd": 474.62,
       "precio_min_usd": 330.0,
@@ -97,7 +97,7 @@
     },
     {
       "id": 2,
-      "nombre": "Patinete intermedio",
+      "nombre": "C2 - precio bajo 700-750W alcance medio",
       "n_anuncios": 7,
       "precio_promedio_usd": 567.86,
       "precio_min_usd": 500.0,
@@ -123,7 +123,7 @@
     },
     {
       "id": 3,
-      "nombre": "Scooter estándar",
+      "nombre": "C3 - precio medio 350-650W alcance medio",
       "n_anuncios": 25,
       "precio_promedio_usd": 774.4,
       "precio_min_usd": 650.0,
@@ -153,7 +153,7 @@
     },
     {
       "id": 4,
-      "nombre": "Scooter de largo alcance",
+      "nombre": "C4 - precio alto 350-500W alcance largo",
       "n_anuncios": 35,
       "precio_promedio_usd": 791.14,
       "precio_min_usd": 640.0,
@@ -183,7 +183,7 @@
     },
     {
       "id": 5,
-      "nombre": "Scooter premium",
+      "nombre": "C5 - precio alto 800-1200W alcance largo",
       "n_anuncios": 9,
       "precio_promedio_usd": 883.33,
       "precio_min_usd": 650.0,
