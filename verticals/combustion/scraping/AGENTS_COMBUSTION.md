@@ -110,3 +110,19 @@ No se inventa autonomía.
 
 ```bash
 /home/leandro/ev-market-study/venv/bin/python3 scraper_combustion.py
+
+## Archivos archivados (2026-10-08)
+
+<!-- Archivado por archivar_verticales.sh -->
+Las referencias de este documento a los archivos siguientes ahora apuntan a
+`archivo/combustion/` (misma subruta que tenían):
+
+- `analisis/clustering_30`
+- `analisis/hallazgo_no_correlacion.txt`
+- `scraping/descartados_combustion_ampliacion.json`
+- `scraping/descartados_combustion.json`
+- `scraping/motos_combustion_ampliacion.json`
+- `scraping/motos_combustion.json`
+- `scraping/municipios_motos_combustion.json`
+- `scraping/reporte_scraping_combustion_ampliacion.txt`
+- `scraping/reporte_scraping_combustion.txt`

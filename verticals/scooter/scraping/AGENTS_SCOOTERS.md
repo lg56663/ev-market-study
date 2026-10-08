@@ -234,3 +234,21 @@ Reglas para descartados:
 - Si es de combustión: descartar
 - Al final, reportar: páginas recorridas (listado y detalle), válidos, 
   descartados por cada motivo, y cuántos tipo_bateria fueron inferidos
+
+## Archivos archivados (2026-10-08)
+
+<!-- Archivado por archivar_verticales.sh -->
+Las referencias de este documento a los archivos siguientes ahora apuntan a
+`archivo/scooter/` (misma subruta que tenían):
+
+- `analisis/clustering_30`
+- `scraping/descartados_scooters_ampliacion.json`
+- `scraping/descartados_scooters.json`
+- `scraping/recuperados_no_resueltos.json`
+- `scraping/reporte_recuperacion_scooters.txt`
+- `scraping/reporte_scraping_scooters_ampliacion.txt`
+- `scraping/reporte_scraping_scooters.txt`
+- `scraping/scooters_electricos_ampliacion.json`
+- `scraping/scooters_electricos.json`
+- `scraping/scooters_recuperados.json`
+- `scraping/urls_excluir_scooter.json`

@@ -1,5 +1,22 @@
 # Bitácora
 
+## 2026-10-08 — Archivado de versiones anteriores por vertical
+
+<!-- Archivado por archivar_verticales.sh -->
+Se movió a `archivo/<vertical>/{clustering,scraping}/` todo lo que no es el clustering
+vigente de cada vertical ni su dataset (detalle en `archivo/movimientos.txt`).
+
+| Vertical | Clustering vigente | Dataset vigente |
+|---|---|---|
+| moto | clustering_120 | motos_electricas_120.json |
+| bicimoto | clustering_120 | bicis_electricas_120.json |
+| scooter | clustering_121 | scooters_electricos_139.json |
+| combustion | clustering_90 | motos_combustion_90.json |
+
+Se conservan en `scraping/` el código (*.py), los AGENTS*.md y los esquema_*.json.
+Los AGENTS*.md llevan al final la lista de archivos archivados.
+Los 4 `analisis_clustering.py` vigentes usan ahora rutas relativas y `sys.executable`.
+
 ## 2026-09-27 — Consolidación del monorepo y corrección de rutas
 
 ### Contexto

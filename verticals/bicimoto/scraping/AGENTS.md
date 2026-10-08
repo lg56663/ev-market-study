@@ -85,3 +85,17 @@ Si falta cualquiera de los 5 obligatorios, descartar.
 - Si no hay ubicación (provincia): descartar  
 - Si falta tipo_bateria o autonomia_km o marca: descartar  
 - Al final, reportar: páginas recorridas, válidos, descartados por cada motivo  
+
+## Archivos archivados (2026-10-08)
+
+<!-- Archivado por archivar_verticales.sh -->
+Las referencias de este documento a los archivos siguientes ahora apuntan a
+`archivo/bicimoto/` (misma subruta que tenían):
+
+- `scraping/descartados/descartados_bicis_inconsistentes.json`
+- `scraping/descartados/descartados_bicis_reemplazo.json`
+- `scraping/descartados/descartados_bicis_sin_motor.json`
+- `scraping/fuentes/bicis_electricas_reemplazo.json`
+- `scraping/fuentes/bicis_telegram_30.json`
+- `scraping/fuentes/telegram_bicis_30.txt`
+- `scraping/reporte_correcciones.json`

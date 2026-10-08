@@ -29,8 +29,8 @@ from sklearn.metrics import silhouette_samples, silhouette_score
 from sklearn.preprocessing import StandardScaler
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-ORIGEN = "/home/leandro/ev-market-study/verticals/combustion/scraping/motos_combustion_90.json"
-PY = "/home/leandro/ev-market-study/venv/bin/python3"
+ORIGEN = os.path.normpath(os.path.join(BASE_DIR, "..", "..", "scraping", "motos_combustion_90.json"))
+PY = __import__("sys").executable
 
 VEHICULO = "moto_combustion"
 FEATURES = ["precio_usd", "cilindrada_cc"]

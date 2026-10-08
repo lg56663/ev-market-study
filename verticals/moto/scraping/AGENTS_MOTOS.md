@@ -211,3 +211,16 @@ Reglas para descartados:
 - Si es de combustión: descartar  
 - Al final, reportar: páginas recorridas (listado y detalle), válidos,   
   descartados por cada motivo  
+
+## Archivos archivados (2026-10-08)
+
+<!-- Archivado por archivar_verticales.sh -->
+Las referencias de este documento a los archivos siguientes ahora apuntan a
+`archivo/moto/` (misma subruta que tenían):
+
+- `analisis/clustering_30`
+- `scraping/descartados/descartados_motos_ampliacion.json`
+- `scraping/descartados/descartados_motos.json`
+- `scraping/fuentes/motos_electricas_90.json`
+- `scraping/fuentes/motos_electricas_ampliacion.json`
+- `scraping/reporte_correcciones_motos.json`

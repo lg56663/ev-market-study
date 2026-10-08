@@ -12,6 +12,7 @@ Estudio de mercado de movilidad eléctrica ligera: motos, bicimotos y scooters e
 - `data/` — Datos generados (ignorado por Git)
 - `analysis/` — Notebooks e informes
 - `docs/` — Bitácora de cambios
+- `archivo/` — Versiones anteriores de scraping y clustering, por vertical
 
 ## Entorno
 
