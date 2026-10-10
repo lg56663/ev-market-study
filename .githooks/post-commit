@@ -1,0 +1,33 @@
+#!/bin/bash
+FECHA=$(date +%Y-%m-%d)
+JOURNAL="docs/journal.md"
+
+[ ! -f "$JOURNAL" ] && exit 0
+grep -q "^## $FECHA" "$JOURNAL" && exit 0
+
+COMMITS=$(git log -1 --pretty=format:"- %s")
+ARCHIVOS=$(git show --name-only --pretty=format: HEAD | grep -v '^$' | head -10 | sed 's/^/- /')
+
+cat >> "$JOURNAL" << EOF
+
+---
+
+## $FECHA — [completar título]
+
+**Qué hice:** 
+
+**Evidencia:**
+$ARCHIVOS
+
+**Commits:**
+$COMMITS
+
+**Qué aprendí:** 
+
+**Qué me costó:** 
+
+**Próximo paso:** 
+
+EOF
+
+echo "[journal] Entrada agregada para $FECHA. Complétala: nano docs/journal.md"

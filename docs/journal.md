@@ -98,7 +98,7 @@
 
 ## 2026-10-02 — Clustering ampliado a los datasets de ~120
 
-**Qué hice:** Reorganicé el análisis moviendo el clustering de 30 a `clustering_30/`. Añadí el clustering ampliado de los 4 verticales: motos 120, bicimotos 120, scooters 121 y combustión 90. Los k finales: bicimoto k=5, moto k=8, scooter k=4, combustión k=8.
+**Qué hice:** Reorganicé el análisis moviendo el clustering de 30 a `clustering_30/`. Añadí el clustering ampliado de los 4 verticales: motos 120, bicimotos 120, scooters 121 y combustión 90. Los k finales: bicimoto k=5, moto k=8, scooter k=6 (silhouette 0.5215), combustión k=8.
 
 **Evidencia:** `verticals/*/analisis/clustering_120/` o `clustering_121/` o `clustering_90/`, con JSONs, PNGs y `resumen_clustering_*.txt`.
 
@@ -160,7 +160,7 @@
 
 ## 2026-10-07 — Análisis de municipios, mapa y top 10 final
 
-**Qué hice:** Fusioné los 3 verticales eléctricos (bicimoto, moto, scooter) para el conteo de anuncios por municipio. Generé `conteo_municipios.csv` con 1.534 anuncios distribuidos en los 15 municipios de La Habana. Creé el mapa en Datawrapper con el GeoJSON de La Habana obtenido del repositorio `yudivian/cuba-geojsons`. Generé el top 10 de marcas con 1.648 anuncios con marca válida y el desglose por vertical.
+**Qué hice:** Fusioné los 3 verticales eléctricos (bicimoto, moto, scooter) para el conteo de anuncios por municipio. Generé `conteo_municipios.csv` con 1.454 anuncios distribuidos en los 15 municipios de La Habana. Creé el mapa en Datawrapper con el GeoJSON de La Habana obtenido del repositorio `yudivian/cuba-geojsons`. Generé el top 10 de marcas con 1.648 anuncios con marca válida y el desglose por vertical.
 
 **Evidencia:** `output/conteo_municipios.csv`, `output/top10_marcas_desglose.csv`, `output/top10_marcas_por_vertical.csv`, `graficos/geojson la habana.json`, `graficos/mapa_oferta_informal_habana.png`, `graficos/grafico_top10_marcas.png`.
 
