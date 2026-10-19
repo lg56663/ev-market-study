@@ -197,3 +197,25 @@
 **Qué me costó:** Decidir el "Domain" del issue (terminé poniendo "Transporte") y reconstruir el journal completo de los días en que trabajé sin commitear (25-sep, 4-oct, 5-oct, 7-oct, 9-oct).
 
 **Próximo paso:** Completar el informe final y cerrar el proyecto con la entrega al profesor.
+
+---
+
+## 2026-10-19 — [completar título]
+
+**Qué hice:**Entreviste 4 companeros de la UH 3 con motos electricas uno con combustion 
+
+**Evidencia:**
+- entrevistas/1 entrevista Manuel.aac
+- entrevistas/2 entrevista liverpool.aac
+- entrevistas/entrevista 3 Denisse.aac
+- entrevistas/entrevista 4 keyla.aac
+
+**Commits:**
+- Añadidas 4 entrevistas en audio
+
+**Qué aprendí:** Me desarrollo en cuanto a la relizacion de entrevista q nunca habia hecho una 
+
+**Qué me costó:**un poco de tiempo para covencerlos de la entrevista 
+
+**Próximo paso:** realizar 26 mas normalizar los audios y extraer datos validos de ahi
+
