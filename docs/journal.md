@@ -219,3 +219,31 @@
 
 **Próximo paso:** realizar 26 mas normalizar los audios y extraer datos validos de ahi
 
+
+---
+
+## 2026-11-06 — [completar título]
+
+**Qué hice:** 
+
+**Evidencia:**
+- entrevistas/12 entrevista.aac
+- entrevistas/26 entrevista.m4a
+- entrevistas/27 entrevista.aac
+- entrevistas/29 entrevista.opus
+- entrevistas/entrevista 10.aac
+- entrevistas/entrevista 11.aac
+- entrevistas/entrevista 13.aac
+- entrevistas/entrevista 14.aac
+- entrevistas/entrevista 15.aac
+- entrevistas/entrevista 16.aac
+
+**Commits:**
+- Actualiza gráficos, datos y añade entrevistas
+
+**Qué aprendí:** 
+
+**Qué me costó:** 
+
+**Próximo paso:** 
+
